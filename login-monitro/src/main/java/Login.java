@@ -10,9 +10,11 @@ public class Login {
                 "▀▄▄▄▀▄▄▄▀▄▄▄▄▀▄▄▄▀▀▄▄▀▄▄▄▀▀▄▄▄▀▀▄▄▀▄▄▀▄▄▄▄▀";
         String login, senha;
       Boolean continuarTentativa = true;
+        System.out.println(titulo);
+        System.out.println("Bem vindo ao Monitro!");
       do{
-          System.out.println(titulo);
-          System.out.println("Bem vindo ao Monitro, entre com suas credenciais");
+
+          System.out.println("\nEntre com suas credenciais:");
 
           System.out.print("Login: ");
           login = in.nextLine();
