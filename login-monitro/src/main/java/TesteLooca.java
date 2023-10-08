@@ -51,8 +51,9 @@ public class TesteLooca {
         //System.out.println(pc.getMemoria().getEmUso());
             // Por outro temos uma instância unica que consegue obter todos os dados da api
 
-
-        System.exit(0);
+        System.out.println( Conversor.formatarSegundosDecorridos(pc.getSistema().getTempoDeAtividade()));
+        memoria.getEmUso();
+        memoria.getDisponivel();
 
     }
 }
