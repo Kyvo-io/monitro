@@ -1,5 +1,6 @@
 process.env.AMBIENTE_PROCESSO = "desenvolvimento";
 // process.env.AMBIENTE_PROCESSO = "producao";
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 const nodemailer = require('nodemailer');
 var indexRouter = require("./src/routes/index");
 var empresaRouter = require("./src/routes/empresas");
@@ -30,7 +31,7 @@ function iniciarServidor() {
 
     app.use(cors());
 
-    app.use("/", indexRouter);
+   
     app.use("/", indexRouter);
     app.use("/empresas", empresaRouter);
     app.use("/usuarios", usuarioRouter);
