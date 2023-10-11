@@ -1,0 +1,215 @@
+@import url(global.css);
+
+.containerContato {
+    display: none;
+    color: black;
+}
+
+.containerContatoLeft {
+    display: flex;
+    width: 40%;
+    padding-left: 50px;   
+    flex-direction: column;
+}
+.containerContatoLeftTitulo {
+    display: flex;
+    justify-content: left;
+}
+.containerContatoLeftTitulo > span{
+    color: var(--branco-light-mode);
+   font-size: 3rem;
+  font-family: "poppins"; 
+    margin-bottom: 10px;    
+}
+.redesSociais{
+    display: flex;
+
+    width: 100%;
+    font-size: 30px;
+    flex-direction: column;
+    font-family: "poppins";
+    margin-top: 50px;
+
+}
+.linhaRede {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 25%;
+    color: var(--azul);
+    gap: 20px;
+    font-size: 2rem;
+    margin-bottom: 50px;
+}
+
+.linhaRede > svg {
+    width: 35px;
+    height: 35px;
+}
+.linhaRede > p {
+    color: var(--branco-light-mode);
+    font-size: 2rem;
+    text-align: left;
+}
+
+
+
+
+.linhaVerticalContato {
+    width: 5px;
+    height: 500px;
+    background-color: var(--branco-light-mode);
+    border-radius: 15px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.linhaHorizontalContato{
+    display: none;
+    width: 100%;
+    border: 0.2px solid;
+    border-color: var(--branco-light-mode);
+    border-radius: 15px;
+    margin-top: 3%;
+   
+}
+
+.containerContatoRight {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    align-items: center;
+}
+.cardContato{
+    display: flex;
+    background-color: var(--azul);
+    width: 800px;
+    height: 380px;
+    justify-content: center;
+    
+    font-family: "poppins";
+    margin-top: 80px;
+}
+
+.cardContato > span {
+    font-size: 1.8rem;
+    margin-top: 20px;
+}
+
+.cardEmail{
+    position: absolute;
+    z-index: 100;
+    color: black;
+    display: flex;
+    width: 650px;
+    height: 400px;
+    margin-top: 150px;
+    background-color: var(--branco-light-mode);
+}
+
+.cardEmail {
+    flex-direction: column;
+    align-items: center;
+    font-family: "poppins";
+}
+.cardEmail > span {
+    font-size: 2rem;
+    margin-top: 30px;
+    color: var(--azul-dark-mode);
+}
+.inputContato {
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid ;
+    font-family: "poppins";
+    font-size: 1rem;
+    margin-top: 55px;
+    width: 450px;
+    outline: none;
+    color: var(--azul-dark-mode);
+    border-color: white;
+}
+.inputContato:hover{
+    cursor: text;
+}
+
+.botaoEnviarContato {
+    border: none;
+    display: flex;
+    width:140px;
+    height: 50px;
+    background-color: var(--azul);
+    border-radius: 15px;
+    color: var(--branco-light-mode);
+    font-family: "poppins";
+    margin-top: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 940px){
+    .containerContato{
+        flex-direction: column;
+    }
+    .cardEmail {
+        width: 70%;
+        justify-content: space-around;
+    }
+    .botaoEnviarContato{
+        width: 30%;
+    }
+
+    .linhaVerticalContato{
+        display: none;
+    }
+    .linhaHorizontalContato{
+        display: flex;
+    }
+    .containerContatoRight{
+        width: 100%;
+    }
+    .cardContato{
+        width: 80%;
+    }
+    .cardEmail{
+        width: 70%;
+    }
+}
+
+    @media screen and (max-width: 700px){
+        .containerContato{
+            flex-direction: column;
+            font-size: 15px;
+        }
+        .linhaVerticalContato{
+            display: none;
+        }
+        .linhaHorizontalContato{
+            display: flex;
+        }
+        .containerContatoRight{
+            width: 100%;
+        
+        }
+        .containerContatoLeft{
+            width: 100%;
+        }
+        .cardContato{
+            width: 90%;
+        }
+        .cardEmail{
+            width: 80%;
+            
+        }
+        .inputContato{
+            width: 90%;
+        }
+
+    .containerContatoLeft {
+        width: 100%;
+    }
+}
