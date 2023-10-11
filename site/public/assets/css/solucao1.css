@@ -1,0 +1,94 @@
+@import url(global.css);
+
+.containercardSolucao1 {
+    display: none;
+}
+
+.cardSolucao1{
+   position: absolute;
+   display: flex;
+   width: 80%;
+   height: 80%;
+   background-color: var(--azul-dark-mode);
+   border-radius: 10px;
+   flex-direction: column;
+}
+
+.botaoFecharSolucao1{
+    display: flex;
+    justify-content: end;
+    color: var(--branco-light-mode);
+}
+.botaoFecharSolucao1 > svg {
+    display: flex;
+    width: 30px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.nomeMonitroSolucao1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    font-size: 6rem;
+    font-family: "baloo 2";
+    color: var(--azul);
+}
+.nomeMonitroSolucao1 > img {
+    width: 90px;
+    margin-right: 30px;
+    margin-left: 60px;
+}
+.detalhesMonitro {
+    display: flex;
+    flex-direction: row;
+}
+.nomeMonitroSolucao1Left {
+    display: flex;
+    width: 50%;
+    margin-left: 60px;
+    flex-direction: column;
+}
+
+.nomeMonitroSolucao1Left > span {
+    display: flex;
+    font-family: "poppins";
+    font-size: 2.5rem;
+    color: var(--branco-light-mode);
+    margin-top: 30px;
+}
+
+.nomeMonitroSolucao1Left > p {
+    margin-top: 30px;
+    font-family: "poppins";
+    font-size: 1.3rem;
+    line-height: 1.2;
+    color: var(--branco-light-mode);
+}
+
+.botaoSolucao1 {
+    border: none;
+    display: flex;
+    width:180px;
+    height: 60px;
+    background-color: var(--azul);
+    border-radius: 15px;
+    color: var(--branco-light-mode);
+    font-family: "poppins";
+    margin-top: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.nomeMonitroSolucao1Right {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nomeMonitroSolucao1Right > img {
+    width: 300px;
+}
