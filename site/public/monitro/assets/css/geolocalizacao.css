@@ -1,0 +1,125 @@
+/* Importação de fontes */
+@import url(globalMonitro.css);
+
+/* Estilos para o container de geolocalização */
+.containerGeolocalizacao {
+    display: flex;
+    font-family: "poppins";
+    color: var(--branco-light-mode);
+}
+
+/* Estilos para a parte esquerda da geolocalização */
+.GeolocalizacaoLeft {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.GeolocalizacaoLeft > span {
+    font-size: 1.3rem;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.mapaDinamico {
+    width: 430px;
+    height: 430px;
+    border-radius: 15px;
+    background-color: var(--branco-light-mode);
+    margin-top: 30px;
+}
+
+.legendaGeolocalizacao {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 1.3rem;
+}
+
+/* Estilos para a parte direita da geolocalização */
+.GeolocalizacaoRight {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.GeolocalizacaoRight > span {
+    font-size: 1.3rem;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.mapaQuantidades {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 430px;
+    height: 230px;
+    border-radius: 15px;
+    background-color: var(--branco-light-mode);
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.legendaEstadosMonitorados {
+    display: flex;
+    flex-direction: column;
+    margin-right: 80px;
+}
+
+.statusEstado > p {
+    font-size: 1.2rem;
+}
+
+.statusEstado {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.legendaMapas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+/* Estilos para os ícones de status */
+.icon-e-status {
+    display: flex;
+    gap: 5px;
+    margin-right: 20px;
+}
+
+.status {
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+    align-self: flex-end;
+}
+
+.ok {
+    background-color: #00a435;
+    filter: drop-shadow(0px 0px 5px #00a435);
+}
+
+.perigo {
+    background-color: #c70606;
+    filter: drop-shadow(0px 0px 5px #c70606);
+}
+
+.infos {
+    font-family: 'Baloo 2';
+    display: flex;
+    flex-direction: column;
+}
+
+.marcador {
+    width: 10px;
+    height: 10px;
+}

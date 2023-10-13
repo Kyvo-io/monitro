@@ -1,0 +1,120 @@
+/* Importação de fontes */
+@import url(globalMonitro.css);
+
+/* Estilos para a barra lateral */
+.sideBar {
+    position: absolute;
+    transform: translateX(-200%);
+    width: 20%;
+    height: 100%;
+    background-color: var(--azul);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 2;
+}
+
+.titulo-e-fechar {
+    display: flex;
+}
+
+.titulo-e-fechar img {
+    width: 30px;
+    position: absolute;
+    left: 85%;
+}
+
+.titulo-e-fechar > h1 {
+    font-family: "baloo 2";
+    color: var(--azul-dark-mode);
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.imgUser > img {
+    width: 200px;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para os links na barra lateral */
+.linksSideBar {
+    display: flex;
+    width: 250px;
+    height: 50px;
+    border-radius: 15px;
+    margin-top: 20px;
+    background-color: var(--azul-dark-mode);
+    color: var(--branco-light-mode);
+    align-items: center;
+    justify-content: center;
+    font-family: "poppins";
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Adicionando transição para suavizar a mudança de cor */
+}
+
+#botaoSair {
+    width: 150px;
+}
+
+.linksSideBar:hover {
+    background-color: var(--branco-light-mode);
+    color: var(--azul-dark-mode);  /* Mudando a cor do texto para escuro no hover */
+}
+.linksSideBar:hover > a {
+    color: var(--azul-dark-mode);  /* Mudando a cor do texto para escuro no hover */
+}
+.linksSideBar::selection {
+    color: var(--azul-dark-mode);
+}
+
+.containerDashboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.2s all;
+}
+
+
+
+.navBarDashboard {
+    display: flex;
+    height: 80px;
+    width: 100%;
+}
+
+.containerNavDashboard {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    color: var(--branco-light-mode);
+    transition: width 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.containerNavDashboard > h2 {
+    font-family: "poppins";
+    margin-left: 30px;
+}
+
+.logo-botao img {
+    width: 30px;
+}
+
+.botao-fechar img {
+    width: 60px;
+}
+
+
+.barra-lateral {
+    transform: translateX(0);
+}
+
+.dash-corresponde {
+    transform: translateX(15%);
+    width: 85%; 
+    margin-left: 2%;
+}
+

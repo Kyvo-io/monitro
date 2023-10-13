@@ -1,0 +1,68 @@
+/* Importação de fontes */
+@import url(globalMonitro.css);
+
+/* Estilos para o checkbox */
+.checkbox {
+    opacity: 0;
+}
+
+/* Estilos para o modo light/dark */
+.modoLightDark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+}
+
+/* Estilos para o rótulo do checkbox */
+.label {
+    background-color: #111;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    position: relative;
+    height: 15px;
+    width: 40px;
+    transform: scale(1.5);
+}
+
+/* Estilos para a bola do checkbox */
+.label .ball {
+    background-color: #ffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 20px;
+    width: 20px;
+    transform: translateX(0px);
+    transition: transform 0.2s linear;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos para a bola do checkbox quando marcado */
+.checkbox:checked + .label .ball {
+    transform: translateX(24px);
+}
+
+/* Estilos para o ícone da lua */
+.lua > svg {
+    color: #f1c40f;
+    padding-right: 10px;
+}
+
+/* Estilos para o ícone do sol */
+.sol {
+    color: #f39c12;
+}
+
+/* Estilos para o ícone do modo light/dark */
+.modoLightDark > svg {
+    color: #f1c40f;
+    margin-right: 10px;
+    cursor: pointer;
+}
