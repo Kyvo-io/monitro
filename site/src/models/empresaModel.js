@@ -10,7 +10,7 @@ function logar(email, cnpj) {
 function cadastrar(nomeResponsavel,nomeEmpresa, email,cnpj) {
 
     var instrucao = `
-        INSERT INTO Empresa (nomeEmpresa,cnpj,fkTipoOrgao) VALUES ('${nomeEmpresa}','${cnpj}',1);
+        INSERT INTO Empresa (nomeEmpresa,cnpj) VALUES ('${nomeEmpresa}','${cnpj}');
     `;
     database.executar(instrucao);
 

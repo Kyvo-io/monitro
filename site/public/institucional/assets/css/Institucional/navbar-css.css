@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Pathway+Extreme:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:wght@600&family=Roboto+Mono:wght@600&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+ :root {
+    --azul: #28c8ef;
+    --azul-dark-mode: #0E1826;
+    --branco-light-mode: #F2F2F2; 
+ } 
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--azul-dark-mode);
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .nav-logo {
+    width: 40%;
+    color: var(--azul);
+    display: flex;
+    align-items: center;
+    font-size: 45px;
+    font-family: 'Poppins';
+    font-weight: bold;
+  }
+.linksNav {
+  width: 50%;
+  margin-left: 4%;
+}
+.modoLightDark{
+  width:5% ;
+  display: flex;
+  justify-content: center ;
+}
+  .elementos {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: var(--branco-light-mode);
+    font-weight: 500;
+    font-size: 20px;
+    font-family: 'Poppins';
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    height: 75px;
+    width: 100%;
+  }
+
+  ul {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  li a {
+    color: var(--branco-light-modes);
+    text-decoration: none;
+
+    &:hover{
+      color: #28c8ef;
+    }
+}
+
+.li-botao {
+  display: none;
+}
+
+.engrenagem img{
+    width: 30px;
+}
+  
+  .span {
+    width: 30px;
+    height: 4px;
+    background-color: black;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    transition: 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+
+  .botao {
+    display: none;
+  }
+
+
+  @media (max-width: 900px) {
+    .navbar {
+      z-index: 999;
+      position: relative;
+    }
+    .elementos {
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      top: 0%;
+      margin: 0;
+      padding: 20px;
+      width: 35%;
+      height: 100%;
+      transform: translateX(-300%);
+      border-right: var(--azul) 2px solid;
+      background-color: var(--azul-dark-mode);
+    }
+
+
+    .img-logo {
+        display: none;
+    }
+
+    .barra-lateral {
+      transform: translateX(-140%);
+      background-color: var(--azul);
+    }
+
+    
+
+  
+    .elementos li{
+      border-right: var(--azul) 2px solid;
+    }
+
+    .li-botao {
+      display: flex;
+    }
+
+    .botao {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 20px;
+      padding-top: 20px;
+    }
+  }
+
+
+ 

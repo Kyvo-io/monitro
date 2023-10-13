@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | monitro</title>
+    <link rel="icon" type="image" href="assets/img/logoCubo.png"/>
+
+    <link rel="stylesheet" href="assets/css/Monitro/globalMonitro.css">
+    <link rel="stylesheet" href="assets/css/Monitro/lightDarkDashboard.css">
+    <link rel="stylesheet" href="assets/css/Monitro/navbarDashboard.css">
+    <link rel="stylesheet" href="assets/css/Monitro/geolocalizacao.css">
+    <link rel="stylesheet" href="assets/css/Monitro/dashboardGeral.css">
+    <link rel="stylesheet" href="assets/css/Monitro/dashboardEspecifica.css">
+    <link rel="stylesheet" href="assets/css/Monitro/cadastroServidor.css">
+    <link rel="stylesheet" href="assets/css/Monitro/cadastroUsuario.css">
+    <link rel="stylesheet" href="assets/css/Monitro/dashboardInformacoes.css">
+</head>
+<body>
+    <div class="sideBar">
+        <h1>monitro</h1>
+        <div class="imgUser">
+            <img src="assets/img/img-carlos.jpg" alt="">
+        </div>
+        <div class="linksSideBar" ><a href="#geolocalizacao">Geolocalização</a></div>
+        <div class="linksSideBar" ><a href="#dashGeral">Dashboard Geral</a></div>
+        <div class="linksSideBar" ><a href="#cadastroUsuario">Cadastrar Suporte</a></div>
+        <div class="linksSideBar" ><a href="#cadastroServidor">Cadastrar Servidor</a></div>
+        <div class="linksSideBar"id="botaoSair" ><a href="#home">Sair</a></div>
+    </div>  
+
+    
+
+
+    <div class="containerDashboard">
+    <div class="navBarDashboard">
+        <div class="containerNavDashboard">
+            <h2>Olá, Carlos Henrique !</h2>
+        </div>
+        <div class="modoLightDark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+              </svg>
+            <input type="checkbox" class="checkbox" id="chk" />
+            <label class="label" for="chk">
+              <i class="lua">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+                  <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+                </svg>
+              </i>
+              <i class="sol">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+                  <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                </svg>
+              </i>
+              <div class="ball"></div>
+            </label>
+          </div>
+    </div>
+
+        <div class="containerGeolocalizacao" id="geolocalizacao">
+            <div class="GeolocalizacaoLeft">
+                <span>Dashboard de Geolocalização Mundial: Brasil</span>
+                <div class="mapaDinamico"></div>
+                <div class="legendaGeolocalizacao">
+
+                  <div class="legendaMapas">
+                    <div class="statusEstado">
+                      <div class="icon-e-status">
+                        <div class="status perigo"></div>
+                    </div>
+                    <p>Ruim</p>
+                    </div>
+                    <div class="statusEstado">
+                      <div class="icon-e-status">
+                        <div class="status ok"></div>
+                    </div>
+                    <p>Bom</p>
+                    </div>
+                </div>
+                    
+                </div>
+            </div>
+            <div class="GeolocalizacaoRight">
+                <span>Quantidade de máquinas inertes</span>
+                <div class="mapaQuantidades">
+                  <canvas id="maquinasInertes"></canvas>
+                </div>
+                
+                <span>Estados Monitorados</span>
+                <div class="legendaEstadosMonitorados">
+                    <div class="statusEstado">
+                      <div class="icon-e-status">
+                        <div class="status perigo"></div>
+                    </div>
+                    <p>São Paulo</p>
+                    </div>
+                    <div class="statusEstado">
+                      <div class="icon-e-status">
+                        <div class="status ok"></div>
+                    </div>
+                    <p>Bahia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboardGeral" id="dashGeral">
+          <div class="dashboardGeralRight">
+            <span>Alertas</span>
+            <div class="cardAlertas">
+              <div class="niveisAlerta">
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
+                Nível Alto</p>
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="orange"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                  </svg>
+                  Nível Médio</p>
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                Nível Baixo</p>
+              </div>
+            </div>
+        </div>
+            <div class="dashboardGeralLeft">
+                <span>Máquinas monitoradas em tempo real</span>
+                <div class="maquinasCadastradas">
+                <div class="referenciaMaquina">
+                    <span>Máquina 001</span>
+                    <div class="cardMaquina" onclick="trocarExibicaoModalEspecifica()">
+                        <span>Servidor Leste</span>
+                        <div class="descricaoMaquina">
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+                            <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                          </svg> ID Máquina:</p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
+                            <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                          </svg>Estado:</p>
+                        <p> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                          </svg>Localização:</p>
+                        <p>Componentes Monitorados: </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="referenciaMaquina">
+                    <span>Máquina 002</span>
+                    <div class="cardMaquina">
+                        <span>Servidor Leste</span>
+                        <div class="descricaoMaquina">
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+                            <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                          </svg> ID Máquina:</p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
+                            <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                          </svg>Estado:</p>
+                        <p> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                          </svg>Localização:</p>
+                        <p>Componentes Monitorados: </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="referenciaMaquina">
+                  <span>Máquina 002</span>
+                  <div class="cardMaquina">
+                      <span>Servidor Leste</span>
+                      <div class="descricaoMaquina">
+                      <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+                          <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                        </svg> ID Máquina:</p>
+                      <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
+                          <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>Estado:</p>
+                      <p> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                          <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>Localização:</p>
+                      <p>Componentes Monitorados: </p>
+                  </div>
+                  </div>
+              </div>
+              <div class="referenciaMaquina">
+                <span>Máquina 002</span>
+                <div class="cardMaquina">
+                    <span>Servidor Leste</span>
+                    <div class="descricaoMaquina">
+                    <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+                        <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                      </svg> ID Máquina:</p>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
+                        <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                      </svg>Estado:</p>
+                    <p> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                      </svg>Localização:</p>
+                    <p>Componentes Monitorados: </p>
+                </div>
+                </div>
+            </div>
+            </div>
+            </div>
+           
+        </div>
+
+
+        <div class="cadastroServidor" id="cadastroServidor">
+          <span>Cadastrar Servidor</span>
+          <div class="containerCadastroServidor">
+            <input type="text" class="inputCadastroServidor" placeholder="Nome Servidor">
+            <input type="text" class="inputCadastroServidor" placeholder="Logradouro">
+            <input type="text" class="inputCadastroServidor" placeholder="Código Postal">
+            <input type="text" class="inputCadastroServidor" placeholder="Bairro">
+            <input type="text" class="inputCadastroServidor" placeholder="Coordenada">
+            <div class="botaoCadastroServidor">Cadastrar</div>
+          </div>
+        </div>
+
+
+        <div class="cadastroUsuario" id="cadastroUsuario">
+          <span>Cadastrar Usuário</span>
+          <div class="containerCadastroUsuario">
+            <input id="input_nome_usuario" type="text" class="inputCadastroUsuario" placeholder="Nome Usuário">
+            <input id="input_email" type="text" class="inputCadastroUsuario" placeholder="Email">
+            <input id="input_cargo" type="text" class="inputCadastroUsuario" placeholder="Cargo">
+            <input id="input_senha" type="text" class="inputCadastroUsuario" placeholder="Senha">
+            <input id="input_confirmar_senha" type="text" class="inputCadastroUsuario" placeholder="Confirmação Senha">
+            <div onclick="cadastrarFuncionario()" class="botaoCadastroUsuario">Cadastrar</div>
+          </div>
+        </div>
+
+
+        <div class="modalDashEspecifica" id="ModalEspecifica">
+          <div class="ModalEspecifica">
+            <div class="tituloModal">
+            <div class="nomeMonitro">
+              <img src="assets/img/Group 1 fundo azul.png" alt="">
+              monitro
+            </div>
+            <div class="botaoFechar" onclick="trocarExibicaoModalEspecifica() ">
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              class="bi bi-x-lg"
+              viewBox="0 0 16 16">
+              <path
+                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+            </svg>
+            </div>
+          </div>
+          <div class="containerDetalhesEspecifica">
+          <div class="detalhesMonitoramentoLeft">
+          <div class="descricaoMaquinaModal">
+          </div>
+          <div class="descricaoCPU">
+            <div class="niveisAlertaCPU">
+              <p>Componente Monitorado: CPU</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              Nível Alto</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="orange"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
+                Nível Médio</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+              </svg>
+              Nível Baixo</p>
+            </div>
+            <div class="graficoCPU">
+              <canvas id="monitoramentoCPU"></canvas>
+            </div>
+          </div>
+
+          <div class="descricaoRAM">
+            <div class="niveisAlertaRAM">
+              <p>Componente Monitorado: RAM</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              Nível Alto</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="orange"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
+                Nível Médio</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+              </svg>
+              Nível Baixo</p>
+            </div>
+            <div class="graficoRAM">
+              <canvas id="monitoramentoRAM"></canvas>
+            </div>
+          </div>
+          </div>
+
+          <div class="detalhesMonitoramentoRight"></div>
+        </div>
+        <div class="navegacao">
+          <div class="slides">
+            <input type="radio" class="radio-botao" id="botao1" name="grupoBotoes" />
+            <input type="radio" class="radio-botao" id="botao2" name="grupoBotoes" />
+          </div>
+          <div class="navegacaoManual">
+            <label class="botaoManual" for="botao1"></label>
+            <label class="botaoManual" for="botao2"></label>
+          </div>
+        </div>
+          </div>
+        
+          </div>
+
+
+
+
+          <div class="modalDashDetalhes" id="ModalDetalhes">
+            <div class="ModalDetalhes">
+              <div class="tituloModal">
+              <div class="nomeMonitro">
+                <img src="assets/img/Group 1 fundo azul.png" alt="">
+                monitro
+              </div>
+              <div class="botaoFechar" onclick="trocarExibicaoModalDetalhes()">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                class="bi bi-x-lg"
+                viewBox="0 0 16 16">
+                <path
+                  d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+              </svg>
+              </div>
+            </div>
+            <div class="detalhesServidorEmpresa">
+            <div class="descricoesServidor">
+
+            </div>
+            <div class="descricoesEmpresa">
+              
+            </div>
+          </div>
+
+          <div class="outrosDetalhes">
+            <div class="detalhes"></div>
+          </div>
+            
+
+
+            <div class="navegacao">
+              <div class="slides">
+                <input type="radio" class="radio-botao" id="botao1" name="grupoBotoes" />
+                <input type="radio" class="radio-botao" id="botao2" name="grupoBotoes" />
+              </div>
+              <div class="navegacaoManual">
+                <label class="botaoManual" for="botao1"></label>
+                <label class="botaoManual" for="botao2"></label>
+              </div>
+            </div>
+            </div>
+
+        </div>
+
+</div>
+</body>
+</html>
+
+<script src="assets/js/lightDark.js"></script>
+<script src="assets/js/modaisMonitro.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const linksSidebar = document.querySelectorAll(".linksSideBar a");
+
+  linksSidebar.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const targetId = link.getAttribute("href").substring(1);
+
+      const sections = document.querySelectorAll(".containerGeolocalizacao, .dashboardGeral, .cadastroUsuario, .cadastroServidor");
+      sections.forEach((section) => {
+        section.style.display = "none";
+      });
+
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.style.display = "flex";
+      }
+    });
+  });
+});
+
+
+
+  const maquinasInertes = document.getElementById('maquinasInertes');
+
+  new Chart(maquinasInertes, {
+    type: 'pie',
+    data: {
+      labels: ['Red', 'Blue'],
+      datasets: [{
+        label: "none",
+        data: [12, 19],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      
+    }
+  });
+
+ 
+
+const monitoramentoCPU = document.getElementById('monitoramentoCPU');
+
+new Chart(monitoramentoCPU, {
+  type: 'line',
+  data: {
+    labels: ['Red', 'Blue'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+const monitoramentoRAM = document.getElementById('monitoramentoRAM');
+
+  new Chart(monitoramentoRAM, {
+    type: 'line',
+    data: {
+      labels: ['Red', 'Blue'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+</script>
+
+<script>
+
+var idEmpresa = sessionStorage.ID_EMPRESA;
+var idCargo = sessionStorage.ID_CARGO;
+
+console.log(idEmpresa)
+console.log(idCargo)
+
+  
+function cadastrarFuncionario() {
+
+
+
+var nomeUsuario = input_nome_usuario.value;
+var email = input_email.value;
+var cargo = input_cargo.value;
+var senha = input_senha.value;
+var confirmar_senha = input_confirmar_senha.value;
+
+
+
+
+if (nomeUsuario == "" || email == "" || cargo == "" || senha == "" || confirmar_senha == "") {
+ 
+         alert ("Por favor preencha os campos em branco")
+         return false;
+}
+
+  fetch(`/usuarios/cadastrarFuncionario/`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      nomeServer: nomeUsuario,
+      emailServer: email,
+      senhaServer: senha,
+      idEmpresaServer: idEmpresa,
+      idCargoServer: idCargo
+      
+    }),
+  }).then(function (resposta) {
+    resposta.json().then(function (json) {
+      if (resposta.ok) {
+        console.log(json);
+        
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      } else console.log(json);
+    });
+  });
+
+return false;
+}
+
+</script>

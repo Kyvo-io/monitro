@@ -6,6 +6,7 @@ var indexRouter = require("./src/routes/index");
 var empresaRouter = require("./src/routes/empresas");
 var usuarioRouter = require("./src/routes/usuarios");
 var emailService = require("./src/services/emailService");
+
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
@@ -50,6 +51,3 @@ function iniciarServidor() {
 criarContaTeste().then(function() {
     iniciarServidor()
 })
-
-
-

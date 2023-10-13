@@ -1,0 +1,109 @@
+@import url(global.css);
+
+
+.containerIntegrantes {
+    display: none; 
+    flex-direction: column;
+}
+
+.containerIntegrantesTitulo{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-family: "poppins";
+}
+.containerIntegrantesTitulo  > span{
+    font-size: 3.3000rem;
+    color: var(--branco-light-mode);
+}
+
+.containerIntegrantesFotos{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+}
+.containerIntegrantesFotosLinha{
+    justify-content: space-around;
+    display: flex;
+    margin-top: 40px;
+}
+
+.containerIntegrantesIntegrante {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    color: var(--branco-light-mode);
+    font-family: "poppins";
+    font-size: 1.2rem;
+
+    justify-content: center;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.fotoIntegrante{
+    border-radius: 15px;
+    width: 180px;
+    background-repeat: no-repeat;
+    height: 180px;   
+    background-size: contain;
+}
+.contatos{
+    border-radius: 15px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    font-size: 16px;
+    align-items: center;
+    width: 165px;
+    height: 165px;   
+    background-color: rgba(0, 0, 0, 0.793);
+}
+.contato-item{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.contato-item > a{
+    color: white;
+}
+.containerIntegrantesIntegrante:hover>.fotoIntegrante{
+    display: none;
+}
+.containerIntegrantesIntegrante:hover>.contatos{
+    display: flex;
+}
+.carlos{
+    background-image: url(../../img/img-carlos.jpg);
+}
+.breno{
+    background-image: url(../../img/img-breno.jpg);
+}
+.leandro{
+    background-image: url(../../img/foto-leandro.jpg);
+}
+.lucio{
+    background-image: url(../../img/img-lucio.jpg);
+}
+.mirella{
+    background-image: url(../../img/img-Mirella.jpg);
+}
+.roberto{
+    background-image: url(../../img/img-roberto.jpg);
+}
+
+@media screen and (max-width: 650px){
+    .containerIntegrantesFotos{
+        
+        flex-direction: column;
+    }
+
+}
+
