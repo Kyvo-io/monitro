@@ -16,13 +16,13 @@ function cadastrar(nomeResponsavel,nomeEmpresa, email,cnpj) {
 
     
     var instrucao = `
-        INSERT INTO cargo (idCargo,nomeCargo) VALUES (10,'Gerente de Noc');
+        INSERT INTO cargo (nomeCargo) VALUES ('Gerente de Noc');
     `;
     database.executar(instrucao);
     
     var instrucao = `
-        INSERT INTO Usuario (nomeUsuario, email, fkEmpresa) 
-                    VALUES ${nomeResponsavel}, ${email}((SELECT MAX(idEmpresa) FROM Empresa),2)
+        INSERT INTO Usuario (nomeUsuario, email,fkempresa,fkCargo) 
+                    VALUES ('${nomeResponsavel}', '${email}',(SELECT MAX(idEmpresa) FROM Empresa),1)
                     `;
 
     return database.executar(instrucao);
