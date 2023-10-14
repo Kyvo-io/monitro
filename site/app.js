@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 var indexRouter = require("./src/routes/index");
 var empresaRouter = require("./src/routes/empresas");
 var usuarioRouter = require("./src/routes/usuarios");
+var servidorRouter = require("./src/routes/servidores");
 var emailService = require("./src/services/emailService");
 
 var express = require("express");
@@ -36,6 +37,7 @@ function iniciarServidor() {
     app.use("/", indexRouter);
     app.use("/empresas", empresaRouter);
     app.use("/usuarios", usuarioRouter);
+    app.use("/servidores", servidorRouter);
   
     emailService.enviarEmailPrimeiroAcesso("leandro@email.com", "teste")
 

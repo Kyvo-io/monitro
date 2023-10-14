@@ -209,12 +209,12 @@
         <div class="cadastroServidor" id="cadastroServidor">
           <span>Cadastrar Servidor</span>
           <div class="containerCadastroServidor">
-            <input type="text" class="inputCadastroServidor" placeholder="Nome Servidor">
-            <input type="text" class="inputCadastroServidor" placeholder="Logradouro">
-            <input type="text" class="inputCadastroServidor" placeholder="Código Postal">
-            <input type="text" class="inputCadastroServidor" placeholder="Bairro">
-            <input type="text" class="inputCadastroServidor" placeholder="Coordenada">
-            <div class="botaoCadastroServidor">Cadastrar</div>
+            <input id="input_nome_servidor" type="text" class="inputCadastroServidor" placeholder="Nome Servidor">
+            <input id="input_logradouro" type="text" class="inputCadastroServidor" placeholder="Logradouro">
+            <input id="input_codigo_postal" type="text" class="inputCadastroServidor" placeholder="Código Postal">
+            <input id="input_bairro" type="text" class="inputCadastroServidor" placeholder="Bairro">
+            <input id="input_coordenada" type="text" class="inputCadastroServidor" placeholder="Coordenada">
+            <div onclick="cadastrarServidor()" class="botaoCadastroServidor">Cadastrar</div>
           </div>
         </div>
 
@@ -463,14 +463,8 @@ const monitoramentoRAM = document.getElementById('monitoramentoRAM');
 
 var idEmpresa = sessionStorage.ID_EMPRESA;
 var idCargo = sessionStorage.ID_CARGO;
-
-console.log(idEmpresa)
-console.log(idCargo)
-
   
 function cadastrarFuncionario() {
-
-
 
 var nomeUsuario = input_nome_usuario.value;
 var email = input_email.value;
@@ -514,5 +508,50 @@ if (nomeUsuario == "" || email == "" || cargo == "" || senha == "" || confirmar_
 
 return false;
 }
+
+function cadastrarServidor() {
+
+
+
+var logradouro = input_logradouro.value;
+var codigoPostal = input_codigo_postal.value;
+var bairro = input_bairro.value;
+
+
+
+
+if (logradouro == "" || codigoPostal == "" || bairro == "") {
+ 
+         alert ("Por favor preencha os campos em branco")
+         return false;
+}
+
+  fetch(`/servidores/cadastrarServidor/`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      logradouroServer: logradouro,
+      codigoServer: codigoPostal,
+      bairroServer: bairro,
+      idEmpresaServer: idEmpresa
+      
+    }),
+  }).then(function (resposta) {
+    resposta.json().then(function (json) {
+      if (resposta.ok) {
+        console.log(json);
+        
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      } else console.log(json);
+    });
+  });
+
+return false;
+}
+
 
 </script>
