@@ -89,7 +89,9 @@
     font-weight: bold;
     font-size: 1rem;
 }
-
+.loader{
+    width: 60px;
+}
 
 @media (max-width: 900px) {
     .containerCadastro {
