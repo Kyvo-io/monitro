@@ -10,15 +10,18 @@
   "author": "Feito pelos desenvolvedores @ São Paulo Tech School / Bandtec Digital School",
   "license": "MIT",
   "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.3.41",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "generate-password": "^1.7.0",
     "mssql": "^7.1.3",
     "mysql2": "^2.2.5",
+    "nodemailer": "^6.9.1",
     "nodemon": "^2.0.7",
-    "path": "^0.12.7",
-    "nodemailer": "^6.9.1"
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@types/nodemailer": "^6.4.11"
   }
 }
+

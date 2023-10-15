@@ -1,11 +1,12 @@
 process.env.AMBIENTE_PROCESSO = "desenvolvimento";
 // process.env.AMBIENTE_PROCESSO = "producao";
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+process.env.GOOGLE_MAPS_API_KEY = "AIzaSyAIuuupdu3Z2jMBbGEKSAz7swDqysvp3zM";
 const nodemailer = require('nodemailer');
 var indexRouter = require("./src/routes/index");
 var empresaRouter = require("./src/routes/empresas");
 var usuarioRouter = require("./src/routes/usuarios");
-
+var mapsService = require('./src/services/mapsService')
 var servidorRouter = require("./src/routes/servidores");
 var emailService = require("./src/services/emailService");
 var express = require("express");
@@ -21,10 +22,8 @@ async function criarContaTeste() {
 }
 
 
-function iniciarServidor() {
-
+async function iniciarServidor() {
     var app = express();
-    console.log( process.env.EMAIL_USER)
     var indexRouter = require("./src/routes/index");
 
     app.use(express.json());
@@ -32,6 +31,7 @@ function iniciarServidor() {
     app.use(express.static(path.join(__dirname, "public/institucional")));
 
     app.use(cors());
+   
 
    
     app.use("/", indexRouter);
