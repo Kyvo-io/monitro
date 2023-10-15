@@ -1,0 +1,94 @@
+@import url(global.css);
+
+.containerLogin {
+    display: none;
+}
+
+.cardLogin{
+display: flex;
+   width: 800px;
+   height: 600px;
+   background-color: var(--azul-dark-mode);
+   border-radius: 10px;
+   flex-direction: column;
+   align-items: center;
+}
+
+.botaoFechar{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    color: var(--branco-light-mode);
+    
+}
+.botaoFechar > svg {
+    display: flex;
+    width: 30px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.nomeMonitro {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    font-family: "baloo 2";
+    color: var(--azul);
+}
+.nomeMonitro > img {
+    width: 70px;
+    margin-right: 20px;
+}
+.cardAzulLogin{
+    display: flex;
+    width: 750px;
+    height: 355px;
+    margin-top: 20px;
+    background-color: var(--azul);
+}
+.cardBrancoLogin{
+    position: absolute;
+    display: flex;
+    width: 600px;
+    height: 350px;
+    margin-top: 200px;
+    background-color: var(--branco-light-mode);
+    font-family: "poppins";
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardBrancoLogin > span {
+    font-size: 2rem;
+    color: var(--azul-dark-mode);
+    margin-bottom: 50px;
+}
+
+.inputLogin {
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid ;
+    margin-top: 30px;
+    width: 450px;
+    font-size: 1rem;
+}
+.botaoEnviarLogin{
+    border: none;
+    display: flex;
+    width:140px;
+    height: 50px;
+    background-color: var(--azul);
+    border-radius: 15px;
+    color: var(--branco-light-mode);
+    font-family: "poppins";
+    margin-top: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1rem;
+}

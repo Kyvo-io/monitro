@@ -1,10 +1,13 @@
 process.env.AMBIENTE_PROCESSO = "desenvolvimento";
 // process.env.AMBIENTE_PROCESSO = "producao";
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+process.env.GOOGLE_MAPS_API_KEY = "AIzaSyAIuuupdu3Z2jMBbGEKSAz7swDqysvp3zM";
 const nodemailer = require('nodemailer');
 var indexRouter = require("./src/routes/index");
 var empresaRouter = require("./src/routes/empresas");
 var usuarioRouter = require("./src/routes/usuarios");
+var mapsService = require('./src/services/mapsService')
+var servidorRouter = require("./src/routes/servidores");
 var emailService = require("./src/services/emailService");
 var express = require("express");
 var cors = require("cors");
@@ -19,10 +22,8 @@ async function criarContaTeste() {
 }
 
 
-function iniciarServidor() {
-
+async function iniciarServidor() {
     var app = express();
-    console.log( process.env.EMAIL_USER)
     var indexRouter = require("./src/routes/index");
 
     app.use(express.json());
@@ -30,14 +31,14 @@ function iniciarServidor() {
     app.use(express.static(path.join(__dirname, "public/institucional")));
 
     app.use(cors());
+   
 
    
     app.use("/", indexRouter);
     app.use("/empresas", empresaRouter);
     app.use("/usuarios", usuarioRouter);
+    app.use("/servidores", servidorRouter);
   
-    emailService.enviarEmailPrimeiroAcesso("leandro@email.com", "teste")
-
     app.listen(PORTA, function () {
         console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
         Você está rodando sua aplicação em Ambiente de ${process.env.AMBIENTE_PROCESSO} \n
@@ -50,6 +51,3 @@ function iniciarServidor() {
 criarContaTeste().then(function() {
     iniciarServidor()
 })
-
-
-

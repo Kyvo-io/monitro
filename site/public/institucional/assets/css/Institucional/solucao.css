@@ -1,0 +1,138 @@
+@import url(global.css);
+
+.containerSolucao {
+    display: none;
+}
+
+.containerSolucaoLeft {
+    display: flex;
+    width: 55%;
+    padding-left: 60px;
+    margin-top: 25px;
+    flex-direction: column;
+}
+.containerSolucaoLeftTitulo {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.containerSolucaoLeftTitulo > span{
+    color: var(--branco-light-mode);
+    font-size: 6rem;
+    font-family: "baloo 2"; 
+    color: var(--azul);
+}
+.containerSolucaoLeftTitulo > img{
+    padding-right: 25px;
+    width: 100px;
+}
+.textoMonitro{
+    display: flex;
+    
+}
+.textoMonitro > p{
+    width: 100%; 
+    color: var(--branco-light-mode);
+    font-family: "poppins";
+    line-height: 1.5;
+    margin-top: 50px;
+    font-size: 1.5rem;
+}
+.botaoSaibaMais {
+    border: none;
+    display: flex;
+    width: 180px;
+    height: 60px;
+    background-color: var(--azul);
+    border-radius: 15px;
+    color: var(--branco-light-mode);
+    font-family: "poppins";
+    margin-top: 70px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.linhaVertical {
+    width: 5px;
+    height: 500px;
+    background-color: var(--branco-light-mode);
+    border-radius: 15px;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.containerSolucaoRight {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardMonitro {
+    margin-top: 50px;
+    width: 400px;
+    height: 450px;
+    border-radius: 15px;
+    background-color: var(--branco-light-mode);
+}
+.tituloCard{
+    display: flex;
+    flex-direction: column;
+    font-size: 4rem;
+    font-family: "baloo 2"; 
+    color: var(--azul);
+    align-items: center;
+    margin-top: 40px;
+}
+.tituloCard > img {
+    margin-bottom: 30px;
+    width: 90px;
+}
+.tituloCard > p {
+    color: var(--azul-dark-mode);
+    font-size: 2rem;
+    margin-top: 20px ;
+}
+
+.botoesCardMonitro{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+.botaoCadastrar {
+    border: none;
+    display: flex;
+    width:140px;
+    height: 60px;
+    background-color: var(--azul);
+    border-radius: 15px;
+    color: var(--branco-light-mode);
+    font-family: "poppins";
+    margin-top: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.botaoSLogin {
+    border: none;
+    display: flex;
+    width:140px;
+    height: 60px;
+    background-color: var(--azul);
+    border-radius: 15px;
+    color: var(--branco-light-mode);
+    font-family: "poppins";
+    margin-top: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1rem;
+}

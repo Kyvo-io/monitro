@@ -1,0 +1,55 @@
+/* Importação de fontes */
+@import url(globalMonitro.css);
+
+/* Estilos para o formulário de cadastro de servidor */
+.cadastroServidor {
+    display: none;
+    font-family: "poppins";
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cadastroServidor > span {
+    font-size: 1.8rem;
+    color: var(--azul);
+    font-weight: bold;
+}
+
+/* Estilos para o container do formulário de cadastro de servidor */
+.containerCadastroServidor {
+    display: flex;
+    background-color: var(--branco-light-mode);
+    width: 500px;
+    height: 500px;
+    border-radius: 15px;
+    margin-top: 20px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 40px;
+}
+
+/* Estilos para os campos de entrada no formulário de cadastro de servidor */
+.inputCadastroServidor {
+    width: 350px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid var(--azul-dark-mode);
+    font-size: 1.3rem;
+}
+
+/* Estilos para o botão de cadastro de servidor */
+.botaoCadastroServidor {
+    background-color: var(--azul-dark-mode);
+    color: var(--branco-light-mode);
+    width: 150px;
+    height: 50px;
+    font-size: 1.3rem;
+    border-radius: 15px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
