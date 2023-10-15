@@ -1,4 +1,6 @@
 var database = require("../database/config")
+var emailService = require("../services/emailService");
+var generator = require('generate-password');
 
 function logar(email, cnpj) {
     var instrucao = `
@@ -8,24 +10,23 @@ function logar(email, cnpj) {
 }
 
 function cadastrar(nomeResponsavel,nomeEmpresa, email,cnpj) {
-
-    var instrucao = `
+var senha = generator.generate({
+        length: 10,
+        numbers: true
+    });
+   var instrucao = `
         INSERT INTO Empresa (nomeEmpresa,cnpj) VALUES ('${nomeEmpresa}','${cnpj}');
     `;
     database.executar(instrucao);
 
-    
-    var instrucao = `
-        INSERT INTO cargo (nomeCargo) VALUES ('Gerente de Noc');
-    `;
-    database.executar(instrucao);
-    
-    var instrucao = `
-        INSERT INTO Usuario (nomeUsuario, email,fkempresa,fkCargo) 
-                    VALUES ('${nomeResponsavel}', '${email}',(SELECT MAX(idEmpresa) FROM Empresa),1)
-                    `;
 
-    return database.executar(instrucao);
+    
+    var instrucao = `
+        INSERT INTO Usuario (nomeUsuario, email, senha, fkEmpresa, fkCargo) 
+                    VALUES ('${nomeResponsavel}', '${email}', '${senha}', (SELECT MAX(idEmpresa) FROM Empresa), 1);`;
+
+                    database.executar(instrucao);
+    return senha;
 }
 
 module.exports = {
