@@ -15,15 +15,14 @@
     <link rel="stylesheet" href="../monitro/assets/css/cadastroServidor.css">
     <link rel="stylesheet" href="../monitro/assets/css/cadastroUsuario.css">
     <link rel="stylesheet" href="../monitro/assets/css/dashboardInformacoes.css">
+    <link rel="stylesheet" href="../monitro/assets/css/dashboardHistorico.css">
     
 </head>
 <body>
 
 
   <div id="fundo_modal" class="fundo-modal">
-
-    
-    <div class="modalDashEspecifica" id="ModalEspecifica">
+    <div class="modalDashEspecifica" id="ModalEspecifica" >
       <div class="ModalEspecifica">
         <div class="tituloModal">
         <div class="nomeMonitro">
@@ -42,12 +41,18 @@
         </div>
       </div>
       <div class="containerDetalhesEspecifica">
-      <div class="detalhesMonitoramentoLeft">
-      <div class="descricaoMaquinaModal">
-      </div>
-      <div class="descricaoCPU">
-        <div class="niveisAlertaCPU">
-          <p>Componente Monitorado: CPU</p>
+      <div class="detalhesMonitoramento">
+        <div class="containerExibicao">
+          <div class="secaoGraficos" id="secaoGraficos" >
+          <div class="descricaoEredes">
+        <div class="descricaoMaquinaModal">
+        </div>
+        <div class="cardRedes">
+          <div class="tituloAlertas">
+          <span> Alertas</span>
+        </div>
+        <div class="LegendasDash">
+          <div class="alertasDash">
           <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
             <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
           </svg>
@@ -61,103 +66,148 @@
           </svg>
           Nível Baixo</p>
         </div>
-        <div class="graficoCPU">
-          <canvas id="monitoramentoCPU"></canvas>
-        </div>
-      </div>
-
-      <div class="descricaoRAM">
-        <div class="niveisAlertaRAM">
-          <p>Componente Monitorado: RAM</p>
-          <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
-            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        <div class="legendaComponentes">
+          <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-device-ssd-fill" viewBox="0 0 16 16">
+            <path d="M5 8V4h6v4H5Z"/>
+            <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4Zm0 1.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Zm9 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0ZM3.5 11a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm9.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0ZM4.75 3h6.5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-.75.75h-6.5A.75.75 0 0 1 4 8.25v-4.5A.75.75 0 0 1 4.75 3ZM5 12h6a1 1 0 0 1 1 1v2h-1v-2h-.75v2h-1v-2H8.5v2h-1v-2h-.75v2h-1v-2H5v2H4v-2a1 1 0 0 1 1-1Z"/>
           </svg>
-          Nível Alto</p>
-          <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="orange"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
-              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-            </svg>
-            Nível Médio</p>
-          <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-          </svg>
-          Nível Baixo</p>
-        </div>
-        <div class="graficoRAM">
-          <canvas id="monitoramentoRAM"></canvas>
-        </div>
-      </div>
-      </div>
-
-      <div class="detalhesMonitoramentoRight"></div>
+           Armazenamento</p>
+        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-memory" viewBox="0 0 16 16">
+          <path d="M1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.586a1 1 0 0 0 .707-.293l.353-.353a.5.5 0 0 1 .708 0l.353.353a1 1 0 0 0 .707.293H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1Zm.5 1h3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5Zm5 0h3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5Zm4.5.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-4ZM2 10v2H1v-2h1Zm2 0v2H3v-2h1Zm2 0v2H5v-2h1Zm3 0v2H8v-2h1Zm2 0v2h-1v-2h1Zm2 0v2h-1v-2h1Zm2 0v2h-1v-2h1Z"/>
+        </svg>
+            RAM</p>
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cpu-fill" viewBox="0 0 16 16">
+        <path d="M6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+        <path d="M5.5.5a.5.5 0 0 0-1 0V2A2.5 2.5 0 0 0 2 4.5H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2A2.5 2.5 0 0 0 4.5 14v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14a2.5 2.5 0 0 0 2.5-2.5h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14A2.5 2.5 0 0 0 11.5 2V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5zm1 4.5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3A1.5 1.5 0 0 1 6.5 5z"/>
+      </svg>
+      CPU </p>
     </div>
+      <div class="legendaComponentes">
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pci-card-network" viewBox="0 0 16 16">
+        <path d="M6.5 9.5v-2h.214a.5.5 0 0 0 .5-.5v-.5h2.572V7a.5.5 0 0 0 .5.5h.214v2h-4Z"/>
+        <path d="M0 1.5A.5.5 0 0 1 .5 1h1a.5.5 0 0 1 .5.5V4h13.5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5H2v2.5a.5.5 0 0 1-1 0V2H.5a.5.5 0 0 1-.5-.5Zm6.714 4a.5.5 0 0 0-.5.5v.5H6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V7a.5.5 0 0 0-.5-.5h-.214V6a.5.5 0 0 0-.5-.5H6.714Z"/>
+        <path d="M3 12.5h3.5v1a.5.5 0 0 1-.5.5H3.5a.5.5 0 0 1-.5-.5v-1Zm8 0H7v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Z"/>
+      </svg>Redes</p>
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-microsoft" viewBox="0 0 16 16">
+        <path d="M7.462 0H0v7.19h7.462V0zM16 0H8.538v7.19H16V0zM7.462 8.211H0V16h7.462V8.211zm8.538 0H8.538V16H16V8.211z"/>
+      </svg>
+       Windows</p>
+    
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ubuntu" viewBox="0 0 16 16">
+      <path d="M2.273 9.53a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.547Zm9.467-4.984a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.546ZM7.4 13.108a5.535 5.535 0 0 1-3.775-2.88 3.273 3.273 0 0 1-1.944.24 7.4 7.4 0 0 0 5.328 4.465c.53.113 1.072.169 1.614.166a3.253 3.253 0 0 1-.666-1.9 5.639 5.639 0 0 1-.557-.091Zm3.828 2.285a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.546Zm3.163-3.108a7.436 7.436 0 0 0 .373-8.726 3.276 3.276 0 0 1-1.278 1.498 5.573 5.573 0 0 1-.183 5.535 3.26 3.26 0 0 1 1.088 1.693ZM2.098 3.998a3.28 3.28 0 0 1 1.897.486 5.544 5.544 0 0 1 4.464-2.388c.037-.67.277-1.313.69-1.843a7.472 7.472 0 0 0-7.051 3.745Z"/>
+    </svg>Ubuntu</p>
+  </div>
+</div>
+        </div>
+      </div>
+        <div class="graficos">
+        <div class="descricaoCPU">
+          <div class="graficoCPU">
+            <div class="niveisAlertaCPU">
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cpu-fill" viewBox="0 0 16 16">
+                <path d="M6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                <path d="M5.5.5a.5.5 0 0 0-1 0V2A2.5 2.5 0 0 0 2 4.5H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2A2.5 2.5 0 0 0 4.5 14v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14a2.5 2.5 0 0 0 2.5-2.5h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14A2.5 2.5 0 0 0 11.5 2V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5zm1 4.5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3A1.5 1.5 0 0 1 6.5 5z"/>
+              </svg> CPU</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              Nível Alto</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="orange"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
+                Nível Médio</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+              </svg>
+              Nível Baixo</p>
+            </div>
+            <canvas id="monitoramentoCPU"></canvas>
+          </div>
+        </div>
+  
+        <div class="descricaoRAM">
+          <div class="graficoRAM">
+            <div class="niveisAlertaRAM">
+              <p>Componente Monitorado: RAM</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              Nível Alto</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="orange"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
+                Nível Médio</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+              </svg>
+              Nível Baixo</p>
+            </div>
+            <canvas id="monitoramentoRAM"></canvas>
+          </div>
+        </div>
+  
+        <div class="descricaoDisco">
+          <div class="graficoDisco">
+            <div class="niveisAlertaDisco">
+              <p>Componente Monitorado: Disco</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              Nível Alto</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="orange"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
+                Nível Médio</p>
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+              </svg>
+              Nível Baixo</p>
+            </div>
+            <canvas id="monitoramentoDisco"></canvas>
+          </div>
+        </div>
+      </div>
+           </div>
+           <div class="secaoInformacoes" id="secaoInformacoes">
+            <div class="detalhesServidorEmpresa">
+              <div class="descricoesServidor">
+                  Descições Servidor
+              </div>
+              <div class="descricoesRegistros">
+                Últimos Registros
+              </div>
+            </div>
+           </div>
+           <div class="secaoHistoricos" id="secaoHistoricos">
+            <div class="HistoricosServidorEmpresa">
+      
+              <div class="descricoesRegistros">
+                Últimos Registros
+              </div>
+              <div class="descricoesServidor">
+                Descições Servidor
+            </div>
+            </div>
+           </div>
+           
+        </div>
+    </div>
+  </div>
     <div class="navegacao">
       <div class="slides">
-        <input type="radio" class="radio-botao" id="botao1" name="grupoBotoes" />
-        <input type="radio" class="radio-botao" id="botao2" name="grupoBotoes" />
+        <input type="radio" class="radio-botao" id="botao1" name="grupoBotoes"/>
+        <input type="radio" class="radio-botao" id="botao2" name="grupoBotoes"/>
+        <input type="radio" class="radio-botao" id="botao3" name="grupoBotoes"/>
       </div>
       <div class="navegacaoManual">
         <label class="botaoManual" for="botao1"></label>
         <label class="botaoManual" for="botao2"></label>
+        <label class="botaoManual" for="botao3"></label>
       </div>
     </div>
       </div>
-    
       </div>
-
-
-
-
-      <div class="modalDashDetalhes" id="ModalDetalhes">
-        <div class="ModalDetalhes">
-          <div class="tituloModal">
-          <div class="nomeMonitro">
-            <img src="assets/img/Group 1 fundo azul.png" alt="">
-            monitro
-          </div>
-          <div class="botaoFechar" onclick="trocarExibicaoModalDetalhes()">
-            <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            class="bi bi-x-lg"
-            viewBox="0 0 16 16">
-            <path
-              d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-          </svg>
-          </div>
-        </div>
-        <div class="detalhesServidorEmpresa">
-        <div class="descricoesServidor">
-
-        </div>
-        <div class="descricoesEmpresa">
-          
-        </div>
-      </div>
-
-      <div class="outrosDetalhes">
-        <div class="detalhes"></div>
-      </div>
-        
-
-
-        <div class="navegacao">
-          <div class="slides">
-            <input type="radio" class="radio-botao" id="botao1" name="grupoBotoes" />
-            <input type="radio" class="radio-botao" id="botao2" name="grupoBotoes" />
-          </div>
-          <div class="navegacaoManual">
-            <label class="botaoManual" for="botao1"></label>
-            <label class="botaoManual" for="botao2"></label>
-          </div>
-        </div>
-        </div>
-
-    </div>
-
   </div>
-
-
-
 
 
     <div class="sideBar">
@@ -165,8 +215,6 @@
         <h1>monitro</h1>
         <div class="logo-botao"><img src="assets/img/fechar-nav.svg" alt=""></div>
       </div>
-        
-        
         <div class="imgUser">
             <img src="assets/img/img-carlos.jpg" alt="">
         </div>
@@ -176,9 +224,6 @@
         <div class="linksSideBar" ><a href="#cadastroServidor">Cadastrar Servidor</a></div>
         <div class="linksSideBar"id="botaoSair" ><a href="#home">Sair</a></div>
     </div>  
-
-    
-
 
     <div class="containerDashboard">
     <div class="navBarDashboard">
@@ -289,7 +334,7 @@
                           </svg> ID Máquina:</p>
                         <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
                             <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                          </svg>Estado:</p>
+                          </svg>Status:</p>
                         <p> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                             <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                           </svg>Localização:</p>
@@ -307,7 +352,7 @@
                           </svg> ID Máquina:</p>
                         <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
                             <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                          </svg>Estado:</p>
+                          </svg>Status:</p>
                         <p> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                             <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                           </svg>Localização:</p>
@@ -325,7 +370,7 @@
                         </svg> ID Máquina:</p>
                       <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
                           <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                        </svg>Estado:</p>
+                        </svg>Status:</p>
                       <p> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                           <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                         </svg>Localização:</p>
@@ -343,7 +388,7 @@
                       </svg> ID Máquina:</p>
                     <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
                         <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                      </svg>Estado:</p>
+                      </svg>Status:</p>
                     <p> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                         <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                       </svg>Localização:</p>
@@ -360,11 +405,46 @@
         <div class="cadastroServidor" id="cadastroServidor">
           <span>Cadastrar Servidor</span>
           <div class="containerCadastroServidor">
-            <input type="text" class="inputCadastroServidor" placeholder="Nome Servidor">
-            <input type="text" class="inputCadastroServidor" placeholder="Logradouro">
-            <input type="text" class="inputCadastroServidor" placeholder="Código Postal">
-            <input type="text" class="inputCadastroServidor" placeholder="Bairro">
-            <input type="text" class="inputCadastroServidor" placeholder="Coordenada">
+            <div class="linhaInput inputMedia">
+            <p>Nome Servidor</p>
+            <input type="text" class="inputCadastroServidor inputMedia" placeholder="Máquina01 - SP">
+          </div>
+          <div class="linhaInput inputMedia selectServidor">
+            <p>Sist. Operacional</p>
+              <select id="SOs" name="tiposSOS" class="selectServidor">
+                <option value="Windows Server">Amazon Linux 2023 AMI</option>
+                <option value="Windows Server">MacOs Ventura</option>
+                <option value="Windows Server">Ubuntu Server 22.04 LTS</option>
+                <option value="Windows Server">Windows Server 2022 Base</option>
+                <option value="Windows Server">Red Hot Enterprise Linux 9</option>
+                <option value="Ubuntu Server">Suse Linux 15 SP5</option>
+                <option value="Microsoft Hyper-V">Debian 12</option>
+            </select>
+          </div>
+          <div class="linhaInput">
+            <p>Logradouro</p>
+            <input type="text" class="inputCadastroServidor inputGrande" placeholder="Rua Haddock lobo">
+          </div>
+          <div class="linhaInput">
+            <p id="pPequeno">N°</p>
+            <input type="text" class="inputCadastroServidor inputPequena" placeholder="595">
+          </div>
+          <div class="linhaInput">
+            <p>CEP</p>
+            <input type="text" class="inputCadastroServidor inputMedia" placeholder="1414001">
+          </div>
+          <div class="linhaInput">
+            <p>Bairro</p>
+            <input type="text" class="inputCadastroServidor inputMedia" placeholder="Cerqueira César">
+          </div>
+          <div class="linhaInput">
+            <p>Cidade</p>
+            <input type="text" class="inputCadastroServidor inputGrande" placeholder="São Paulo">
+          </div>
+          <div class="linhaInput">
+            <p class="inputPequena">UF</p>
+            <input type="text" class="inputCadastroServidor inputPequena" placeholder="SP">
+          </div>
             <div class="botaoCadastroServidor">Cadastrar</div>
           </div>
         </div>
@@ -373,11 +453,29 @@
         <div class="cadastroUsuario" id="cadastroUsuario">
           <span>Cadastrar Usuário</span>
           <div class="containerCadastroUsuario">
-            <input type="text" class="inputCadastroUsuario" placeholder="Nome Usuário">
-            <input type="text" class="inputCadastroUsuario" placeholder="Email">
-            <input type="text" class="inputCadastroUsuario" placeholder="Cargo">
-            <input type="text" class="inputCadastroUsuario" placeholder="Senha">
-            <input type="text" class="inputCadastroUsuario" placeholder="Confirmação Senha">
+            <div class="linhaInputUsuario">
+              <p>Nome Usuário</p>
+            <input type="text" class="inputCadastroUsuario" placeholder="Nome">
+          </div>
+            <div class="linhaInputUsuario">
+              <p>E-mail</p>
+            <input type="text" class="inputCadastroUsuario" placeholder="Usuario@dominio.com">
+          </div>
+            <div class="linhaInputUsuario">
+              <p>Cargo</p>
+              <select id="Cargos" name="tiposCargos">
+                <option value="NOC">Gerente NOC</option>
+                <option value="Suporte">Suporte</option>
+            </select>
+          </div>
+            <div class="linhaInputUsuario">
+              <p>Senha</p>
+            <input type="password" class="inputCadastroUsuario" >
+          </div>
+            <div class="linhaInputUsuario">
+              <p>Confirmação Senha</p>
+            <input type="password" class="inputCadastroUsuario" >
+            </div>
             <div class="botaoCadastroUsuario">Cadastrar</div>
           </div>
         </div>
@@ -415,6 +513,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+
 
 
 
@@ -479,7 +579,26 @@ const monitoramentoRAM = document.getElementById('monitoramentoRAM');
     }
   });
 
+  const monitoramentoDisco = document.getElementById('monitoramentoDisco');
 
+new Chart(monitoramentoDisco, {
+  type: 'line',
+  data: {
+    labels: ['Red', 'Blue'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
 
 
 </script>

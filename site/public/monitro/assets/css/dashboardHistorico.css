@@ -2,8 +2,8 @@
 
 @import url(globalMonitro.css);
 
-.modalDashDetalhes {
-  display: none;
+.modalDashHistoricos {
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -13,7 +13,7 @@
   z-index: 3;
 }
 
-.ModalDetalhes {
+.ModalHistoricos {
   position: absolute;
   border-radius: 15px;
   width: 90%;
@@ -26,7 +26,7 @@
   font-family: "poppins";
 }
 
-.containerDetalhes {
+.containerHistoricos {
   display: flex;
   width: 100%;
   justify-content: space-around;
@@ -62,7 +62,7 @@
   cursor: pointer;
 }
 
-.detalhesServidorEmpresa {
+.HistoricosServidorEmpresa {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -100,9 +100,7 @@
   border-radius: 15px;
   background-color: #4f5f733a;
 }
-
-
-.secaoInformacoes{
+.secaoHistoricos{
   display: none;
   width: 100%;
   height: 100%;
@@ -110,3 +108,4 @@
   justify-content: space-between;
 
 }
+

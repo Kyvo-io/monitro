@@ -108,3 +108,6 @@ input {
 .botaoManual:hover {
   background-color: var(--azul-dark-mode);
 }
+.botaoManual input:checked + label {
+  background-color: #ffcc00;
+}

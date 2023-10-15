@@ -1,8 +1,12 @@
+const secaoGraficos = document.getElementById("secaoGraficos");
+const secaoInformacoes = document.getElementById("secaoInformacoes");
+const secaoHistoricos = document.getElementById("secaoHistoricos");
+const botao1 = document.getElementById("botao1");
+const botao2 = document.getElementById("botao2");
+const botao3 = document.getElementById("botao3");
+secaoGraficos.classList.add("exibir");
 const fundo = document.getElementById("fundo_modal")
-const modalDashEspecifica = document.getElementById("ModalEspecifica")
-const modalDashDetalhes = document.getElementById("ModalDetalhes")
-const botao1_isChecked = botao1.checked
-const botao2_isChecked = botao2.checked
+const modalDash = document.getElementById("ModalEspecifica")
 var botoesRadio = document.querySelectorAll('.radio-botao');
 
 
@@ -11,36 +15,36 @@ function trocarExibicaoFundo() {
 }
 function trocarExibicaoModalEspecifica() {
     trocarExibicaoFundo()
-    modalDashEspecifica.classList.toggle("exibir")
-}
-function trocarExibicaoModalDetalhes() {
-    fundo.classList.toggle("exibir")
-    modalDashDetalhes.classList.toggle("exibir")
+    modalDash.classList.toggle("exibir")
 }
 
-botoesRadio.forEach(function(botao) {
-    botao.addEventListener('change', function() {
-      if(botao1_isChecked){
-          modalDashEspecifica.classList.toggle("exibir")
-      } else {
-          modalDashEspecifica.classList.toggle("exibir")
-      }
-      if(botao2_isChecked){
-          modalDashDetalhes.classList.toggle("exibir")
-      } else{
-          modalDashDetalhes.classList.toggle("exibir")
-      }
-    });
-  });
+botao1.addEventListener("change", function() {
+    secaoGraficos.classList.toggle("exibir");
+    secaoInformacoes.classList.remove("exibir");
+    secaoHistoricos.classList.remove("exibir");
+    console.log("1")
 
-  // No início da transição
+});
+
+botao2.addEventListener("change", function() {
+    secaoInformacoes.classList.toggle("exibir");
+    secaoGraficos.classList.remove("exibir");
+    secaoHistoricos.classList.remove("exibir");
+    console.log("2")
+});
+
+botao3.addEventListener("change", function() {
+    secaoHistoricos.classList.toggle("exibir");
+    secaoInformacoes.classList.remove("exibir");
+    secaoGraficos.classList.remove("exibir");
+    console.log("3")
+});
+
+
+
+
 document.querySelector('.containerDashboard').classList.add('transitioning');
-
-// Seu código para iniciar a transição aqui
-
-// Quando a transição estiver concluída (por exemplo, usando um evento)
 document.querySelector('.containerDashboard').addEventListener('transitionend', function() {
-    // Remova a classe após a transição
     document.querySelector('.containerDashboard').classList.remove('transitioning');
 });
 
