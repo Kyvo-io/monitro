@@ -10,22 +10,20 @@ function logar(email, cnpj) {
 }
 
 function cadastrar(nomeResponsavel,nomeEmpresa, email,cnpj) {
-
-    var senha = generator.generate({
+var senha = generator.generate({
         length: 10,
         numbers: true
     });
-
-    var instrucao = `
+   var instrucao = `
         INSERT INTO Empresa (nomeEmpresa,cnpj) VALUES ('${nomeEmpresa}','${cnpj}');
     `;
     database.executar(instrucao);
 
+
     
     var instrucao = `
         INSERT INTO Usuario (nomeUsuario, email, senha, fkEmpresa, fkCargo) 
-                    VALUES ('${nomeResponsavel}', '${email}', '${senha}', (SELECT MAX(idEmpresa) FROM Empresa), 1);
-                    `;
+                    VALUES ('${nomeResponsavel}', '${email}', '${senha}', (SELECT MAX(idEmpresa) FROM Empresa), 1);`;
 
                     database.executar(instrucao);
     return senha;
