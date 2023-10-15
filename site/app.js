@@ -4,7 +4,6 @@ const nodemailer = require('nodemailer');
 var indexRouter = require("./src/routes/index");
 var empresaRouter = require("./src/routes/empresas");
 var usuarioRouter = require("./src/routes/usuarios");
-var emailService = require("./src/services/emailService");
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
@@ -35,8 +34,6 @@ function iniciarServidor() {
     app.use("/empresas", empresaRouter);
     app.use("/usuarios", usuarioRouter);
   
-    emailService.enviarEmailPrimeiroAcesso("leandro@email.com", "teste")
-
     app.listen(PORTA, function () {
         console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
         Você está rodando sua aplicação em Ambiente de ${process.env.AMBIENTE_PROCESSO} \n

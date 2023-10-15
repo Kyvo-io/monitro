@@ -1,5 +1,6 @@
 var database = require("../database/config")
 
+
 function logar(email, senha) {
     var instrucao = `
         SELECT * FROM usuario WHERE email = '${email}' AND senha = '${senha}';

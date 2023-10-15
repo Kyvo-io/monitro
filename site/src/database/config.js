@@ -21,8 +21,8 @@ var sqlServerConfig = {
 var mySqlConfig = {
     host: "localhost",
     database: "monitro",
-    user: "root",
-    password: "@Rifr19111998",
+    user: "monitro-admin",
+    password: "kyvo_io",
 };
 
 function executar(instrucao) {
