@@ -69,7 +69,7 @@
   justify-content: space-around;
 }
 
-.descricoesServidor,
+.descricoesLocalizacao,
 .descricoesRegistros {
   width: 100%;
   height: 535px;
@@ -78,7 +78,7 @@
   background-color: #4f5f733a;
 }
 
-.descricoesServidor {
+.descricoesLocalizacao {
   width: 450px;
 }
 
@@ -109,4 +109,109 @@
   flex-direction: column;
   justify-content: space-between;
 
+}
+
+.descricoesLocalizacao {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+}
+.descricoesLocalizacao > h3 {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+.descricoesLocalizacao > span {
+  display: flex;
+  justify-content: left;
+  margin-left: 10px;
+  width: 90%;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-top: 20px;
+  
+}
+.descricoesLocalizacao > span > p{
+  color: rgba(0, 0, 0, 0.516);
+  font-size: 1.2rem;
+}
+.descricoesRegistros{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  
+}
+.descricoesRegistros> h3 {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.descricoesRegistros> span > p{
+  color: rgba(0, 0, 0, 0.516);
+  font-size: 1.2rem;
+}
+.componentesEsquerda {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 80%;
+}
+.componentesDireita {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 80%;
+}
+.descricaoCompSO > span ,
+.descricaoCompArmazenamento > span ,
+.descricaoCompCPU > span ,
+.descricaoCompRAM > span {
+  display: flex;
+  justify-content: left;
+  width: 90%;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1rem; 
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.descricaoCompSO > span > p,
+.descricaoCompArmazenamento > span > p,
+.descricaoCompCPU > span > p,
+.descricaoCompRAM > span > p{
+  color: rgba(0, 0, 0, 0.516);
+  font-size: 1rem;
+}
+.descricaoCompSO,
+.descricaoCompArmazenamento,
+.descricaoCompCPU,
+.descricaoCompRAM{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.descricaoCompSO > h4,
+.descricaoCompArmazenamento > h4,
+.descricaoCompCPU > h4,
+.descricaoCompRAM > h4 {
+  margin-bottom: 10px;
+}
+.descricaoCompRAM {
+  margin-top: 50px;
+}
+
+.descricaoCompArmazenamento  {
+  margin-top: 100px;
 }

@@ -45,11 +45,31 @@
         <div class="containerExibicao">
           <div class="secaoGraficos" id="secaoGraficos" >
           <div class="descricaoEredes">
-        <div class="descricaoMaquinaModal">
-        </div>
-        <div class="cardRedes">
+            <div class="cardDescricao">
+              <div class="tituloCardDescricao">
+              <span> Descrição</span>
+            </div>
+              <div class="informaçõesCPU">
+              <span>Máquina: <p>Máquina01 - SP</p></span>
+              <span>Sistema Operacional: <p>Windows</p></span>
+            </div>
+            </div>
+            <div class="cardRedes">
+              <div class="tituloCardRedes">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pci-card-network" viewBox="0 0 16 16">
+        <path d="M6.5 9.5v-2h.214a.5.5 0 0 0 .5-.5v-.5h2.572V7a.5.5 0 0 0 .5.5h.214v2h-4Z"/>
+        <path d="M0 1.5A.5.5 0 0 1 .5 1h1a.5.5 0 0 1 .5.5V4h13.5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5H2v2.5a.5.5 0 0 1-1 0V2H.5a.5.5 0 0 1-.5-.5Zm6.714 4a.5.5 0 0 0-.5.5v.5H6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V7a.5.5 0 0 0-.5-.5h-.214V6a.5.5 0 0 0-.5-.5H6.714Z"/>
+        <path d="M3 12.5h3.5v1a.5.5 0 0 1-.5.5H3.5a.5.5 0 0 1-.5-.5v-1Zm8 0H7v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Z"/>
+      </svg> Redes </span>
+              </div>
+                <div class="informaçõesCPU">
+                <span>Downloads: <p>25,0 Kbps</p></span>
+                <span>Uploads: <p>25,0 Kbps</p></span>
+              </div>
+            </div>
+        <div class="cardLegendas">
           <div class="tituloAlertas">
-          <span> Alertas</span>
+          <span> Legendas</span>
         </div>
         <div class="LegendasDash">
           <div class="alertasDash">
@@ -104,22 +124,20 @@
         <div class="descricaoCPU">
           <div class="graficoCPU">
             <div class="niveisAlertaCPU">
+              <div class="tituloCard">
               <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cpu-fill" viewBox="0 0 16 16">
                 <path d="M6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
                 <path d="M5.5.5a.5.5 0 0 0-1 0V2A2.5 2.5 0 0 0 2 4.5H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2A2.5 2.5 0 0 0 4.5 14v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14a2.5 2.5 0 0 0 2.5-2.5h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14A2.5 2.5 0 0 0 11.5 2V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5zm1 4.5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3A1.5 1.5 0 0 1 6.5 5z"/>
               </svg> CPU</p>
-              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
-                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-              </svg>
-              Nível Alto</p>
-              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="orange"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
-                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                </svg>
-                Nível Médio</p>
               <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-              </svg>
-              Nível Baixo</p>
+              </svg></p>
+            </div>
+            <div class="informaçõesCPU">
+              <span>Processador: <p>Intel</p></span>
+              <span>Arquitetura: <p>X86</p></span>
+              <span>Porcentagem de uso: <p>56%</p></span>
+            </div>
             </div>
             <canvas id="monitoramentoCPU"></canvas>
           </div>
@@ -128,19 +146,19 @@
         <div class="descricaoRAM">
           <div class="graficoRAM">
             <div class="niveisAlertaRAM">
-              <p>Componente Monitorado: RAM</p>
-              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
-                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-              </svg>
-              Nível Alto</p>
-              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="orange"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
-                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                </svg>
-                Nível Médio</p>
-              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-              </svg>
-              Nível Baixo</p>
+              <div class="tituloCard">
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-memory" viewBox="0 0 16 16">
+                  <path d="M1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.586a1 1 0 0 0 .707-.293l.353-.353a.5.5 0 0 1 .708 0l.353.353a1 1 0 0 0 .707.293H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1Zm.5 1h3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5Zm5 0h3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5Zm4.5.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-4ZM2 10v2H1v-2h1Zm2 0v2H3v-2h1Zm2 0v2H5v-2h1Zm3 0v2H8v-2h1Zm2 0v2h-1v-2h1Zm2 0v2h-1v-2h1Zm2 0v2h-1v-2h1Z"/>
+                </svg> RAM</p>
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg></p>
+              </div>
+              <div class="informaçõesCPU">
+                <span>Total: <p>16GB</p></span>
+                <span>Utilizado: <p>8GB</p></span>
+                <span>Porcentagem de uso: <p>50%</p></span>
+            </div>
             </div>
             <canvas id="monitoramentoRAM"></canvas>
           </div>
@@ -149,19 +167,20 @@
         <div class="descricaoDisco">
           <div class="graficoDisco">
             <div class="niveisAlertaDisco">
-              <p>Componente Monitorado: Disco</p>
-              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
-                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-              </svg>
-              Nível Alto</p>
-              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="orange"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
-                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                </svg>
-                Nível Médio</p>
-              <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-              </svg>
-              Nível Baixo</p>
+              <div class="tituloCard">
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-device-ssd-fill" viewBox="0 0 16 16">
+                  <path d="M5 8V4h6v4H5Z"/>
+                  <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4Zm0 1.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Zm9 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0ZM3.5 11a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm9.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0ZM4.75 3h6.5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-.75.75h-6.5A.75.75 0 0 1 4 8.25v-4.5A.75.75 0 0 1 4.75 3ZM5 12h6a1 1 0 0 1 1 1v2h-1v-2h-.75v2h-1v-2H8.5v2h-1v-2h-.75v2h-1v-2H5v2H4v-2a1 1 0 0 1 1-1Z"/>
+                </svg> Armazenamento</p>
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" color="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg></p>
+              </div>
+              <div class="informaçõesCPU">
+                <span>Total: <p>512GB</p></span>
+                <span>Utilizado: <p>256GB</p></span>
+                <span>Porcentagem de uso: <p>50%</p></span>
+            </div>
             </div>
             <canvas id="monitoramentoDisco"></canvas>
           </div>
@@ -170,22 +189,138 @@
            </div>
            <div class="secaoInformacoes" id="secaoInformacoes">
             <div class="detalhesServidorEmpresa">
-              <div class="descricoesServidor">
-                  Descições Servidor
+              <div class="descricoesLocalizacao">
+                  <h3>Localização Servidor</h3>
+                  <span>Nome Servidor: <p>Máquina01 - SP</p> </span>
+                  <span>Logradouro: <p>Rua Haddock Lobo 595</p></span>
+                  <span>CEP: <p>08070-090</p></span>  
+                  <span>Bairro: <p>Cerqueira César</p></span>  
+                  <span>Cidade: <p>São Paulo</p></span>  
+                  <span>UF: <p>SP</p></span>  
               </div>
               <div class="descricoesRegistros">
-                Últimos Registros
+                <h3>Descrição Componentes</h3>
+                <div class="componentesEsquerda">
+                  <div class="descricaoCompSO">
+                    <h4>Sistema Operacional</h4>
+                <span>Nome do SO: <p>Windows 10 Pro</p> </span>
+                <span>Arquitetura do SO: <p>x64 (64 bits)</p> </span>
+                <span>Versão: <p>21H1</p> </span>
+                 </div>
+                 <div class="descricaoCompArmazenamento">
+                  <h4>Armazenamento</h4>
+                <span>Disco Rígido (HDD): <p>2 TB</p> </span>
+                <span>Tipo de HDD: <p>SATA III</p> </span>
+                <span>Velocidade de Rotação: <p>7200 RPM</p> </span>
+                <span>Disco de Estado Sólido: <p>500 GB</p> </span>
+                <span>Tipo de SSD: <p>NVMe</p> </span>
+                <span>Velocidade de Leitura: <p>3500 MB/s</p> </span>
+                <span>Velocidade de Gravação: <p>2500 MB/s</p> </span>
+                  
+                 </div>
+                </div>
+                <div class="componentesDireita">
+                  <div class="descricaoCompCPU">
+                    <h4>CPU</h4>
+                  <span>Nome: <p>Intel Core i7-10700K</p> </span>
+                  <span>Arquitetura: <p>64 bits</p> </span>
+                  <span>Clock: <p>3.2 GHz</p> </span>
+                  <span>Número de Núcleos: <p>4</p> </span>
+                  <span>Número de Threads: <p>8</p> </span>
+                  <span>Cache: <p>16 MB Intel Smart Cache</p> </span>
+                </div>
+                <div class="descricaoCompRAM ">
+                  <h4>RAM</h4>
+                  <span>Capacidade: <p>32 GB</p> </span>
+                  <span>Tipo: <p>DDR4</p> </span>
+                  <span>Frequência: <p>3200 MHz</p> </span>
+                  <span>Configuração: <p>Dual Channel</p> </span>
+                  <span>Latência: <p>CL16</p> </span>
+                  <span>Barramento: <p>288 pinos</p> </span>
+
+                </div>
+                 </div>
+
               </div>
             </div>
            </div>
            <div class="secaoHistoricos" id="secaoHistoricos">
             <div class="HistoricosServidorEmpresa">
-      
               <div class="descricoesRegistros">
                 Últimos Registros
               </div>
-              <div class="descricoesServidor">
-                Descições Servidor
+              <div class="cardMetricas">
+                <h4>Parâmetros</h4>
+                <div class="titulosParametros"> 
+                  <h3>Métricas</h3>
+                  <h3>Min</h3>
+                  <h3>Max</h3>
+                </div>
+                
+                <span><p>CPU</p>
+                  <select id="metricas" name="metricas">
+                    <option value="opcao1">GB</option>
+                    <option value="opcao2">%</option>
+                    <option value="opcao3">KBPS</option>
+                  </select>
+                  <input type="Min">
+                  <input type="Max">
+                </span>
+                <span><p>RAM</p>
+                  <select id="metricas" name="metricas">
+                    <option value="opcao1">GB</option>
+                    <option value="opcao2">%</option>
+                    <option value="opcao3">KBPS</option>
+                  </select>
+                  <input type="Min">
+                  <input type="Max">
+                </span>
+                <span><p>RAM</p>
+                  <select id="metricas" name="metricas">
+                    <option value="opcao1">GB</option>
+                    <option value="opcao2">%</option>
+                    <option value="opcao3">KBPS</option>
+                  </select>
+                  <input type="Min">
+                  <input type="Max">
+                </span>
+                <span><p>REDE</p>
+                  <select id="metricas" name="metricas">
+                    <option value="opcao1">GB</option>
+                    <option value="opcao2">%</option>
+                    <option value="opcao3">KBPS</option>
+                  </select>
+                  <input type="Min">
+                  <input type="Max">
+                </span>
+                <span><p>REDE</p>
+                  <select id="metricas" name="metricas">
+                    <option value="opcao1">GB</option>
+                    <option value="opcao2">%</option>
+                    <option value="opcao3">KBPS</option>
+                  </select>
+                  <input type="Min">
+                  <input type="Max">
+                </span>
+                <span><p>DISCO</p>
+                  <select id="metricas" name="metricas">
+                    <option value="opcao1">GB</option>
+                    <option value="opcao2">%</option>
+                    <option value="opcao3">KBPS</option>
+                  </select>
+                  <input type="Min">
+                  <input type="Max">
+                </span>
+                <span><p>DISCO</p>
+                  <select id="metricas" name="metricas">
+                    <option value="opcao1">GB</option>
+                    <option value="opcao2">%</option>
+                    <option value="opcao3">KBPS</option>
+                  </select>
+                  <input type="Min">
+                  <input type="Max">
+                </span>
+                <div class="botaoSalvarParametros">Salvar</div>
             </div>
             </div>
            </div>
