@@ -182,7 +182,7 @@ async function enviarEmailDefinicaoSenha(email, usuario) {
     return nodemailer.getTestMessageUrl(infoEmail);
 }
 
-async function enviarEmailConfirmarMonitoramento(email, usuario) {
+async function enviarEmailConfirmacaoLogin(email, usuario) {
     let transporteEmail = nodemailer.createTransport({
         host: "smtp.ethereal.email",
         port: 587,
@@ -198,9 +198,193 @@ async function enviarEmailConfirmarMonitoramento(email, usuario) {
         to: `${usuario} <${email}>`,
         subject: 'Primeiro acesso',
         text: 'Hello to myself!',
-        html: `
-        Login:
-        Senha:
+        html: 
+        `
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Poppins:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "poppins";
+    font-weight: 800;
+}
+
+body {
+    background-color: #28C8EF;
+}
+
+.container {
+    border: white 2px solid;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tituloNotificacao {
+    margin-top: 2%;
+    width: 65%;
+    height: 10%;
+    background-color: white;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tituloNotificacao img {
+    width: 50px;
+}
+
+.container-informacoes {
+    width: 55%;
+    height: 75%;
+    background-color: white;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+.container-informacoes ul {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.container-informacoes li {
+    width: 70%;
+    height: 10%;
+
+    list-style-type: none;
+    border-radius: 50px;
+}
+
+.container-informacoes p {
+    margin-left: 5%;
+}
+
+.campo {
+    width: 100%;
+    height: 70%;
+    border: 2px solid black;
+    border-radius: 50px;
+}
+
+
+
+
+.botoes {
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%;
+    height: 10%;
+    gap: 15px;
+}
+
+.botoes a {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    cursor: default;
+    text-decoration: none;
+    border-radius: 50px ;
+    
+}
+
+.botao {
+    width: 100%;
+    
+    height: 100%;
+    border-radius: 50px;
+    color: var(--color);
+    transition: 0.25s;
+
+        &:hover,
+        &:focus { 
+
+    border-color: var(--hover);
+    color: #fff;
+}
+}
+
+.botao:hover,
+.botao:focus {
+    box-shadow: inset 6.5em 0 0 0 var(--hover);
+    cursor: pointer;
+}
+
+
+
+.negar {
+    color: white;
+    background-color: red;
+    border: 2px solid red;
+}
+
+.confirmar {
+    color: white;
+    background-color: rgb(25, 206, 25);
+    border: 2px solid rgb(25, 206, 25);
+}
+</style>
+
+<body>
+<div class="container">
+    <div class="tituloNotificacao"><img
+            src="https://static.vecteezy.com/system/resources/previews/009/663/747/original/warning-icon-transparent-free-png.png"
+            alt="">
+        <p>Atenção! Há um usuário tentando
+            se conectar em sua conta, confirmar acesso?</p><img
+            src="https://static.vecteezy.com/system/resources/previews/009/663/747/original/warning-icon-transparent-free-png.png"
+            alt="">
+    </div>
+    <div class="container-informacoes">
+        <ul>
+
+            <li>
+                <p>Logradouro</p>
+                <div class="campo">
+                    <p></p>
+                </div>
+            </li>
+            <li>
+                <p>Bairro</p>
+                <div class="campo">
+                    <p></p>
+                </div>
+            </li>
+            <li>
+                <p>Cidade</p>
+                <div class="campo">
+                    <p></p>
+                </div>
+            </li>
+            <li>
+                <p>Data e horário</p>
+                <div class="campo">
+                    <p></p>
+                </div>
+            </li>
+        </ul>
+        <div class="botoes">
+            
+            <a href=""><button class="botao negar">Negar Acesso</button></a>
+            <a href=""><button class="botao confirmar">Confirmar Acesso</button></a>
+            
+        </div>
+    </div>
+</div>
+</body>
         `
     }
     
