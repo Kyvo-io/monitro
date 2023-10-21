@@ -1,16 +1,20 @@
 var database = require("../database/config")
 
 
-function cadastrarServidor(logradouro,codigo,bairro,fkEmpresa) {
+function cadastrarServidor(nomeServidor,SistemaOperacional,logradouro,cep,bairro,numero,cidade,uf,fkEmpresa,fkEndereco) {
+
+
 
     var instrucao = `
-    INSERT INTO servidor (fkEmpresa,fkEndereco) VALUES ('${fkEmpresa}',1);
+    INSERT INTO endereco (logradouro, cep, bairro, numero, cidade, uf) VALUES ('${logradouro}','${cep}','${bairro}','${numero}','${cidade}','${uf}');
+`;
+    database.executar(instrucao)
+    var instrucao = `
+    INSERT INTO servidor (fkEndereco,sistemaOperacional,nomeServidor,fkEmpresa) VALUES (1,'linux','mar','2');
     `;
 
-    database.executar(instrucao);
-    var instrucao = `
-        INSERT INTO endereco (logradouro,codigoPostal,bairro) VALUES ('${logradouro}','${codigo}','${bairro}');
-    `;
+   
+    
     return database.executar(instrucao);
 }
 

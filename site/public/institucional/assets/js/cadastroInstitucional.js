@@ -12,12 +12,7 @@ function cadastrar() {
     }
     botao.remove()
     cardCadastroElementos.innerHTML += "<img id='loader' class='loader' src='assets/img/loader.svg'>"
-        // if (emailVar.indexOf('@') == -1 || emailVar.indexOf('.') == -1) {
-        // cardErro.style.display = "block"
-        // alert ("falta @ ou . no seu Email")
-        // return false;   
-        // }   
-
+      
     fetch("/empresas/cadastrar", {
         method: "POST", 
         headers: {
@@ -53,6 +48,3 @@ function cadastrar() {
 
     return false;
 }
-
-
-

@@ -542,11 +542,11 @@
           <div class="containerCadastroServidor">
             <div class="linhaInput inputMedia">
             <p>Nome Servidor</p>
-            <input type="text" class="inputCadastroServidor inputMedia" placeholder="Máquina01 - SP">
+            <input id="input_nome_servidor" type="text" class="inputCadastroServidor inputMedia" placeholder="Máquina01 - SP">
           </div>
           <div class="linhaInput inputMedia selectServidor">
             <p>Sist. Operacional</p>
-              <select id="SOs" name="tiposSOS" class="selectServidor">
+              <select id="select_sos" name="tiposSOS" class="selectServidor">
                 <option value="Windows Server">Amazon Linux 2023 AMI</option>
                 <option value="Windows Server">MacOs Ventura</option>
                 <option value="Windows Server">Ubuntu Server 22.04 LTS</option>
@@ -558,29 +558,29 @@
           </div>
           <div class="linhaInput">
             <p>Logradouro</p>
-            <input type="text" class="inputCadastroServidor inputGrande" placeholder="Rua Haddock lobo">
+            <input id="input_logradouro" type="text" class="inputCadastroServidor inputGrande" placeholder="Rua Haddock lobo">
           </div>
           <div class="linhaInput">
             <p id="pPequeno">N°</p>
-            <input type="text" class="inputCadastroServidor inputPequena" placeholder="595">
+            <input id="input_numero" type="text" class="inputCadastroServidor inputPequena" placeholder="595">
           </div>
           <div class="linhaInput">
             <p>CEP</p>
-            <input type="text" class="inputCadastroServidor inputMedia" placeholder="1414001">
+            <input id="input_cep" type="text" class="inputCadastroServidor inputMedia" placeholder="1414001">
           </div>
           <div class="linhaInput">
             <p>Bairro</p>
-            <input type="text" class="inputCadastroServidor inputMedia" placeholder="Cerqueira César">
+            <input id="input_bairro" type="text" class="inputCadastroServidor inputMedia" placeholder="Cerqueira César">
           </div>
           <div class="linhaInput">
             <p>Cidade</p>
-            <input type="text" class="inputCadastroServidor inputGrande" placeholder="São Paulo">
+            <input id="input_cidade" type="text" class="inputCadastroServidor inputGrande" placeholder="São Paulo">
           </div>
           <div class="linhaInput">
             <p class="inputPequena">UF</p>
-            <input type="text" class="inputCadastroServidor inputPequena" placeholder="SP">
+            <input id="input_uf" type="text" class="inputCadastroServidor inputPequena" placeholder="SP">
           </div>
-            <div class="botaoCadastroServidor">Cadastrar</div>
+            <div onclick="cadastrarServidor()" class="botaoCadastroServidor">Cadastrar</div>
           </div>
         </div>
 
@@ -590,28 +590,28 @@
           <div class="containerCadastroUsuario">
             <div class="linhaInputUsuario">
               <p>Nome Usuário</p>
-            <input type="text" class="inputCadastroUsuario" placeholder="Nome">
+            <input id="input_nome_usuario" type="text" class="inputCadastroUsuario" placeholder="Nome">
           </div>
             <div class="linhaInputUsuario">
               <p>E-mail</p>
-            <input type="text" class="inputCadastroUsuario" placeholder="Usuario@dominio.com">
+            <input id="input_email" type="text" class="inputCadastroUsuario" placeholder="Usuario@dominio.com">
           </div>
             <div class="linhaInputUsuario">
               <p>Cargo</p>
-              <select id="Cargos" name="tiposCargos">
+              <select id="select_cargos" name="tiposCargos">
                 <option value="NOC">Gerente NOC</option>
                 <option value="Suporte">Suporte</option>
             </select>
           </div>
             <div class="linhaInputUsuario">
               <p>Senha</p>
-            <input type="password" class="inputCadastroUsuario" >
+            <input id="input_senha" type="password" class="inputCadastroUsuario" >
           </div>
             <div class="linhaInputUsuario">
               <p>Confirmação Senha</p>
-            <input type="password" class="inputCadastroUsuario" >
+            <input id="input_confirmar_senha" type="password" class="inputCadastroUsuario" >
             </div>
-            <div class="botaoCadastroUsuario">Cadastrar</div>
+            <div onclick="cadastrarFuncionario()" class="botaoCadastroUsuario">Cadastrar</div>
           </div>
         </div>
 
@@ -648,10 +648,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
-
-
-
 
   const maquinasInertes = document.getElementById('maquinasInertes');
 
@@ -738,6 +734,9 @@ new Chart(monitoramentoDisco, {
 
 </script>
 
+<script src="assets/js/cadastroServidor.js"></script>
+<script src="assets/js/cadastroFuncionario.js"></script>
+
 <script>
   const nav = document.querySelector(".sideBar");
   const dash = document.querySelector(".containerDashboard");
@@ -754,7 +753,3 @@ new Chart(monitoramentoDisco, {
 
 
 </script>
-
-
-
-
