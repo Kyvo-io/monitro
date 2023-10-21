@@ -1,18 +1,22 @@
 
 function cadastrarServidor() {
 
-    var nomeServidor = input_nome_servidor;
-    var SistemaOperacional = select_sos.value;
+    
     var logradouro = input_logradouro.value;
     var numero = input_numero.value;
     var cep = input_cep.value;
     var bairro = input_bairro.value;
     var cidade = input_cidade.value;
     var uf = input_uf.value;
-    var fkEmpresa = sessionStorage.ID_EMPRESA;
+
+    sessionStorage.ID_ENDERECO = 1;
+
     var fkEndereco = sessionStorage.ID_ENDERECO;
+    var sistemaOperacional = select_sos.value;
+    var nomeServidor = input_nome_servidor.value;
+    var fkEmpresa = sessionStorage.ID_EMPRESA;
     
-    if (nomeServidor == "" || SistemaOperacional == "" || numero == "" || logradouro == "" || cep == "" || bairro == "" || cidade == "" || uf == "") {
+    if (nomeServidor == "" || sistemaOperacional == "" || numero == "" || logradouro == "" || cep == "" || bairro == "" || cidade == "" || uf == "") {
      
              alert ("Por favor preencha os campos em branco")
              return false;
@@ -26,17 +30,18 @@ function cadastrarServidor() {
         },
         
         body: JSON.stringify({
-            
-        nomeServidorServer: nomeServidor,
-        SistemaOperacionalServer: SistemaOperacional,
+       
         logradouroServer: logradouro,
         numeroServer: numero,
         cepServer: cep,
         bairroServer: bairro,
         cidadeServer: cidade,
         ufServer: uf,
-        idEmpresaServer: fkEmpresa,
-        idEnderecoServer: fkEndereco
+
+        idEnderecoServer: fkEndereco,
+        sistemaOperacionalServer: sistemaOperacional,
+        nomeServidorServer: nomeServidor,
+        idEmpresaServer: fkEmpresa
           
         }),
       }).then(function (resposta) {

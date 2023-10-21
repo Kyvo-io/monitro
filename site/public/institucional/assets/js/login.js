@@ -1,4 +1,3 @@
-
 function logar() {     
 
     var email = input_login_email.value;
@@ -28,6 +27,7 @@ function logar() {
                 sessionStorage.ID_USUARIO = json.idUsuario;
                 sessionStorage.ID_EMPRESA = json.fkEmpresa;
                 sessionStorage.ID_CARGO = json.fkCargo;
+                sessionStorage.ID_ENDERECO = json.fkEndereco;
     
                 setTimeout(function () {
                     window.location = "/monitro/dashboard.html";

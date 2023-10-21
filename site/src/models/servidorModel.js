@@ -1,7 +1,7 @@
 var database = require("../database/config")
 
 
-function cadastrarServidor(nomeServidor,SistemaOperacional,logradouro,cep,bairro,numero,cidade,uf,fkEmpresa,fkEndereco) {
+function cadastrarServidor(logradouro,cep,bairro,numero,cidade,uf,fkEndereco,sistemaOperacional,nomeServidor,fkEmpresa) {
 
 
 
@@ -9,13 +9,13 @@ function cadastrarServidor(nomeServidor,SistemaOperacional,logradouro,cep,bairro
     INSERT INTO endereco (logradouro, cep, bairro, numero, cidade, uf) VALUES ('${logradouro}','${cep}','${bairro}','${numero}','${cidade}','${uf}');
 `;
     database.executar(instrucao)
-    var instrucao = `
-    INSERT INTO servidor (fkEndereco,sistemaOperacional,nomeServidor,fkEmpresa) VALUES (1,'linux','mar','2');
-    `;
 
-   
+        var instrucao = `
+        INSERT INTO servidor (fkEndereco,sistemaOperacional,nomeServidor,fkEmpresa) VALUES (${fkEndereco},'${sistemaOperacional}','${nomeServidor}',${fkEmpresa});
+        `;
+        return database.executar(instrucao);    
     
-    return database.executar(instrucao);
+
 }
 
 module.exports = {
