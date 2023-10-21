@@ -9,7 +9,6 @@ function cadastrarServidor() {
     var cidade = input_cidade.value;
     var uf = input_uf.value;
 
-    sessionStorage.ID_ENDERECO = 1;
 
     var fkEndereco = sessionStorage.ID_ENDERECO;
     var sistemaOperacional = select_sos.value;
