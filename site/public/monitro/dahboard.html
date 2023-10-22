@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../monitro/assets/css/dashboardHistorico.css">
     
 </head>
-<body>
+<body  onload="listarServidores()">
 
 
   <div id="fundo_modal" class="fundo-modal">
@@ -246,8 +246,38 @@
            </div>
            <div class="secaoHistoricos" id="secaoHistoricos">
             <div class="HistoricosServidorEmpresa">
-              <div class="descricoesRegistros">
-                Últimos Registros
+              <div class="descricoesUltimosRegistros">
+                <span>Últimos Registros</span>
+                <h3>Data: 22/10/2023</h3>
+                <div class="containerUltimosRegistros">
+                <div class="ladoEsquerdoCard">
+                <div class="CpuRegistros">
+                <h3>CPU</h3>
+                <span>Processador: <p>Intel</p></span>
+                <span>Arquitetura: <p>X86</p></span>
+                <span>Porcentagem de uso: <p>50%</p></span>
+                </div>
+                <div class="RamRegistros">
+                <h3>RAM</h3>
+                <span>Total: <p>16GB</p></span>
+                <span>Utilizado: <p>8GB</p></span>
+                <span>Porcentagem de uso: <p>50%</p></span>
+              </div>
+               </div>
+               <div class="ladoDireitoCard">
+              <div class="DiscoRegistros">
+                <h3>DISCO</h3>
+                <span>Total: <p>512GB</p></span>
+                <span>Utilizado: <p>256GB</p></span>
+                <span>Porcentagem de uso: <p>50%</p></span>
+              </div>
+              <div class="RedeRegistros">
+                <h3>REDE</h3>
+                <span>Downloads: <p>25,0 KBPS</p></span>
+                <span>Uploads: <p>25,0 KBPS</p></span>
+              </div>
+            </div>
+          </div>
               </div>
               <div class="cardMetricas">
                 <h4>Parâmetros</h4>
@@ -392,7 +422,17 @@
         <div class="containerGeolocalizacao" id="geolocalizacao">
             <div class="GeolocalizacaoLeft">
                 <span>Dashboard de Geolocalização Mundial: Brasil</span>
-                <div class="mapaDinamico"></div>
+                <div class="mapaDinamico">
+                  <div id="pagina">
+                    <div id="conteudo">
+                        <div id="map"></div>
+                        <div class="lista" id="lista">
+            
+                        </div>
+                    </div>
+                </div>
+
+                </div>
                 <div class="legendaGeolocalizacao">
 
                   <div class="legendaMapas">
@@ -625,7 +665,28 @@
 <script src="assets/js/lightDark.js"></script>
 <script src="assets/js/modaisMonitro.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script async type="module" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIuuupdu3Z2jMBbGEKSAz7swDqysvp3zM&callback=initMap&v=weekly"
+ defer
+></script>
+<script src="assets/js/geolocalização.js"></script>
+
+
+
 <script>
+setInterval(async () => {
+    var posicaoAleatoria = parseInt(Math.random() *( servidores.length))
+    if(servidores[posicaoAleatoria].situacao == "ok"){
+        servidores[posicaoAleatoria].situacao = "perigo"
+    }else{
+        servidores[posicaoAleatoria].situacao = "ok"
+    }
+    listarServidores()
+    mostrarMarcadores()
+    limparMarcadores()
+}, 3000);
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const linksSidebar = document.querySelectorAll(".linksSideBar a");
@@ -736,9 +797,6 @@ new Chart(monitoramentoDisco, {
 });
 
 
-</script>
-
-<script>
   const nav = document.querySelector(".sideBar");
   const dash = document.querySelector(".containerDashboard");
   const botao = document.querySelector(".logo-botao");
@@ -751,6 +809,7 @@ new Chart(monitoramentoDisco, {
 
   botao.addEventListener("click", alternar);
   botaoNav.addEventListener("click", alternar)
+
 
 
 </script>
