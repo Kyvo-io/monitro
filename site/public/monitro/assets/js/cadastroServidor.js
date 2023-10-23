@@ -1,7 +1,6 @@
-
 function cadastrarServidor() {
 
-    
+
     var logradouro = input_logradouro.value;
     var numero = input_numero.value;
     var cep = input_cep.value;
