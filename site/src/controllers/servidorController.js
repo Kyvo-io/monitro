@@ -1,24 +1,34 @@
-var usuarioModel = require("../models/servidorModel");
+
+var servidorModel = require("../models/servidorModel");
 
 function cadastrarServidor(req, res) {
     
+ 
     var logradouro = req.body.logradouroServer;
-    var codigo = req.body.codigoServer;
+    var numero = req.body.numeroServer;
+    var cep = req.body.cepServer;
     var bairro = req.body.bairroServer;
+    var cidade = req.body.cidadeServer;
+    var uf = req.body.ufServer;
+
+    var fkEndereco = req.body.idEnderecoServer;
+    var nomeServidor = req.body.nomeServidorServer;
+    var sistemaOperacional = req.body.sistemaOperacionalServer;
     var fkEmpresa = req.body.idEmpresaServer;
     
-  
+      
       if (logradouro == undefined) {
           res.status(400).send("O logradouro está undefined!");
-      } else if (codigo == undefined) {
-        res.status(400).send("O código está undefined!");
+       } else if (numero == undefined) {
+        res.status(400).send("O número está undefined!");
+       } else if (cep == undefined) {
+        res.status(400).send("O cep está undefined!");
       } else if (bairro == undefined) {
           res.status(400).send("O bairro está undefined!")
-      } else if (fkEmpresa == undefined) {
-        res.status(400).send("Sua fkEmpresa está undefined!");
-      } else {
-       
-          usuarioModel.cadastrarServidor(logradouro, codigo,bairro,fkEmpresa)
+      } else if (uf == undefined){
+        res.status(400).send("O UF está undefined!")
+      } else{
+          servidorModel.cadastrarServidor(logradouro,cep,bairro,numero,cidade,uf,fkEndereco ,sistemaOperacional,nomeServidor,fkEmpresa)
               .then(
                   function (resultado) {
                       res.json(resultado);

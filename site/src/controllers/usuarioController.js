@@ -15,7 +15,10 @@ function logar(req, res) {
                 function (resultado) {
 
                     if (resultado.length == 1) {
+                        console.log(`\nResultados encontrados: ${resultado.length}`);
+                        console.log(`Resultados: ${JSON.stringify(resultado)}`);
                         console.log(resultado);
+                        
                         res.json(resultado[0]);
                     } else if (resultado.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
@@ -32,6 +35,7 @@ function logar(req, res) {
             );
     }
 }
+
 
 function cadastrarFuncionario(req, res) {
     

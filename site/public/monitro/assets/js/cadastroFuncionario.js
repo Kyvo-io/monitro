@@ -3,9 +3,11 @@ function cadastrarFuncionario() {
 
     var nomeUsuario = input_nome_usuario.value;
     var email = input_email.value;
-    var cargo = input_cargo.value;
+    var cargo = select_cargos.value;
     var senha = input_senha.value;
     var confirmar_senha = input_confirmar_senha.value;
+    var fkEmpresa = sessionStorage.ID_EMPRESA;
+    var fkCargo = sessionStorage.ID_CARGO;
     
     if (nomeUsuario == "" || email == "" || cargo == "" || senha == "" || confirmar_senha == "") {
      
@@ -20,8 +22,11 @@ function cadastrarFuncionario() {
         },
         body: JSON.stringify({
           nomeServer: nomeUsuario,
+          cargoServer: cargo,
           emailServer: email,
-          senhaServer: senha
+          senhaServer: senha,
+          idEmpresaServer: fkEmpresa,
+          idCargoServer: fkCargo
         }),
       }).then(function (resposta) {
         resposta.json().then(function (json) {

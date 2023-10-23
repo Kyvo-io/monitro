@@ -387,7 +387,7 @@
         <div class="linksSideBar" ><a href="#dashGeral">Dashboard Geral</a></div>
         <div class="linksSideBar" ><a href="#cadastroUsuario">Cadastrar Suporte</a></div>
         <div class="linksSideBar" ><a href="#cadastroServidor">Cadastrar Servidor</a></div>
-        <div class="linksSideBar"id="botaoSair" ><a href="#home">Sair</a></div>
+        <div class="linksSideBar"id="botaoSair"><a href="../institucional/index.html">Sair</a></div>
     </div>  
 
     <div class="containerDashboard">
@@ -396,7 +396,7 @@
           <div class="botao-fechar">
             <img src="assets/img/menu.png" alt=""/>
           </div>
-            <h2>Olá, Carlos Henrique !</h2>
+            <h2 id="msg"></h2>
         </div>
         <div class="modoLightDark">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
@@ -582,45 +582,45 @@
           <div class="containerCadastroServidor">
             <div class="linhaInput inputMedia">
             <p>Nome Servidor</p>
-            <input type="text" class="inputCadastroServidor inputMedia" placeholder="Máquina01 - SP">
+            <input id="input_nome_servidor" type="text" class="inputCadastroServidor inputMedia" placeholder="Máquina01 - SP">
           </div>
           <div class="linhaInput inputMedia selectServidor">
             <p>Sist. Operacional</p>
-              <select id="SOs" name="tiposSOS" class="selectServidor">
-                <option value="Windows Server">Amazon Linux 2023 AMI</option>
-                <option value="Windows Server">MacOs Ventura</option>
-                <option value="Windows Server">Ubuntu Server 22.04 LTS</option>
-                <option value="Windows Server">Windows Server 2022 Base</option>
-                <option value="Windows Server">Red Hot Enterprise Linux 9</option>
-                <option value="Ubuntu Server">Suse Linux 15 SP5</option>
-                <option value="Microsoft Hyper-V">Debian 12</option>
+              <select id="select_sos" name="tiposSOS" class="selectServidor">
+                <option value="amazon_linux">Amazon Linux 2023 AMI</option>
+                <option value="macOs">MacOs Ventura</option>
+                <option value="ubuntuServer">Ubuntu Server 22.04 LTS</option>
+                <option value="Windows_Server">Windows Server 2022 Base</option>
+                <option value="redHot">Red Hot Enterprise Linux 9</option>
+                <option value="suse_linux">Suse Linux 15 SP5</option>
+                <option value="debian">Debian 12</option>
             </select>
           </div>
           <div class="linhaInput">
             <p>Logradouro</p>
-            <input type="text" class="inputCadastroServidor inputGrande" placeholder="Rua Haddock lobo">
+            <input id="input_logradouro" type="text" class="inputCadastroServidor inputGrande" placeholder="Rua Haddock lobo">
           </div>
           <div class="linhaInput">
             <p id="pPequeno">N°</p>
-            <input type="text" class="inputCadastroServidor inputPequena" placeholder="595">
+            <input id="input_numero" type="text" class="inputCadastroServidor inputPequena" placeholder="595">
           </div>
           <div class="linhaInput">
             <p>CEP</p>
-            <input type="text" class="inputCadastroServidor inputMedia" placeholder="1414001">
+            <input id="input_cep" type="text" class="inputCadastroServidor inputMedia" placeholder="1414001">
           </div>
           <div class="linhaInput">
             <p>Bairro</p>
-            <input type="text" class="inputCadastroServidor inputMedia" placeholder="Cerqueira César">
+            <input id="input_bairro" type="text" class="inputCadastroServidor inputMedia" placeholder="Cerqueira César">
           </div>
           <div class="linhaInput">
             <p>Cidade</p>
-            <input type="text" class="inputCadastroServidor inputGrande" placeholder="São Paulo">
+            <input id="input_cidade" type="text" class="inputCadastroServidor inputGrande" placeholder="São Paulo">
           </div>
           <div class="linhaInput">
             <p class="inputPequena">UF</p>
-            <input type="text" class="inputCadastroServidor inputPequena" placeholder="SP">
+            <input id="input_uf" type="text" class="inputCadastroServidor inputPequena" placeholder="SP">
           </div>
-            <div class="botaoCadastroServidor">Cadastrar</div>
+            <div onclick="cadastrarServidor()" class="botaoCadastroServidor">Cadastrar</div>
           </div>
         </div>
 
@@ -630,28 +630,28 @@
           <div class="containerCadastroUsuario">
             <div class="linhaInputUsuario">
               <p>Nome Usuário</p>
-            <input type="text" class="inputCadastroUsuario" placeholder="Nome">
+            <input id="input_nome_usuario" type="text" class="inputCadastroUsuario" placeholder="Nome">
           </div>
             <div class="linhaInputUsuario">
               <p>E-mail</p>
-            <input type="text" class="inputCadastroUsuario" placeholder="Usuario@dominio.com">
+            <input id="input_email" type="text" class="inputCadastroUsuario" placeholder="Usuario@dominio.com">
           </div>
             <div class="linhaInputUsuario">
               <p>Cargo</p>
-              <select id="Cargos" name="tiposCargos">
+              <select id="select_cargos" name="tiposCargos">
                 <option value="NOC">Gerente NOC</option>
                 <option value="Suporte">Suporte</option>
             </select>
           </div>
             <div class="linhaInputUsuario">
               <p>Senha</p>
-            <input type="password" class="inputCadastroUsuario" >
+            <input id="input_senha" type="password" class="inputCadastroUsuario" >
           </div>
             <div class="linhaInputUsuario">
               <p>Confirmação Senha</p>
-            <input type="password" class="inputCadastroUsuario" >
+            <input id="input_confirmar_senha" type="password" class="inputCadastroUsuario" >
             </div>
-            <div class="botaoCadastroUsuario">Cadastrar</div>
+            <div onclick="cadastrarFuncionario()" class="botaoCadastroUsuario">Cadastrar</div>
           </div>
         </div>
 
@@ -688,6 +688,8 @@ setInterval(async () => {
 
 
 
+msg.innerHTML = `Olá, ${sessionStorage.NOME_USUARIO}`
+
 document.addEventListener("DOMContentLoaded", function () {
   const linksSidebar = document.querySelectorAll(".linksSideBar a");
 
@@ -709,10 +711,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
-
-
-
 
   const maquinasInertes = document.getElementById('maquinasInertes');
 
@@ -797,6 +795,16 @@ new Chart(monitoramentoDisco, {
 });
 
 
+<<<<<<< HEAD:site/public/monitro/dahboard.html
+=======
+</script>
+
+<script src="assets/js/cadastroServidor.js"></script>
+<script src="assets/js/cadastroFuncionario.js"></script>
+<script src="assets/js/cep.js"></script>
+
+<script>
+>>>>>>> 41eaf5953e20f3e93c4523992ecfffa095cbef01:site/public/monitro/dashboard.html
   const nav = document.querySelector(".sideBar");
   const dash = document.querySelector(".containerDashboard");
   const botao = document.querySelector(".logo-botao");
@@ -809,6 +817,7 @@ new Chart(monitoramentoDisco, {
 
   botao.addEventListener("click", alternar);
   botaoNav.addEventListener("click", alternar)
+<<<<<<< HEAD:site/public/monitro/dahboard.html
 
 
 
@@ -817,3 +826,6 @@ new Chart(monitoramentoDisco, {
 
 
 
+=======
+</script>  
+>>>>>>> 41eaf5953e20f3e93c4523992ecfffa095cbef01:site/public/monitro/dashboard.html
