@@ -20,6 +20,7 @@ function buscarEndereco(cep) {
                 document.getElementById('input_bairro').value = data.bairro;
                 document.getElementById('input_cidade').value = data.localidade;
                 document.getElementById('input_uf').value = data.uf;
+                document.getElementById('input_logradouro').value = data.logradouro;
             }
         })
         .catch(error => {
