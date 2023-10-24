@@ -68,14 +68,22 @@
     font-size: 1.5rem;
     margin-top: 20px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
 }
-
+.cardMaquina > span > svg {
+    margin-left: 2px;
+}
 .descricaoMaquina > p {
     justify-content: left;
     font-size: 1.1rem;
     margin-top: 10px;
     font-weight: bold;
 }
+.descricaoMaquina > p > svg{
+    margin-left: 20px;
+}
+
 
 p {
     display: flex;
@@ -107,10 +115,10 @@ p > svg {
     display: flex;
     flex-direction: column;
     width: 250px;
-    height: 280px;
+    height: 200px;
     background-color: var(--branco-light-mode);
     border-radius: 15px;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -120,10 +128,11 @@ p > svg {
     flex-direction: column;
     font-weight: bold;
     font-size: 1.2rem;
+    width: 60%;
 }
 
 .niveisAlerta > p {
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 /* Estilos para barras de rolagem */
@@ -132,11 +141,10 @@ p > svg {
 }
 
 *::-webkit-scrollbar {
-    width: 15px;
+    width: 10px;
 }
 
 *::-webkit-scrollbar-thumb {
     background-color: var(--azul);
     border-radius: 10px;
-    border: 3px solid var(--azul-dark-mode);
 }
