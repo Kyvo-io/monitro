@@ -32,12 +32,39 @@
     font-size: 3rem;
 }
 
-.imgUser > img {
-    width: 200px;
+.Credenciais{
+    width: 100%;
     border-radius: 50%;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+    font-family: 'poppins';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
+.Credenciais > span {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 50px;
+    color: rgba(0, 0, 0, 0.43);
+    margin-top: 15px;
+    font-size: 1.2rem;
+
+}
+.Credenciais > span > p {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-left: 5%;
+    color: var(--azul-dark-mode);
+    margin-top: 5px;
+
+
+}
+
 
 /* Estilos para os links na barra lateral */
 .linksSideBar {
