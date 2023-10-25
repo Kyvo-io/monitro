@@ -104,6 +104,9 @@ let mensagem = {
             background-color: transparent;
             border: 2px solid black;
             border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .espacoSenha{
@@ -112,6 +115,9 @@ let mensagem = {
             background-color: transparent;
             border: 2px solid black;
             border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         #azul{
             color: #28C8EF;
