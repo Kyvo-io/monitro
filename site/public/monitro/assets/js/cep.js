@@ -1,4 +1,3 @@
-
 document.getElementById('input_cep').addEventListener('input', function() {
     const cep = document.getElementById('input_cep').value;
 
@@ -27,3 +26,4 @@ function buscarEndereco(cep) {
             console.error('Ocorreu um erro:', error);
         });
 }
+

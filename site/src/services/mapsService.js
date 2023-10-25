@@ -19,15 +19,18 @@ async function buscarCoordenadasPeloEndereco(rua) {
       var coordenadas = {
         latitude:  latitude,
         longitude: longitude
+
       }
+      console.log(coordenadas)
       return coordenadas;
 }
+
 
 async function buscarEnderecoPelasCoordenadas() {
     const args = {
         params:{
             key: chave,
-            latlng: [-23.5780421,-46.3908196197085]
+            latlng: [latitude,longitude]
         }
     }
     var geolocalizacao = await cliente.reverseGeocode(args);   

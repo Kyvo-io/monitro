@@ -33,7 +33,7 @@ async function iniciarServidor() {
     app.use(cors());
    
 
-   
+   mapsService.buscarCoordenadasPeloEndereco("Avenida Imirim")
     app.use("/", indexRouter);
     app.use("/empresas", empresaRouter);
     app.use("/usuarios", usuarioRouter);
