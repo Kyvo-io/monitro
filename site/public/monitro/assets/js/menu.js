@@ -15,6 +15,9 @@ const nav = document.querySelector(".sideBar");
   empresa.innerHTML = ` ${sessionStorage.NOME_EMPRESA}`
   cargo.innerHTML = ` ${sessionStorage.NOME_CARGO}`
 
+  document.getElementById("botaoSair").addEventListener("click", function() {
+    window.location.href = "../institucional/index.html";})
+
 document.addEventListener("DOMContentLoaded", function () {
   const linksSidebar = document.querySelectorAll(".linksSideBar a");
 
@@ -36,3 +39,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
