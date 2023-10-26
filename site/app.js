@@ -33,11 +33,10 @@ async function iniciarServidor() {
     app.use(cors());
    
 
-   mapsService.buscarCoordenadasPeloEndereco("Avenida Imirim")
     app.use("/", indexRouter);
     app.use("/empresas", empresaRouter);
     app.use("/usuarios", usuarioRouter);
-    app.use("/servidores", servidorRouter);
+    app.use("/servidor", servidorRouter);
   
     app.listen(PORTA, function () {
         console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

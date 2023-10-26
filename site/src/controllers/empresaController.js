@@ -5,8 +5,6 @@ function logar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
-    
-
     if (email == undefined) {
         res.status(400).send("O seu email está indefinido!");
     } else if (senha == undefined) {

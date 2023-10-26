@@ -7,4 +7,12 @@ router.post("/cadastrarServidor", function(req,res){
     servidorController.cadastrarServidor(req,res)
 })
 
+router.get(`/servidores/:fkEmpresa`, function(req,res){
+    servidorController.buscarServidoresEmpresa(req,res)
+})
+// ROTA DE GET
+// /servidores/:fkEmpresa
+// 
+
+
 module.exports = router;

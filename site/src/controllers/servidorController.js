@@ -46,7 +46,13 @@ function cadastrarServidor(req, res) {
       }
 }
 
-
+function buscarServidoresEmpresa(req, res) {
+    var fkEmpresa = req.params.fkEmpresa
+    servidorModel.buscarServidoresEmpresa(fkEmpresa).then(function(resposta){
+        res.json(resposta);
+    })
+}
     module.exports = {
+        buscarServidoresEmpresa,
         cadastrarServidor
     }

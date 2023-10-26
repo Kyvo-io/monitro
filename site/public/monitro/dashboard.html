@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | monitro</title>
-    <link rel="icon" type="image" href="assets/img/logoCubo.png"/>
+    <script async defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <link rel="icon" type="image" href="assets/img/logoCubo.png"/>
     <link rel="stylesheet" href="../monitro/assets/css/globalMonitro.css">
     <link rel="stylesheet" href="../monitro/assets/css/lightDarkDashboard.css">
     <link rel="stylesheet" href="../monitro/assets/css/navbarDashboard.css">
@@ -16,9 +17,12 @@
     <link rel="stylesheet" href="../monitro/assets/css/cadastroUsuario.css">
     <link rel="stylesheet" href="../monitro/assets/css/dashboardInformacoes.css">
     <link rel="stylesheet" href="../monitro/assets/css/dashboardHistorico.css">
+    <link rel="stylesheet" href="../monitro/assets/css/mapa.css">
+    <script src="../monitro/assets/js/geolocalização.js"></script>
     
+<script await defer src="assets/js/buscarServidores.js"></script>
 </head>
-<body  onload="listarServidores()">
+<body onload="buscarServidoresEmpresa()">
 
 
   <div id="fundo_modal" class="fundo-modal">
@@ -420,8 +424,8 @@
         <div class="logo-botao"><img src="assets/img/fechar-nav.svg" alt=""></div>
       </div>
         <div class="Credenciais">
-          <span>Empresa <p>FAPESP</p></span>
-          <span>Cargo <p>Gerente NOC</p></span>
+          <span>Empresa <p id="empresa"></p></span>
+          <span>Cargo <p id="cargo"></p></span>
         </div>
         <div class="linksSideBar" ><a href="#geolocalizacao">Geolocalização</a></div>
         <div class="linksSideBar" ><a href="#dashGeral">Dashboard Geral</a></div>
@@ -460,12 +464,13 @@
     </div>
 
         <div class="containerGeolocalizacao" id="geolocalizacao">
+          
             <div class="GeolocalizacaoLeft">
                 <span>Dashboard de Geolocalização Mundial: Brasil</span>
                 <div class="mapaDinamico">
                   <div id="pagina">
                     <div id="conteudo">
-                        <div id="map"></div>
+                      <div id="map"></div>
                         <div class="lista" id="lista">
             
                         </div>
@@ -627,14 +632,6 @@
             </select>
           </div>
           <div class="linhaInput">
-            <p>Logradouro</p>
-            <input id="input_logradouro" type="text" class="inputCadastroServidor inputGrande" placeholder="Rua Haddock lobo">
-          </div>
-          <div class="linhaInput">
-            <p id="pPequeno">N°</p>
-            <input id="input_numero" type="text" class="inputCadastroServidor inputPequena" placeholder="595">
-          </div>
-          <div class="linhaInput">
             <p>CEP</p>
             <input id="input_cep" type="text" class="inputCadastroServidor inputMedia" placeholder="1414001">
           </div>
@@ -642,6 +639,15 @@
             <p>Bairro</p>
             <input id="input_bairro" type="text" class="inputCadastroServidor inputMedia" placeholder="Cerqueira César">
           </div>
+          <div class="linhaInput">
+            <p>Logradouro</p>
+            <input id="input_logradouro" type="text" class="inputCadastroServidor inputGrande" placeholder="Rua Haddock lobo">
+          </div>
+          <div class="linhaInput">
+            <p id="pPequeno">N°</p>
+            <input id="input_numero" type="text" class="inputCadastroServidor inputPequena" placeholder="595">
+          </div>
+          
           <div class="linhaInput">
             <p>Cidade</p>
             <input id="input_cidade" type="text" class="inputCadastroServidor inputGrande" placeholder="São Paulo">
@@ -659,7 +665,7 @@
           <span>Cadastrar Usuário</span>
           <div class="containerCadastroUsuario">
             <div class="linhaInputUsuario">
-              <p>Nome Usuário</p>
+              <p>Nome Usuário</p> 
             <input id="input_nome_usuario" type="text" class="inputCadastroUsuario" placeholder="Nome">
           </div>
             <div class="linhaInputUsuario">
@@ -683,168 +689,29 @@
             </div>
             <div onclick="cadastrarFuncionario()" class="botaoCadastroUsuario">Cadastrar</div>
           </div>
-        </div>
-
-
-        
-       
+        </div>   
 </div>
 </body>
 </html>
 
-<script src="assets/js/lightDark.js"></script>
-<script src="assets/js/modaisMonitro.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script async type="module" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIuuupdu3Z2jMBbGEKSAz7swDqysvp3zM&callback=initMap&v=weekly"
- defer
+
+<script async type="module" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIuuupdu3Z2jMBbGEKSAz7swDqysvp3zM&callback=initMap"
+defer
 ></script>
-<script src="assets/js/geolocalização.js"></script>
 
-
-
-<script>
-setInterval(async () => {
-    var posicaoAleatoria = parseInt(Math.random() *( servidores.length))
-    if(servidores[posicaoAleatoria].situacao == "ok"){
-        servidores[posicaoAleatoria].situacao = "perigo"
-    }else{
-        servidores[posicaoAleatoria].situacao = "ok"
-    }
-    listarServidores()
-    mostrarMarcadores()
-    limparMarcadores()
-}, 3000);
-
-
-
-
-msg.innerHTML = `Olá, ${sessionStorage.NOME_USUARIO}`
-
-document.addEventListener("DOMContentLoaded", function () {
-  const linksSidebar = document.querySelectorAll(".linksSideBar a");
-
-  linksSidebar.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      const targetId = link.getAttribute("href").substring(1);
-
-      const sections = document.querySelectorAll(".containerGeolocalizacao, .dashboardGeral, .cadastroUsuario, .cadastroServidor");
-      sections.forEach((section) => {
-        section.style.display = "none";
-      });
-
-      const targetSection = document.getElementById(targetId);
-      if (targetSection) {
-        targetSection.style.display = "flex";
-      }
-    });
-  });
-});
-
-  const maquinasInertes = document.getElementById('maquinasInertes');
-
-  new Chart(maquinasInertes, {
-    type: 'pie',
-    data: {
-      labels: ['Red', 'Blue'],
-      datasets: [{
-        label: "none",
-        data: [12, 19],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      
-    }
-  });
-
- 
-
-const monitoramentoCPU = document.getElementById('monitoramentoCPU');
-
-new Chart(monitoramentoCPU, {
-  type: 'line',
-  data: {
-    labels: ['Red', 'Blue'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
-
-const monitoramentoRAM = document.getElementById('monitoramentoRAM');
-
-  new Chart(monitoramentoRAM, {
-    type: 'line',
-    data: {
-      labels: ['Red', 'Blue'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-  const monitoramentoDisco = document.getElementById('monitoramentoDisco');
-
-new Chart(monitoramentoDisco, {
-  type: 'line',
-  data: {
-    labels: ['Red', 'Blue'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
-</script>
-
+<script async defer src="assets/js/geolocalização.js"></script>
 <script src="assets/js/cadastroServidor.js"></script>
 <script src="assets/js/cadastroFuncionario.js"></script>
-<script src="assets/js/cep.js"></script>
-
-
+<script src="assets/js/lightDark.js"></script>
+<script src="assets/js/modaisMonitro.js"></script>
+<script src="assets/js/menu.js"></script>
+<script src="assets/js/chartCpu.js"></script>
+<script src="assets/js/chartDisco.js"></script>
+<script src="assets/js/chartInertes.js"></script>
+<script src="assets/js/chartRam.js"></script>
+<script src="assets/js/chartRedes.js"></script>
 <script>
-
-
-
-  const nav = document.querySelector(".sideBar");
-  const dash = document.querySelector(".containerDashboard");
-  const botao = document.querySelector(".logo-botao");
-  const botaoNav = document.querySelector(".botao-fechar");
+  mostrarMarcadores()
   
-  function alternar() {
-    nav.classList.toggle("barra-lateral");
-    dash.classList.toggle("dash-corresponde");
-  }
-
-  botao.addEventListener("click", alternar);
-  botaoNav.addEventListener("click", alternar)
 
 </script>
