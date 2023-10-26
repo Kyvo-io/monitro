@@ -69,9 +69,13 @@ function cadastrar() {
 
     if (nomeResponsavel == "" || nomeEmpresa == "" || email == "" || cnpj == "") {
      
-             alert ("Por favor preencha os campos em branco")
-             return false;
-    }
+    alert ("Por favor preencha os campos em branco")
+    return false;
+    }  else if (email.indexOf('@') == -1) {
+        alert('Falta @ no Email')
+    } else if (email.indexOf('.') == -1) {
+        alert('falta . no email')
+    } else {
 
     
 
@@ -112,4 +116,6 @@ function cadastrar() {
     });
 
     return false;
+}
+
 }

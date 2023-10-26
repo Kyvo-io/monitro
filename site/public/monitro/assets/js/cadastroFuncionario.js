@@ -7,13 +7,19 @@ function cadastrarFuncionario() {
     var senha = input_senha.value;
     var confirmar_senha = input_confirmar_senha.value;
     var fkEmpresa = sessionStorage.ID_EMPRESA;
-    var fkCargo = sessionStorage.ID_CARGO;
+    var fkCargo = select_cargos.value;
     
     if (nomeUsuario == "" || email == "" || cargo == "" || senha == "" || confirmar_senha == "") {
      
              alert ("Por favor preencha os campos em branco")
              return false;
-    }
+    } else if (senha != confirmar_senha) {
+      alert ('A senha e confirmação de senha tem que ser iguais')
+    } else if (email.indexOf('@') == -1 ) {
+      alert('Falta @ no email')
+    } else if (email.indexOf('.') == -1) {
+      alert ('Falta . no email')
+    } else {
     
       fetch("/usuarios/cadastrarFuncionario", {
         method: "POST",
@@ -42,3 +48,4 @@ function cadastrarFuncionario() {
     
     return false;
     }
+  }

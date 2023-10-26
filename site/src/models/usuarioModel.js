@@ -3,9 +3,10 @@ var database = require("../database/config")
 
 function logar(email, senha) {
     
-    var instrucao = `
-        SELECT * FROM usuario WHERE email = '${email}' AND senha = '${senha}';
-    `;
+    var instrucao = `SELECT empresa.nomeEmpresa, cargo.nomeCargo, usuario.* FROM usuario
+	JOIN cargo ON idCargo = fkCargo
+	JOIN empresa ON idEmpresa = fkEmpresa WHERE email = '${email}' AND senha = '${senha}'; ` 
+    
     return database.executar(instrucao);
 }
 
