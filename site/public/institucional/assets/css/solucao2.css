@@ -83,10 +83,12 @@
     z-index: 1;
     width: 280px;
     height: 280px;
-    background-color: black;
+    background-image: url(../img/geo.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 15px;
     margin-left: 720px;
-    margin-bottom: 280px;
+    margin-bottom: 210px;
 }
 .imgDashboard {
     position: absolute;
@@ -97,6 +99,9 @@
     border-radius: 15px;
     margin-left: 300px;
     margin-top: 150px;
+    background-image: url(../img/cpu.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
 
 
 }
