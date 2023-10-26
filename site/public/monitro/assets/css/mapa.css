@@ -3,11 +3,22 @@
     height: 450px !important
 }; 
 
+
+.marcador{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    width: 135px;
+    height: 30px;
+    background-color: white !important;
+}
 .status{
     width: 10px;
     height: 10px;
     border-radius: 100px;
-    align-self: flex-end;
+   
 }
 .ok{
     background-color: #00a435;
@@ -21,10 +32,4 @@
     font-family: 'Baloo 2';
     display: flex;
     flex-direction: column;
-}
-
-.marcador{
- 
-    width: 10px;
-    height: 10px;
 }

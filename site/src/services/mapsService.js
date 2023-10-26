@@ -54,8 +54,6 @@ async function buscarEnderecoPelasCoordenadas() {
         }
         return endereco;
 }
-
-
 module.exports={
     buscarCoordenadasPeloEndereco,
     buscarEnderecoPelasCoordenadas

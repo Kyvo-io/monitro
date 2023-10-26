@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | monitro</title>
     <script async defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <link rel="stylesheet" href="../monitro/assets/css/mapa.css">
     <link rel="icon" type="image" href="assets/img/logoCubo.png"/>
     <link rel="stylesheet" href="../monitro/assets/css/globalMonitro.css">
     <link rel="stylesheet" href="../monitro/assets/css/lightDarkDashboard.css">
@@ -17,12 +17,12 @@
     <link rel="stylesheet" href="../monitro/assets/css/cadastroUsuario.css">
     <link rel="stylesheet" href="../monitro/assets/css/dashboardInformacoes.css">
     <link rel="stylesheet" href="../monitro/assets/css/dashboardHistorico.css">
-    <link rel="stylesheet" href="../monitro/assets/css/mapa.css">
+   
     <script src="../monitro/assets/js/geolocalização.js"></script>
     
-<script await defer src="assets/js/buscarServidores.js"></script>
+<script src="assets/js/buscarServidores.js"></script>
 </head>
-<body onload="buscarServidoresEmpresa()">
+<body>
 
 
   <div id="fundo_modal" class="fundo-modal">
@@ -710,10 +710,21 @@ defer
 <script src="assets/js/chartInertes.js"></script>
 <script src="assets/js/chartRam.js"></script>
 <script src="assets/js/chartRedes.js"></script>
-<script>
-  mostrarMarcadores()
-  
 
+
+<script type="application/javascript">
+  function getIP(json) {
+   alert("My public IP address is: ", json.ip);
+  }
+  
 </script>
 
+<script>
+  async function obterIpDaMaquina() {
+    var busca = await fetch("https://api.ipify.org?format=json");
+    var json = await busca.json()
+    
+    console.log(json) 
+  }
+</script>
 
