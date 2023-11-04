@@ -25,11 +25,12 @@
 
 .mapaDinamico {
     width: 430px;
-    height: 430px;
+    height: 450px;
     border-radius: 15px;
     background-color: var(--branco-light-mode);
     margin-top: 30px;
 }
+
 
 .legendaGeolocalizacao {
     display: flex;
@@ -50,22 +51,25 @@
 
 .GeolocalizacaoRight > span {
     font-size: 1.3rem;
-    margin-top: 30px;
+    margin-top: 10px;
     font-weight: bold;
+    width: 75%;
+    display: flex;
+    justify-content: right;
 }
 
-.mapaQuantidades {
+.graficoAlertas {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 430px;
-    height: 230px;
+    width: 90%;
+    height: 40%;
     border-radius: 15px;
     background-color: var(--branco-light-mode);
     margin-top: 30px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    margin-top: 10px;
 }
+
 
 .legendaEstadosMonitorados {
     display: flex;

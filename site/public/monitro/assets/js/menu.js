@@ -19,7 +19,7 @@ const nav = document.querySelector(".sideBar");
     window.location.href = "../institucional/index.html";})
 
 document.addEventListener("DOMContentLoaded", function () {
-  const linksSidebar = document.querySelectorAll(".linksSideBar a");
+  const linksSidebar = document.querySelectorAll("a");
 
   linksSidebar.forEach((link) => {
     link.addEventListener("click", (e) => {

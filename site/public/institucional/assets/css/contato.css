@@ -128,7 +128,7 @@
     width: 450px;
     outline: none;
     color: var(--azul-dark-mode);
-    border-color: white;
+    border-color: var(--azul-dark-mode);
 }
 .inputContato:hover{
     cursor: text;

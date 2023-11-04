@@ -65,25 +65,54 @@
 }
 
 .cardMaquina > span {
-    font-size: 1.5rem;
-    margin-top: 20px;
-    font-weight: bold;
     display: flex;
+    width: 95%;
+    font-size: 1.3rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    justify-content: space-around;
     align-items: center;
 }
 .cardMaquina > span > svg {
-    margin-left: 2px;
-}
-.descricaoMaquina > p {
-    justify-content: left;
-    font-size: 1.1rem;
-    margin-top: 10px;
-    font-weight: bold;
-}
-.descricaoMaquina > p > svg{
-    margin-left: 20px;
+    height: 30px;
+    color: var(--azul-dark-mode);
 }
 
+.descricaoMaquina {
+    width: 100%;
+
+}
+.descricaoMaquina > span {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    margin-left: 5%;
+    font-weight: bold;
+}
+.descricaoMaquina > span > p {
+    color: var(--azul-dark-mode);
+}   
+
+.descricaoMaquina > span > h4{
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: left;
+    
+}
+.descricaoMaquina > span > h4 > svg{
+    margin-left: 20px;
+    margin-right: 10px;
+    height: 25px;
+}
+
+.descricaoMaquina > span > p > svg{
+    height: 25px;
+}
 
 p {
     display: flex;
@@ -115,7 +144,7 @@ p > svg {
     display: flex;
     flex-direction: column;
     width: 250px;
-    height: 200px;
+    height: 380px;
     background-color: var(--branco-light-mode);
     border-radius: 15px;
     justify-content: space-between;
@@ -128,13 +157,19 @@ p > svg {
     flex-direction: column;
     font-weight: bold;
     font-size: 1.2rem;
-    width: 60%;
+    width: 90%;
 }
 
 .niveisAlerta > p {
     margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
 }
 
+.niveisAlerta > p > svg {
+    height: 25px;
+}
 /* Estilos para barras de rolagem */
 * {
     scrollbar-width: auto;
@@ -148,3 +183,7 @@ p > svg {
     background-color: var(--azul);
     border-radius: 10px;
 }
+p:hover .svg1 {
+    color: var(--azul);
+}
+

@@ -1,6 +1,7 @@
 const secaoGraficos = document.getElementById("secaoGraficos");
 const secaoInformacoes = document.getElementById("secaoInformacoes");
 const secaoHistoricos = document.getElementById("secaoHistoricos");
+const secaoMapa = document.getElementById("secaoMapa");
 const botao1 = document.getElementById("botao1");
 const botao2 = document.getElementById("botao2");
 const botao3 = document.getElementById("botao3");
@@ -16,6 +17,11 @@ function trocarExibicaoFundo() {
 function trocarExibicaoModalEspecifica() {
     trocarExibicaoFundo()
     modalDash.classList.toggle("exibir")
+}
+function trocarExibicaoParaMapa() {
+    trocarExibicaoFundo()
+    secaoMapa.classList.toggle("exibir")
+
 }
 
 botao1.addEventListener("change", function() {
@@ -45,7 +51,7 @@ botao3.addEventListener("change", function() {
 
 document.querySelector('.containerDashboard').classList.add('transitioning');
 document.querySelector('.containerDashboard').addEventListener('transitionend', function() {
-    document.querySelector('.containerDashboard').classList.remove('transitioning');
+document.querySelector('.containerDashboard').classList.remove('transitioning');
 });
 
 

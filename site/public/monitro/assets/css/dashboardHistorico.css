@@ -3,7 +3,7 @@
 @import url(globalMonitro.css);
 
 .modalDashHistoricos {
-  display: flex;
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -173,7 +173,7 @@
   background-color: var(--azul);
   margin-top: 30px;
   cursor: pointer;
-  margin-top: 100px;
+  margin-top: 30px;
 }
 .parametro {
   width: 90%;

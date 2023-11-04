@@ -1,7 +1,8 @@
-const maquinasInertes = document.getElementById('maquinasInertes');
+    
+const AlertasEstado = document.getElementById('AlertasEstado');
 
-new Chart(maquinasInertes, {
-  type: 'pie',
+new Chart(AlertasEstado, {
+  type: 'line',
   data: {
     labels: ['Ativos', 'Inertes'],
     datasets: [{

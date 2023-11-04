@@ -3,7 +3,7 @@
 @import url(globalMonitro.css);
 
 .modalDashEspecifica {
-  display: flex;
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -16,7 +16,7 @@
 .ModalEspecifica {
   position: absolute;
   border-radius: 15px;
-  width: 90%;
+  width: 95%;
   height: 90%;
   top: 50%;
   left: 50%;
@@ -31,10 +31,11 @@
   width: 100%;
   flex-direction: row;
   justify-content: space-around;
+  
 }
 
 .tituloModal {
-  width: 100%;
+  width: 90%;
   display: flex;
 }
 
@@ -68,6 +69,8 @@
   height: 79vh;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  overflow-y: scroll;
 }
 .containerExibicao {
   display: flex;
@@ -92,12 +95,12 @@
 .descricaoEredes {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 99%;
+  justify-content: space-evenly;
+  width: 100%;
 }
 .cardDescricao {
   height: 15vh;
-  width: 30%;
+  width: 28%;
   background-color: #4f5f733a;
   border-radius: 15px;
   margin-top: 10px;
@@ -105,7 +108,7 @@
 }
 .cardRedes {
   height: 15vh;
-  width: 30%;
+  width: 28%;
   background-color: #4f5f733a;
   border-radius: 15px;
   margin-top: 10px;
@@ -113,7 +116,7 @@
 }
 .cardLegendas {
   height: 15vh;
-  width: 38%;
+  width: 35%;
   background-color: #4f5f733a;
   border-radius: 15px;
   margin-top: 10px;
@@ -174,10 +177,9 @@
   flex-direction: column;
   background-color: #4f5f733a;
   width: 450px;
-  height: 400px;
+  height: 800px;
   border-radius: 15px;
   align-items: center;
-  justify-content: center;
 }
 
 .graficos {
@@ -233,9 +235,23 @@
   justify-content: center;
 }
 
+.graficoChartjs {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
-
-
+.linhaHorizontalCardGrafico {
+  width: 90%;
+  height: 5px;
+  border-radius: 15px;
+  background-color: var(--azul-dark-mode);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 
 
