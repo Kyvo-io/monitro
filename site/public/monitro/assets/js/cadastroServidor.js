@@ -57,8 +57,6 @@ function cadastrarServidor() {
     
     return false;
     }
-    
-
       
 function buscarEndereco(cep) {
   const url = `https://viacep.com.br/ws/${cep}/json`;

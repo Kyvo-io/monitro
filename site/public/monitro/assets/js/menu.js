@@ -16,7 +16,9 @@ const nav = document.querySelector(".sideBar");
   cargo.innerHTML = ` ${sessionStorage.NOME_CARGO}`
 
   document.getElementById("botaoSair").addEventListener("click", function() {
-    window.location.href = "../institucional/index.html";})
+    window.location.href = "../institucional/index.html";
+    limparSessao();
+  })
 
 document.addEventListener("DOMContentLoaded", function () {
   const linksSidebar = document.querySelectorAll("a");
@@ -39,4 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+function limparSessao() {
+  sessionStorage.clear();
+}
+
 

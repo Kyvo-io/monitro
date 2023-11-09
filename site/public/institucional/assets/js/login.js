@@ -27,7 +27,6 @@ function logar() {
                 sessionStorage.ID_USUARIO = json.idUsuario;
                 sessionStorage.ID_EMPRESA = json.fkEmpresa;
                 sessionStorage.ID_CARGO = json.fkCargo;
-                sessionStorage.ID_ENDERECO = json.fkEndereco;
                 sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
                 sessionStorage.NOME_CARGO = json.nomeCargo;
     
