@@ -51,8 +51,12 @@ function buscarServidoresEmpresa(req, res) {
     servidorModel.buscarServidoresEmpresa(fkEmpresa).then(function(resposta){
         res.json(resposta);
     })
+
 }
+
+
+
     module.exports = {
         buscarServidoresEmpresa,
-        cadastrarServidor
+        cadastrarServidor,
     }

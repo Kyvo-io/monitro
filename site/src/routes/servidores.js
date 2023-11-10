@@ -10,6 +10,8 @@ router.post("/cadastrarServidor", function(req,res){
 router.get(`/servidores/:fkEmpresa`, function(req,res){
     servidorController.buscarServidoresEmpresa(req,res)
 })
+
+
 // ROTA DE GET
 // /servidores/:fkEmpresa
 // 

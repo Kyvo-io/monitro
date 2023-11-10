@@ -18,6 +18,8 @@ function listarServidores(fkEmpresa) {
 
 }
 
+
+
 async function cadastrarServidor(logradouro,cep,bairro,numero,cidade,uf,fkEndereco ,sistemaOperacional,nomeServidor,fkEmpresa) {
 
   var idEndereco = await endereco.cadastrarEndereco(logradouro, cep, bairro, numero, cidade, uf)  
@@ -41,5 +43,6 @@ async function cadastrarServidor(logradouro,cep,bairro,numero,cidade,uf,fkEndere
 module.exports = {
   buscarServidoresEmpresa,
   listarServidores,
-  cadastrarServidor
+  cadastrarServidor,
+  
 };
