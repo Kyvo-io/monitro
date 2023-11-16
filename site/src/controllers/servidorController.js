@@ -55,8 +55,17 @@ function buscarServidoresEmpresa(req, res) {
 }
 
 
+function listarServidoresEmpresa(req, res) {
+    servidorModel.listarServidoresEmpresa().then(function(resposta){
+        res.json(resposta);
+
+        console.log("oi")
+    })
+
+}
 
     module.exports = {
         buscarServidoresEmpresa,
         cadastrarServidor,
+        listarServidoresEmpresa
     }
