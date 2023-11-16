@@ -21,6 +21,15 @@ function listarServidoresEmpresa() {
 
 }
 
+function name(params) {
+ var instrucao =  `SELECT nomeTipo FROM componente
+  JOIN tipoComponente ON fkTipoComponente = idTipoComponente
+  WHERE fkServidor = idServidor ;`
+  return database.executar(instrucao);
+
+}
+
+
 async function cadastrarServidor(logradouro,cep,bairro,numero,cidade,uf,sistemaOperacional,nomeServidor,fkEmpresa) {
 
   var idEndereco = await endereco.cadastrarEndereco(logradouro, cep, bairro, numero, cidade, uf)  

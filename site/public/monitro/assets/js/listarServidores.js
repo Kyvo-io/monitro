@@ -30,6 +30,7 @@ fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="
 </svg>`]
 
 async function listarServidoresEmpresa() {
+  
     try {
         var buscar = await fetch(`/servidor/servidores`);
         if (!buscar.ok) {
@@ -39,13 +40,14 @@ async function listarServidoresEmpresa() {
         var json = await buscar.json();
         listaServidores = json;
 
+        console.log(listaServidores)
+
+        // console.log(sessionStorage = ID_SERVIDOR)
+
         for (var i = 0; i < listaServidores.length; i++) {
             var servidor = listaServidores[i];
             var iconeTipoServ = '';
             var iconeTipoAlert = '';
-            nomeMaquina.innerHTML = ``;
-            idMaquina.innerHTML = ``;
-
             
             if (servidor.tipoServidor == 'Cloud AWS') {
              iconeTipoServ = listaTipoServidor[0]  
