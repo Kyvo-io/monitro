@@ -10,7 +10,7 @@ function cadastrarServidor() {
 
 
     var fkEndereco = sessionStorage.ID_ENDERECO;
-    var sistemaOperacional = select_sos.value;
+    var sistemaOperacional = select_tipos.value;
     var nomeServidor = input_nome_servidor.value;
     var fkEmpresa = sessionStorage.ID_EMPRESA;
     
