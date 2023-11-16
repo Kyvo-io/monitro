@@ -12,8 +12,8 @@ function cadastrarServidor(req, res) {
     var uf = req.body.ufServer;
 
     var fkEndereco = req.body.idEnderecoServer;
-    var nomeServidor = req.body.nomeServidorServer;
     var sistemaOperacional = req.body.sistemaOperacionalServer;
+    var nomeServidor = req.body.nomeServidorServer;
     var fkEmpresa = req.body.idEmpresaServer;
     
       
