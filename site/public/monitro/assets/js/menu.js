@@ -21,7 +21,7 @@ const nav = document.querySelector(".sideBar");
   })
 
 document.addEventListener("DOMContentLoaded", function () {
-  const linksSidebar = document.querySelectorAll("a");
+  const linksSidebar = document.querySelectorAll(".linksSideBar");
 
   linksSidebar.forEach((link) => {
     link.addEventListener("click", (e) => {

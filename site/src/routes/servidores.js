@@ -12,6 +12,15 @@ router.get(`/servidores/:fkEmpresa`, function(req,res){
 })
 
 
+router.get(`/servidores/:fkEmpresa/all`, function(req,res){
+    servidorController.buscarServidoresEmpresa(req,res)
+})
+
+router.post(`/edit/`, function(req,res){
+    servidorController.editarServidor(req,res)
+})
+
+
 // ROTA DE GET
 // /servidores/:fkEmpresa
 // 

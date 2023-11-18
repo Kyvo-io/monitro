@@ -98,6 +98,36 @@
     color: var(--azul-dark-mode);
 }
 
+
+.linksSideBarCrud {
+    display: flex;
+    width: 250px;
+    height: 50px;
+    border-radius: 15px;
+    margin-top: 20px;
+    background-color: var(--azul-dark-mode);
+    color: var(--branco-light-mode);
+    align-items: center;
+    justify-content: center;
+    font-family: "poppins";
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Adicionando transição para suavizar a mudança de cor */
+}
+
+
+
+.linksSideBarCrud:hover {
+    background-color: var(--branco-light-mode);
+    color: var(--azul-dark-mode);  /* Mudando a cor do texto para escuro no hover */
+}
+.linksSideBarCrud:hover > a {
+    color: var(--azul-dark-mode);  /* Mudando a cor do texto para escuro no hover */
+}
+.linksSideBarCrud::selection {
+    color: var(--azul-dark-mode);
+}
+
 .containerDashboard {
     width: 100%;
     display: flex;

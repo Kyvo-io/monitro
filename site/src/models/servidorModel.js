@@ -2,6 +2,29 @@ var database = require("../database/config");
 var endereco = require('./enderecoModel')
 
 
+function buscarTodosServidores(fkEmpresa) {
+  
+  var instrucao = `
+    SELECT  servidor.*,
+    logradouro,
+    cep,
+    bairro,
+    latitude,
+    numero,
+    cidade,
+    uf,
+    longitude
+    FROM endereco
+    JOIN servidor ON idEndereco = fkEndereco
+    WHERE fkEmpresa = ${fkEmpresa}
+    GROUP by idServidor, fkEndereco, sistemaOperacional,
+    nomeServidor, tempoAtividade, tipoServidor, fkEmpresa, logradouro, cep,
+    bairro, latitude, numero, cidade, uf, longitude
+    
+    `;
+    return database.executar(instrucao);
+}
+
 function buscarServidoresEmpresa(fkEmpresa) {
   
   var instrucao = `
@@ -53,9 +76,32 @@ async function cadastrarServidor(logradouro,cep,bairro,numero,cidade,uf,fkEndere
   }
 }
 
+async function editarServidor(
+        idServidor, 
+        nome,
+        tipoServidor, 
+        cep, 
+        logradouro, numero, 
+        bairro, cidade, uf
+) {
+  
+
+  var idEndereco = await endereco.cadastrarEndereco(logradouro, cep, bairro, numero, cidade, uf)  
+
+  var update = `
+    UPDATE servidor 
+    SET nomeServidor = '${nome}', tipoServidor = '${tipoServidor}', fkEndereco = ${idEndereco}
+    WHERE idServidor = ${idServidor};
+  `
+
+  return database.executar(update)
+
+}
+
 module.exports = {
   buscarServidoresEmpresa,
   listarServidores,
   cadastrarServidor,
-  
+  buscarTodosServidores,
+  editarServidor
 };

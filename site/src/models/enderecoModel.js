@@ -1,15 +1,22 @@
 var database = require("../database/config");
 var maps = require('../services/mapsService')
+
+
 async function cadastrarEndereco(logradouro, cep, bairro, numero, cidade, uf) {
   try {
     // Verifica se o endereço já existe
     var selectEnderecoQuery = `
       SELECT idEndereco FROM endereco
-      WHERE logradouro = '${logradouro}' AND cep = '${cep}' AND bairro = '${bairro}' AND numero = '${numero}' AND cidade = '${cidade}' AND uf = '${uf}';
+      WHERE logradouro = '${logradouro}' AND 
+      cep = '${cep}' AND bairro = '${bairro}' 
+      AND numero = ${numero} AND cidade = '${cidade}' 
+      AND uf = '${uf};';
     `;
 
-    const enderecoResult = await database.executar(selectEnderecoQuery);
-
+   
+    
+    var enderecoResult = await database.executar(selectEnderecoQuery);
+    console.log(enderecoResult)
     if (enderecoResult.length > 0) {
       // Se endereço já existe, reutiliza o idEndereco
        fkEndereco = enderecoResult[0].idEndereco;
@@ -24,8 +31,10 @@ async function cadastrarEndereco(logradouro, cep, bairro, numero, cidade, uf) {
       `;
 
       const enderecoInsertResult = await database.executar(insertEnderecoQuery);
-      fkEndereco =  enderecoInsertResult.insertId; // Recupera o ID inserido
-      return fkEndereco;
+      const identityAtual = await database.executar(`SELECT IDENT_CURRENT('endereco') as ultimoId`)
+
+  
+      return identityAtual[0].ultimoId;
     }
   } catch (error) {
     console.error("Erro ao cadastrar servidor: ", error);

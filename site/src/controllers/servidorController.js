@@ -54,9 +54,44 @@ function buscarServidoresEmpresa(req, res) {
 
 }
 
+function buscarTodosServidores(req, res) {
+    var fkEmpresa = req.params.fkEmpresa
+    servidorModel.buscarServidoresEmpresa(fkEmpresa).then(function(resposta){
+        res.json(resposta);
+    })
+
+}
+
+function editarServidor(req,res) {
+    var idServidor = req.body.idServidor
+    var nome = req.body.nome
+    var tipoServidor  = req.body.tipoServidor
+    var cep  = req.body.cep
+    var logradouro = req.body.logradouro
+    var numero = req.body.numero
+    var bairro = req.body.bairro
+    var cidade = req.body.cidade
+    var uf = req.body.uf
+
+ 
+
+    servidorModel.editarServidor(
+        idServidor, 
+        nome,
+        tipoServidor, 
+        cep, 
+        logradouro, numero, 
+        bairro, cidade, uf
+    ).then(function() {
+        res.json("Ok")
+    })
+
+}
 
 
     module.exports = {
         buscarServidoresEmpresa,
         cadastrarServidor,
+        buscarTodosServidores,
+        editarServidor
     }

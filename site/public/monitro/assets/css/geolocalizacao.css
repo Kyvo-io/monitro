@@ -42,10 +42,11 @@
 /* Estilos para a parte direita da geolocalização */
 .GeolocalizacaoRight {
     width: 50%;
-    display: flex;
-    justify-content: center;
+    height: 500px;
     align-items: center;
+    overflow: auto;
     flex-direction: column;
+    padding-top: 90px
 }
 
 .GeolocalizacaoRight > span {
