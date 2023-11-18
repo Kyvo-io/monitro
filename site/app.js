@@ -9,7 +9,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 var mapsService = require('./src/services/mapsService')
 var servidorRouter = require("./src/routes/servidores");
 var alertaHistorico = require("./src/routes/alertahistorico")
-// var componenteRouter = require("./src/routes/componentes");
+var componenteRouter = require("./src/routes/componentes");
 var emailService = require("./src/services/emailService");
 var express = require("express");
 var cors = require("cors");
@@ -45,7 +45,7 @@ async function iniciarServidor() {
     app.use("/usuarios", usuarioRouter);
     app.use("/servidor", servidorRouter);
     app.use("/historico", alertaHistorico)
-    // app.use("/componente", componenteRouter);
+    app.use("/componentes", componenteRouter);
   
     app.listen(PORTA, function () {
         console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
