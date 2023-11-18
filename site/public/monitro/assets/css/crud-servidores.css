@@ -1,0 +1,106 @@
+
+.container-crud-servidores{
+    display: flex;
+    justify-content: space-between;
+    margin: 50px;
+    align-items: center;
+    margin-top: 100px;
+    width: 100%;
+}
+.secao-lista-crud-servidores{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 500px;
+    width: 500px;
+     border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.lista-crud-servidores{
+    font-family: 'poppins';
+    overflow-y: auto;
+    height: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.item-lista-crud-servidores{
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+    background-color: white;
+    width: 96%;
+}
+.infos-servidor-crud{
+    padding: 15px;
+    width: 70%;
+}
+.botoes-acoes{
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 30%;
+}
+
+.botoes-acoes>img{
+   
+    width: 20px;
+}
+
+.item-lista-crud-servidores:not(:last-child){
+    border-bottom: 1px solid gray;
+}
+.item-lista-crud-servidores:first-child{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.item-lista-crud-servidores:last-child{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Estilos para barras de rolagem */
+* {
+    scrollbar-width: auto;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--azul);
+    border-radius: 10px;
+}
+.input-pequisa-items{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.input-pequisa-items > img{
+    cursor: pointer;
+    width: 20px;
+}
+
+.input-pesquisa-crud{
+    width: 80%;
+    font-size: 13px;
+    height: 10px;
+    border-radius: 10px;
+    font-family: 'poppins';
+    font-weight: 700;
+    padding: 10px;
+}
+
+.label-input-pesquisa{
+    font-family: 'baloo 2';
+    font-size: 30px;
+    color: var(--azul);
+}

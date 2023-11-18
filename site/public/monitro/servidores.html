@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../monitro/assets/css/globalMonitro.css">
+    <link rel="stylesheet" href="../monitro//assets/css/crud-servidores.css"> 
+    <link rel="icon" type="image" href="assets/img/logoCubo.png"/>
+    
+    <title>Servidores - Edição</title>
+</head>
+<body>
+    <div class="container-crud-servidores">
+        <div class="secao-lista-crud-servidores">
+          <div class="box-pesquisa">
+            <p class="label-input-pesquisa">Nome/ID do servidor:</p>
+            <div class="input-pequisa-items">
+                <input onkeyup="pesquisarServidor()" id="input_servidor_pesquisa" placeholder="Servidor Balancer" class="input-pesquisa-crud" type="text">
+                <img   src="../monitro/assets/img/magnifying-glass-solid.svg" alt="">
+            </div>
+          </div>
+        
+          <ul id="lista_crud_servidores" class="lista-crud-servidores">
+          </ul>
+        </div>
+
+        <div class="formulario-crud-servidores">
+
+        </div>
+
+
+    </div>
+</body>
+<script src="../monitro/assets/js/crud-servidor.js"></script>
+</html>

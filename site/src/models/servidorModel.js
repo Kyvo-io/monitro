@@ -5,10 +5,23 @@ var endereco = require('./enderecoModel')
 function buscarServidoresEmpresa(fkEmpresa) {
   
   var instrucao = `
-  SELECT  servidor.*,endereco.* FROM endereco
-  JOIN servidor ON idEndereco = fkEndereco
-    INNER JOIN componente ON idServidor = fkServidor WHERE fkEmpresa = ${fkEmpresa}
-    GROUP by idServidor; `;
+    SELECT  servidor.*,
+    logradouro,
+    cep,
+    bairro,
+    latitude,
+    numero,
+    cidade,
+    uf,
+    longitude
+    FROM endereco
+    JOIN servidor ON idEndereco = fkEndereco
+      INNER JOIN componente ON idServidor = fkServidor WHERE fkEmpresa = ${fkEmpresa}
+    GROUP by idServidor, fkEndereco, sistemaOperacional,
+    nomeServidor, tempoAtividade, tipoServidor, fkEmpresa, logradouro, cep,
+    bairro, latitude, numero, cidade, uf, longitude
+    
+    `;
     return database.executar(instrucao);
 }
 
