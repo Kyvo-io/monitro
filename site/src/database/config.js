@@ -5,8 +5,8 @@ var sql = require('mssql');
 var sqlServerConfig = {
     server: "localhost",
     database: "monitro",
-    user: "sa",
-    password: "teste",
+    user: "monitro-admin",
+    password: "kyvo_io",
     pool: {
         max: 10,
         min: 0,
