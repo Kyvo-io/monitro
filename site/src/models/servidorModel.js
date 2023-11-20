@@ -48,23 +48,33 @@ function buscarServidoresEmpresa(fkEmpresa) {
     return database.executar(instrucao);
 }
 
-function listarServidores(fkEmpresa) {
-  var instrucao = `SELECT * FROM servidor WHERE fkEmpresa = ${fkEmpresa}`
-  return database.executar(instrucao);
+function listarServidoresEmpresa() {
+  var instrucao = `
+  SELECT * FROM historicoalerta
+	JOIN servidor ON idServidor = fkServidor WHERE (SELECT MAX(idhistoricoAlerta) FROM historicoalerta);
+`
+    return database.executar(instrucao);
 
 }
 
+// function name(params) {
+//  var instrucao =  `SELECT nomeTipo FROM componente
+//   JOIN tipoComponente ON fkTipoComponente = idTipoComponente
+//   WHERE fkServidor = idServidor ;`
+//   return database.executar(instrucao);
+
+// }
 
 
-async function cadastrarServidor(logradouro,cep,bairro,numero,cidade,uf,fkEndereco ,sistemaOperacional,nomeServidor,fkEmpresa) {
+async function cadastrarServidor(logradouro,cep,bairro,numero,cidade,uf,idEndereco,sistemaOperacional,nomeServidor,fkEmpresa) {
 
   var idEndereco = await endereco.cadastrarEndereco(logradouro, cep, bairro, numero, cidade, uf)  
 
   try {
 
     var insertServidorQuery = `
-      INSERT INTO servidor (fkEndereco, sistemaOperacional, nomeServidor, fkEmpresa)
-      VALUES (${idEndereco}, '${sistemaOperacional}', '${nomeServidor}', ${fkEmpresa});
+      INSERT INTO servidor (fkEndereco, tipoServidor, nomeServidor, fkEmpresa)
+      VALUES (${idEndereco},'${sistemaOperacional}','${nomeServidor}', ${fkEmpresa});
     `;
 
     const servidorInsertResult = await database.executar(insertServidorQuery);
@@ -106,7 +116,7 @@ function excluirServidor(idServidor) {
 
 module.exports = {
   buscarServidoresEmpresa,
-  listarServidores,
+  listarServidoresEmpresa,
   cadastrarServidor,
   buscarTodosServidores,
   editarServidor,
