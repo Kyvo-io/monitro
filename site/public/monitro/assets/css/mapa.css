@@ -16,11 +16,16 @@
     background-color: white !important;
 }
 .status{
-    width: 10px;
-    height: 10px;
+    width: 5px;
+    height: 5px;
     border-radius: 100px;
    
 }
+.linha-servidor{
+    width: 90%;
+    border: 0.01px solid black;
+}
+
 .ok{
     background-color: #00a435;
     filter: drop-shadow(0px 0px 5px #00a435);
@@ -29,8 +34,29 @@
     background-color: #c70606;
     filter: drop-shadow(0px 0px 5px #c70606);
 }
+.medio{
+    background-color: orange;
+    filter: drop-shadow(0px 0px 5px orange);
+}
+.inativo{
+    background-color: gray;
+    filter: drop-shadow(0px 0px 5px gray);
+}
+
 .infos{
     font-family: 'Baloo 2';
     display: flex;
     flex-direction: column;
+}
+
+.servidor-marker{
+    width: 10px;
+    padding: 5px;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 2.5px;
+    border: 1.5px solid var(--azul-dark-mode);
 }

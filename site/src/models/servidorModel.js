@@ -39,7 +39,7 @@ function buscarServidoresEmpresa(fkEmpresa) {
     longitude
     FROM endereco
     JOIN servidor ON idEndereco = fkEndereco
-      INNER JOIN componente ON idServidor = fkServidor WHERE fkEmpresa = ${fkEmpresa}
+    WHERE fkEmpresa = ${fkEmpresa}
     GROUP by idServidor, fkEndereco, sistemaOperacional,
     nomeServidor, tempoAtividade, tipoServidor, fkEmpresa, logradouro, cep,
     bairro, latitude, numero, cidade, uf, longitude
@@ -51,7 +51,7 @@ function buscarServidoresEmpresa(fkEmpresa) {
 function listarServidoresEmpresa() {
   var instrucao = `
   SELECT * FROM historicoalerta
-	JOIN servidor ON idServidor = fkServidor WHERE (SELECT MAX(idhistoricoAlerta) FROM historicoalerta);
+	JOIN servidor ON idServidor = fkServidor WHERE  (SELECT MAX(idhistoricoAlerta) FROM historicoalerta);
 `
     return database.executar(instrucao);
 

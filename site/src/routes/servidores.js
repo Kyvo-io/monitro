@@ -11,9 +11,9 @@ router.get(`/servidores/:fkEmpresa`, function(req,res){
     servidorController.buscarServidoresEmpresa(req,res)
 })
 
-router.get(`/servidores`, function(req,res){
-    servidorController.listarServidoresEmpresa(req,res)
-})
+// router.get(`/servidores`, function(req,res){
+//     servidorController.listarServidoresEmpresa(req,res)
+// })
 
 
 router.get(`/servidores/:fkEmpresa/all`, function(req,res){
