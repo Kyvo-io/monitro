@@ -1,5 +1,3 @@
-const { listarServidores } = require("../../../../src/models/servidorModel");
-
 const monitoramentoCPU = document.getElementById('monitoramentoCPU');
 
 

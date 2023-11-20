@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../monitro/assets/css/globalMonitro.css">
+    <link rel="stylesheet" href="../monitro//assets/css/crud-servidores.css"> 
+    <link rel="icon" type="image" href="assets/img/logoCubo.png"/>
+    
+    <title>Servidores - Edição</title>
+</head>
+<body>
+
+    <div class="container-crud-servidores">
+     
+        <div class="secao-lista-crud-servidores">
+          <div onclick="sair()" class="botao-sair-crud">Finalizar edições</div> 
+          <div class="box-pesquisa">
+            <p class="label-input-pesquisa">Nome/ID do servidor:</p>
+            <div class="pequisa-items">
+                <input onkeyup="pesquisarServidor()" id="input_servidor_pesquisa" placeholder="Servidor Balancer" class="input-pesquisa-crud" type="text">
+                <img src="../monitro/assets/img/magnifying-glass-solid.svg" alt="">
+            </div>
+          </div>
+        
+          <ul id="lista_crud_servidores" class="lista-crud-servidores">
+          </ul>
+        </div>
+
+        <div id="secao_formulario_crud" class="secao-formulario-crud-servidores">
+            <p class="titulo-formulario-crud-servidores">Editar Servidor</p>
+            <div class="formulario-crud-servidores">
+
+              <div class="campo-formulario-crud">
+                <p class="label-formulario-crud">Nome:</p>
+                <input type="text" id="input_nome_servidor">
+              </div>
+              
+              <div class="campo-formulario-crud">
+                <p class="label-formulario-crud">Tipo:</p>
+                <select name="" id="select_tipo_servidor">
+                  <option value="On-promisse">On-promisse</option>
+                  <option value="Cloud (AWS)">Cloud (AWS)</option>
+                  <option value="Cloud (Azure)">Cloud (Azure)</option>
+                </select>
+              </div>
+              
+              <div class="linha-formulario-crud">
+                <div class="campo-formulario-crud">
+                  <p class="label-formulario-crud">CEP:</p>
+                  <input onkeyup="buscarEndereco(input_cep.value)" type="text" id="input_cep">
+                </div>
+              </div>
+              <div class="campo-formulario-crud">
+                <p class="label-formulario-crud">Logradouro:</p>
+                <input type="text" disabled id="input_logradouro">
+              </div>
+
+              <div class="linha-formulario-crud">
+                <div class="campo-formulario-crud">
+                  <p class="label-formulario-crud">N°:</p>
+                  <input type="text" id="input_num" >
+                </div>
+                <div class="campo-formulario-crud">
+                  <p class="label-formulario-crud">Bairro:</p>
+                  <input type="text" disabled id="input_bairro">
+                </div>
+  
+              </div>
+
+
+              <div class="linha-formulario-crud">
+                <div class="campo-formulario-crud">
+                  <p class="label-formulario-crud">Cidade:</p>
+                  <input type="text" disabled id="input_cidade">
+                </div>
+                <div class="campo-formulario-crud"> 
+                <p class="label-formulario-crud">UF:</p>
+                <input type="text" disabled id="input_uf">
+                </div>
+              </div>
+
+
+            
+            
+            </div>
+            <div onclick="editar()" class="botao-editar">Editar</div> 
+
+         
+        </div>
+
+
+    </div>
+</body>
+<script src="../monitro/assets/js/crud-servidor.js"></script>
+</html>

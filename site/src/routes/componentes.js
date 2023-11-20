@@ -1,8 +1,9 @@
-// var componenteController = require("../controllers/componenteController");
+var componenteController = require("../controllers/componenteController");
+var express = require("express");
+var router = express.Router();
 
+router.get(`/:fkServidor`,function (req,res){
+    componenteController.buscarComponentesServidor(req,res)
+})
 
-// router.get(`/componentes/:fkEmpresa`,function (req,res){
-//     componenteController.buscarComponentes(req,res)
-// })
-
-// module.exports = router;
+module.exports = router;

@@ -3,12 +3,21 @@ var endereco = require('./enderecoModel')
 
 
 
-// function buscarComponentes(fkEmpresa) {
-//   var instrucao = `SELECT * FROM componentes WHERE fkEmpresa = ${fkEmpresa}`
-//   return database.executar(instrucao)
-// }
 
-// module.exports = {
-//     // buscarComponentes
-    
-//   };
+async function buscarComponentesServidor(fkServidor) {
+    var instrucao = `SELECT idComponente FROM componente WHERE fkServidor = ${fkServidor}`
+
+    var execucao = await database.executar(instrucao)
+      
+    var idComponentes = []
+
+    for(var i = 0; i < execucao.length; i++){
+        idComponentes.push(execucao[i].idComponente)
+    }
+
+    return idComponentes
+}
+
+module.exports = {
+    buscarComponentesServidor
+}
