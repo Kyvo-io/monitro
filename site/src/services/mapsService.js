@@ -1,7 +1,7 @@
 const {Client} = require("@googlemaps/google-maps-services-js");
 
 const cliente = new Client({})
-const chave =  process.env.GOOGLE_MAPS_API_KEY
+const chave =  process.env.KEY
 
 async function buscarCoordenadasPeloEndereco(rua) {
     const args = {

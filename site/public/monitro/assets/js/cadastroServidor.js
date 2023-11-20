@@ -43,16 +43,10 @@ function cadastrarServidor() {
           
         }),
       }).then(function (resposta) {
-
-        resposta.json().then(function (json) {
-          if (resposta.ok) {
-            console.log(json);
-            
-            setTimeout(() => {
-              window.location.reload();
-            }, 1000);
-          } else console.log(json);
-        });
+        alert("Servidor cadastrado!")
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       });
     
     return false;

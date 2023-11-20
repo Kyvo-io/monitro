@@ -1,7 +1,7 @@
 process.env.AMBIENTE_PROCESSO = "producao";
 // process.env.AMBIENTE_PROCESSO = "producao";
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 1;
-process.env.GOOGLE_MAPS_API_KEY = "AIzaSyAIuuupdu3Z2jMBbGEKSAz7swDqysvp3zM";
+process.env.KEY = "AIzaSyAIuuupdu3Z2jMBbGEKSAz7swDqysvp3zM";
 const nodemailer = require('nodemailer');
 var indexRouter = require("./src/routes/index");
 var empresaRouter = require("./src/routes/empresas");

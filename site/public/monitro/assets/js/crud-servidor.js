@@ -18,14 +18,14 @@ function listarServidores(servidores){
 
         lista_crud_servidores.innerHTML+=`
         <li class="item-lista-crud-servidores">
-        <div class="infos-servidor-crud">
-            <p style="font-weight: bold;">ID: <span style="font-weight: 500">  ${servidores[i].idServidor}</span></p>  
-            <p style="font-weight: bold;">Nome: <span style="font-weight: 500">  ${servidores[i].nomeServidor}</span></p>
-        </div>
-        <div class="botoes-acoes">
-            <img onclick='editarServidor(${i}, ${servidores[i].idServidor})' src="../monitro/assets/img/edit.svg" alt="">
-            <img onclick='excluir(${servidores[i].idServidor})' src="../monitro/assets/img/trash-solid.svg" alt="">
-        </div>
+            <div class="infos-servidor-crud">
+                <p style="font-weight: bold;">ID: <span style="font-weight: 500">  ${servidores[i].idServidor}</span></p>  
+                <p style="font-weight: bold;">Nome: <span style="font-weight: 500">  ${servidores[i].nomeServidor}</span></p>
+            </div>
+            <div class="botoes-acoes">
+                <img onclick='editarServidor(${i}, ${servidores[i].idServidor})' src="../monitro/assets/img/edit.svg" alt="">
+                <img onclick='excluir(${servidores[i].idServidor})' src="../monitro/assets/img/trash-solid.svg" alt="">
+            </div>
         </li>
         
         `  

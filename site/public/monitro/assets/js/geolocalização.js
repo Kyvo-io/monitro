@@ -19,9 +19,28 @@ async function mostrarMarcadores() {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker")
   for(var i =0; i<servidores.length; i++){
     var marcadorDiv = document.createElement("div")
+    marcadorDiv.classList.add("servidor-marker")
     
-    marcadorDiv.classList.add("status")
-    marcadorDiv.classList.add("ok")
+    
+    var statusServidor = document.createElement("div")
+    statusServidor.classList.add("status")
+    statusServidor.classList.add("perigo")
+
+    var linhaServidor = document.createElement("div")
+    linhaServidor.classList.add("linha-servidor")
+
+    var linhaServidor1 = document.createElement("div")
+    linhaServidor1.classList.add("linha-servidor")
+
+    var linhaServidor2 = document.createElement("div")
+    linhaServidor2.classList.add("linha-servidor")
+
+   
+    marcadorDiv.appendChild(linhaServidor)
+    marcadorDiv.appendChild(linhaServidor1)
+    marcadorDiv.appendChild(linhaServidor2)
+    marcadorDiv.appendChild(statusServidor)
+    
     var coordenada = {lat: servidores[i].latitude, lng: servidores[i].longitude}
     marker = await new AdvancedMarkerElement({
       position: coordenada,

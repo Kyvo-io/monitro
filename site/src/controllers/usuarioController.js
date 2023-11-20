@@ -76,8 +76,37 @@ function cadastrarFuncionario(req, res) {
       }
 }
 
+function listarUsuariosEmpresa(req,res) {
+    var idEmpresa = req.params.idEmpresa
+    usuarioModel.listarUsuariosEmpresa(idEmpresa).then(function(resposta) {
+        res.json(resposta)
+    })
+}
+
+function editarUsuario(req,res) {
+    var idUsuario = req.body.idUsuario
+    var nome = req.body.nome
+    var email = req.body.email
+    var fkCargo = req.body.fkCargo
+    var senha = req.body.senha
+    
+    usuarioModel.editarUsuario(nome, email, fkCargo, senha, idUsuario).then(function () {
+        res.json("Ok")
+    })
+}
+
+function excluirUsuario(req,res) {
+    var idUsuario = req.params.idUsuario
+
+    usuarioModel.excluirUsuario(idUsuario).then(function () {
+        res.json("Ok")
+    })
+}
 
     module.exports = {
+        editarUsuario,
         logar,
-        cadastrarFuncionario
+        cadastrarFuncionario,
+        listarUsuariosEmpresa,
+        excluirUsuario
     }

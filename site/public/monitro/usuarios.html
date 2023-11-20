@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../monitro/assets/css/globalMonitro.css">
+    <link rel="stylesheet" href="../monitro//assets/css/crud-usuarios.css"> 
+    <link rel="icon" type="image" href="assets/img/logoCubo.png"/>
+    
+    <title>Usuarios - Edição</title>
+</head>
+<body>
+
+    <div class="container-crud-usuarios">
+     
+        <div class="secao-lista-crud-usuarios">
+          <div onclick="sair()" class="botao-sair-crud">Finalizar edições</div> 
+          <div class="box-pesquisa">
+            <p class="label-input-pesquisa">Nome do usuário:</p>
+            <div class="pequisa-items">
+                <input onkeyup="pesquisarUsuario()" id="input_usuario_pesquisa" placeholder="Severino da Silva" 
+                class="input-pesquisa-crud" type="text">
+                <img src="../monitro/assets/img/magnifying-glass-solid.svg" alt="">
+            </div>
+          </div>
+        
+          <ul id="lista_crud_usuarios" class="lista-crud-usuarios">
+          </ul>
+        </div>
+
+        <div id="secao_formulario_crud" class="secao-formulario-crud-usuarios">
+            <p class="titulo-formulario-crud-usuarios">Editar Usuário</p>
+            <div class="formulario-crud-usuarios">
+
+              <div class="campo-formulario-crud">
+                <p class="label-formulario-crud">Nome:</p>
+                <input type="text" id="input_nome_usuario">
+              </div>
+              
+              <div class="campo-formulario-crud">
+                <p class="label-formulario-crud">Cargo:</p>
+                <select name="" id="select_cargo">
+                  <option value="1">Gerente NOC</option>
+                  <option value="2">Suporte</option>
+                </select>
+              </div>
+              
+              <div class="campo-formulario-crud">
+                <p class="label-formulario-crud">Email:</p>
+                <input type="text" id="input_email">
+              </div>
+
+              <div class="campo-formulario-crud">
+                <p class="label-formulario-crud">Senha:</p>
+                <input type="password" id="input_senha" >
+              </div>
+              <div class="campo-formulario-crud">
+                <p class="label-formulario-crud">Confirmar Senha:</p>
+                <input type="password" id="input_senha_confirmar">
+              </div>
+
+
+
+            
+            
+            </div>
+            <div onclick="editarValidacao()" class="botao-editar">Editar</div> 
+
+         
+        </div>
+
+
+    </div>
+</body>
+<script src="../monitro/assets/js/crud-usuario.js"></script>
+</html>
