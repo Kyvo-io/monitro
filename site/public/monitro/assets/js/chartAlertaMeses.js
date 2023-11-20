@@ -62,6 +62,11 @@ new Chart(alertaMeses, {
     
   },
   options: {
-    
+    scales: {
+      y: {
+        min: 0,
+        max: 50,
+      }
+    }
   }
 });

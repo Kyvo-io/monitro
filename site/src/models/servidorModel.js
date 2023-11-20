@@ -98,10 +98,17 @@ async function editarServidor(
 
 }
 
+function excluirServidor(idServidor) {
+  var query = `DELETE FROM servidor WHERE idServidor = ${idServidor}`
+
+  return database.executar(query)
+}
+
 module.exports = {
   buscarServidoresEmpresa,
   listarServidores,
   cadastrarServidor,
   buscarTodosServidores,
-  editarServidor
+  editarServidor,
+  excluirServidor
 };

@@ -88,10 +88,19 @@ function editarServidor(req,res) {
 
 }
 
+function deletarServidor(req,res) {
+    var idServidor = req.params.idServidor
+    servidorModel.excluirServidor(idServidor).then(function 
+        () {
+    res.json("Ok")
+    })
+}
+
 
     module.exports = {
         buscarServidoresEmpresa,
         cadastrarServidor,
         buscarTodosServidores,
-        editarServidor
+        editarServidor,
+        deletarServidor
     }

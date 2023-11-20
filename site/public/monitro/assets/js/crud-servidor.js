@@ -24,7 +24,7 @@ function listarServidores(servidores){
         </div>
         <div class="botoes-acoes">
             <img onclick='editarServidor(${i}, ${servidores[i].idServidor})' src="../monitro/assets/img/edit.svg" alt="">
-            <img src="../monitro/assets/img/trash-solid.svg" alt="">
+            <img onclick='excluir(${servidores[i].idServidor})' src="../monitro/assets/img/trash-solid.svg" alt="">
         </div>
         </li>
         
@@ -143,6 +143,19 @@ async function editar() {
 
 
 
+}
+
+
+async function excluir(id) {
+    var pergunta = confirm("Deseja excluir esse servidor?")
+
+    if(pergunta){
+       var fetchDelete = await fetch(`/servidor/delete/${id}`).then(function 
+        (resposta) {
+            alert("Servidor deletado com sucesso")
+            window.location.reload()
+       })
+    }
 }
 
 

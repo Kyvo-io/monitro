@@ -16,6 +16,10 @@ router.get(`/servidores/:fkEmpresa/all`, function(req,res){
     servidorController.buscarServidoresEmpresa(req,res)
 })
 
+router.get(`/delete/:idServidor`, function(req,res){
+    servidorController.deletarServidor(req,res)
+})
+
 router.post(`/edit/`, function(req,res){
     servidorController.editarServidor(req,res)
 })
