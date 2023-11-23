@@ -54,13 +54,6 @@ function buscarServidoresEmpresa(req, res) {
 
 }
 
-function buscarTodosServidores(req, res) {
-    var fkEmpresa = req.params.fkEmpresa
-    servidorModel.buscarServidoresEmpresa(fkEmpresa).then(function(resposta){
-        res.json(resposta);
-    })
-
-}
 
 function editarServidor(req,res) {
     var idServidor = req.body.idServidor
@@ -104,11 +97,18 @@ function listarServidoresEmpresa(req, res) {
 
 }
 
+async function buscarServidorEspecifico(req,res){
+    var idServidor = req.params.idServidor
+     var servidor = await servidorModel.buscarServidorEspecifico(idServidor)
+   await res.json(servidor)
+   
+}
+
     module.exports = {
         buscarServidoresEmpresa,
-        buscarTodosServidores,
         editarServidor,
         deletarServidor,
         cadastrarServidor,
-        listarServidoresEmpresa
+        listarServidoresEmpresa,
+        buscarServidorEspecifico
     }

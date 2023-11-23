@@ -6,7 +6,7 @@ var todoServidores = []
 var idServidorEdit;
 buscarServidores()
 async function buscarServidores() {
-    var busca = await fetch(`/servidor/servidores/${sessionStorage.ID_EMPRESA}/all`)
+    var busca = await fetch(`/servidor/servidores/${sessionStorage.ID_EMPRESA}`)
     var json = await busca.json()
     todoServidores = json
     listarServidores(json)

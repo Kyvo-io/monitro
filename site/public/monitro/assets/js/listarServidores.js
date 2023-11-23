@@ -10,13 +10,12 @@ var listaTipoServidor = [`<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-a
   <path  d="M34.062,29.324H16.135c-0.458-0.001-0.83,0.371-0.831,0.829c0,0.231,0.095,0.451,0.264,0.608 l11.52,10.752C27.423,41.826,27.865,42,28.324,42h10.151L34.062,29.324z"></path>
   <path d="M17.634,6c-0.783-0.003-1.476,0.504-1.712,1.25L5.005,39.595 c-0.335,0.934,0.151,1.964,1.085,2.299C6.286,41.964,6.493,42,6.702,42h9.026c0.684-0.122,1.25-0.603,1.481-1.259l2.177-6.416 l7.776,7.253c0.326,0.27,0.735,0.419,1.158,0.422h10.114l-4.436-12.676l-12.931,0.003L28.98,6H17.634z"></path>
   <path  d="M32.074,7.225C31.827,6.493,31.141,6,30.368,6h-12.6c0.772,0,1.459,0.493,1.705,1.224 l10.935,32.399c0.318,0.942-0.188,1.963-1.13,2.281C29.093,41.968,28.899,42,28.703,42h12.6c0.994,0,1.8-0.806,1.8-1.801 c0-0.196-0.032-0.39-0.095-0.575L32.074,7.225z"></path>
-</svg>`,
+</svg>`
+,
 `
-<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-server" viewBox="0 0 16 16">
-<path d="M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4c0 1.473-2.985 2.667-6.667 2.667S1.333 5.473 1.333 4V2.667z"/>
-<path d="M1.333 6.334v3C1.333 10.805 4.318 12 8 12s6.667-1.194 6.667-2.667V6.334a6.51 6.51 0 0 1-1.458.79C11.81 7.684 9.967 8 8 8c-1.966 0-3.809-.317-5.208-.876a6.508 6.508 0 0 1-1.458-.79z"/>
-<path d="M14.667 11.668a6.51 6.51 0 0 1-1.458.789c-1.4.56-3.242.876-5.21.876-1.966 0-3.809-.316-5.208-.876a6.51 6.51 0 0 1-1.458-.79v1.666C1.333 14.806 4.318 16 8 16s6.667-1.194 6.667-2.667v-1.665z"/>
-</svg>`]
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M48 0C21.5 0 0 21.5 0 48V464c0 26.5 21.5 48 48 48h96V432c0-26.5 21.5-48 48-48s48 21.5 48 48v80h96c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48H48zM64 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V240zm112-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V240c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V240zM80 96h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V112zM272 96h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16z"/></svg>
+`]
+
 
 var listaNivelAlerta = [`<svg xmlns="http://www.w3.org/2000/svg"
 fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
@@ -29,30 +28,17 @@ fill="currentColor" color="red"class="bi bi-exclamation-triangle-fill" viewBox="
 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
 </svg>`]
 
-async function listarServidoresEmpresa() {
-  
-    try {
-        var buscar = await fetch(`/servidor/servidores`);
-        if (!buscar.ok) {
-            throw new Error(`Erro na requisição: ${buscar.status}`);
-        }
 
-        var json = await buscar.json();
-        listaServidores = json;
-
-        console.log(listaServidores)
-
-        // console.log(sessionStorage = ID_SERVIDOR)
-
-        for (var i = 0; i < listaServidores.length; i++) {
-            var servidor = listaServidores[i];
+function listarServidoresEmpresa() {
+        for (var i = 0; i < servidores.length; i++) {
+            var servidor = servidores[i];
             var iconeTipoServ = '';
             var iconeTipoAlert = '';
             
-            if (servidor.tipoServidor == 'Cloud AWS') {
+            if (servidor.tipoServidor == 'Cloud (AWS)') {
              iconeTipoServ = listaTipoServidor[0]  
             
-          } else if (servidor.tipoServidor == 'Cloud Azure'){
+          } else if (servidor.tipoServidor == 'Cloud (Azure)'){
             iconeTipoServ = listaTipoServidor[1]
           } else {
             iconeTipoServ = listaTipoServidor[2]
@@ -69,7 +55,7 @@ async function listarServidoresEmpresa() {
             cards.innerHTML+=`
 
             <div  class="referenciaMaquina">
-            <div class="cardMaquina" onclick="trocarExibicaoModalEspecifica()">
+            <div class="cardMaquina" onclick="abrirServidorEspecifico(${i})">
                 <span id="nomeMaquina">
                 Máquina: ${servidor.nomeServidor}  ${iconeTipoServ}
                 </span>
@@ -122,14 +108,7 @@ async function listarServidoresEmpresa() {
         `
         }
 
-        
-
-    } catch (erro) {
-        console.error("Erro ao listar servidores:", erro);
-    }
+      
 }
-
-
-
 
 listarServidoresEmpresa();

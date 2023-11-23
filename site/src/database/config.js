@@ -5,7 +5,7 @@ var sql = require('mssql');
 var sqlServerConfig = {
     server: "localhost",
     database: "monitro",
-    user: "monitro-admin",
+    user: "sa",
     password: "kyvo_io",
     pool: {
         max: 10,
@@ -17,7 +17,7 @@ var sqlServerConfig = {
         trustServerCertificate: true
     }
 }
-
+   
 // CONEXÃO DO MYSQL WORKBENCH
 var mySqlConfig = {
     host: "localhost",
