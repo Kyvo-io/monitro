@@ -1,20 +1,15 @@
 const monitoramentoRAM = document.getElementById('monitoramentoRAM');
 
-  new Chart(monitoramentoRAM, {
-    type: 'bar',
+var chartRam =  new Chart(monitoramentoRAM, {
+    type: 'line',
     data: {
-      labels: [''],
+      labels: [],
       datasets: [
         {
           label: 'Uso Atual',
           data: [80],
           backgroundColor: '#28c8ef'
         },
-        {
-          label: 'Capacidade Total',
-          data: [100],
-          backgroundColor: '#0e1826a4',
-        }
       ]
     },
     options: {
@@ -33,8 +28,6 @@ const monitoramentoRAM = document.getElementById('monitoramentoRAM');
           beginAtZero: true
         }
       },
-      indexAxis: 'y',
-      barPercentage: -5,
       scales: {
         x: {
           display: 'none',
