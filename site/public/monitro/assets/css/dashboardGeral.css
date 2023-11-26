@@ -187,3 +187,10 @@ p:hover .svg1 {
     color: var(--azul);
 }
 
+
+/* slack */
+.slackDashboard{
+    display: flex;
+    margin-top: 20px;
+    margin-right: -100px;
+}

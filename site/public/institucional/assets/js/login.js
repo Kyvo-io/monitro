@@ -1,4 +1,23 @@
-function logar() {     
+function alert(){
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login realizado com sucesso!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+}
+
+function alertErro(){
+    Swal.fire({
+        icon: "error",
+        text: "Erro ao realizar o login"
+      });
+}
+
+
+function logar() {  
+    
 
     var email = input_login_email.value;
     var senha = input_login_senha.value;
@@ -29,6 +48,8 @@ function logar() {
                 sessionStorage.ID_CARGO = json.fkCargo;
                 sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
                 sessionStorage.NOME_CARGO = json.nomeCargo;
+
+                alert();
     
                 setTimeout(function () {
                     window.location = "/monitro/dashboard.html";
@@ -39,6 +60,8 @@ function logar() {
         } else {
     
             console.log("Houve um erro ao tentar realizar o login!");
+
+            alertErro();
     
             resposta.text().then(texto => {
                 console.error(texto);
@@ -50,3 +73,6 @@ function logar() {
     })
     return false;
     }
+
+
+    

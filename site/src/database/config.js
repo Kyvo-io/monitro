@@ -3,9 +3,9 @@ var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 var sqlServerConfig = {
-    server: "localhost",
+    server: "ec2-3-217-73-28.compute-1.amazonaws.com",
     database: "monitro",
-    user: "sa",
+    user: "monitro-admin",
     password: "kyvo_io",
     pool: {
         max: 10,
