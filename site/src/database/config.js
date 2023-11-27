@@ -1,14 +1,16 @@
 var mysql = require("mysql2");
-var sql = require('mssql');
-
+var sql = require('mssql'); 
+//ec2-3-217-73-28.compute-1.amazonaws.com
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
-var sqlServerConfig = {
+// CONEXÃO DO SQL SERVER - AZURE (NUVEM)
+
+var sqlServerConfig = { 
     server: "ec2-3-217-73-28.compute-1.amazonaws.com",
     database: "monitro",
     user: "monitro-admin",
     password: "kyvo_io",
     pool: {
-        max: 10,
+        max: 1000,
         min: 0,
         idleTimeoutMillis: 30000
     },

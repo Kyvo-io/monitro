@@ -51,10 +51,23 @@ function logar() {
 
                 alert();
     
-                setTimeout(function () {
-                    window.location = "/monitro/dashboard.html";
-                }, 2000); 
-    
+                fetch("/sessao/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        idUsuario: json.idUsuario,
+                        ipUsuario: ip,
+                        lat: localizacao.lat,
+                        lng:  localizacao.lng
+                    }) 
+                }).then(function () {
+                    setTimeout(function () {
+                        window.location = "/institucional/confirmacao-email.html";
+                    }, 2000); 
+                })
+
             });
     
         } else {

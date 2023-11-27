@@ -158,8 +158,7 @@ console.log(nodemailer.getTestMessageUrl(infoEmail))
 return nodemailer.getTestMessageUrl(infoEmail);
 }
 
-
-async function enviarEmailDefinicaoSenha(email, usuario) {
+async function enviarEmailConfirmacaoLogin(email, usuario, idSessao, logradouro, bairro, cidade, dataEmail) {
     let transporteEmail = nodemailer.createTransport({
         host: "smtp.ethereal.email",
         port: 587,
@@ -173,37 +172,8 @@ async function enviarEmailDefinicaoSenha(email, usuario) {
     let mensagem = {
         from: email_monitro,
         to: `${usuario} <${email}>`,
-        subject: 'Primeiro acesso',
-        text: 'Hello to myself!',
-        html: `
-        Login:
-        Senha:
-        `
-    }
-    
-    var infoEmail;
-    var infoEmail = await transporteEmail.sendMail(mensagem)
-    
-    console.log(nodemailer.getTestMessageUrl(infoEmail))
-    return nodemailer.getTestMessageUrl(infoEmail);
-}
-
-async function enviarEmailConfirmacaoLogin(email, usuario) {
-    let transporteEmail = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false,
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
-        }
-    })
-    
-    let mensagem = {
-        from: email_monitro,
-        to: `${usuario} <${email}>`,
-        subject: 'Primeiro acesso',
-        text: 'Hello to myself!',
+        subject: 'Confirmar entrada',
+        text: '',
         html: 
         `
 <style>
@@ -218,6 +188,7 @@ async function enviarEmailConfirmacaoLogin(email, usuario) {
 
 body {
     background-color: #28C8EF;
+    height: 500px;
 }
 
 .container {
@@ -360,33 +331,31 @@ body {
             <li>
                 <p>Logradouro</p>
                 <div class="campo">
-                    <p></p>
+                    <p>${logradouro}</p>
                 </div>
             </li>
             <li>
                 <p>Bairro</p>
                 <div class="campo">
-                    <p></p>
+                    <p>${bairro}</p>
                 </div>
             </li>
             <li>
                 <p>Cidade</p>
                 <div class="campo">
-                    <p></p>
+                    <p>${cidade}</p>
                 </div>
             </li>
             <li>
                 <p>Data e horário</p>
                 <div class="campo">
-                    <p></p>
+                    <p>${dataEmail}</p>
                 </div>
             </li>
         </ul>
         <div class="botoes">
-            
-            <a href=""><button class="botao negar">Negar Acesso</button></a>
-            <a href=""><button class="botao confirmar">Confirmar Acesso</button></a>
-            
+            <a href="http://ec2-3-217-73-28.compute-1.amazonaws.com/sessao/negar/${idSessao}"><button class="botao negar">Negar Acesso</button></a>
+            <a href="http://ec2-3-217-73-28.compute-1.amazonaws.com/sessao/permitir/${idSessao}"><button class="botao confirmar">Confirmar Acesso</button></a>
         </div>
     </div>
 </div>
@@ -403,5 +372,6 @@ body {
 
 
 module.exports = {
-    enviarEmailPrimeiroAcesso
+    enviarEmailPrimeiroAcesso, 
+    enviarEmailConfirmacaoLogin
 }
