@@ -3,6 +3,7 @@ var sql = require('mssql');
 //ec2-3-217-73-28.compute-1.amazonaws.com
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
+
 var sqlServerConfig = { 
     server: "ec2-3-217-73-28.compute-1.amazonaws.com",
     database: "monitro",

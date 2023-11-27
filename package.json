@@ -8,6 +8,7 @@
     "postinstall": "cd site && npm install"
   },
   "dependencies": {
-    "generate-password": "^1.7.0"
+    "generate-password": "^1.7.0",
+    "sweetalert2": "^11.10.1"
   }
 }

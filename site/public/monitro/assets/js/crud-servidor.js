@@ -1,3 +1,23 @@
+function alertExcluir(){
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Excluído com sucesso!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+}
+
+function alertAtualizar(){
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Editado com sucesso!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+  }
+
 
 var filtrados = []
 var todoServidores = []
@@ -122,6 +142,7 @@ async function buscarEndereco(cep) {
 }
 
 async function editar() {
+    alertAtualizar();
     var fetchEdit = fetch(`/servidor/edit`, {
         method: "POST", 
         headers: {
@@ -139,11 +160,11 @@ async function editar() {
             uf:  input_uf.value
         })
     }).then(()=>{
-        alert("Servidor atualizado com sucesso")
+        
         window.location.reload()
     })
 
-
+//
 
 }
 
@@ -152,20 +173,30 @@ async function excluir(id) {
     var pergunta = confirm("Deseja excluir esse servidor?")
 
     if(pergunta){
+        alertExcluir();
        var fetchDelete = await fetch(`/servidor/delete/${id}`).then(function 
         (resposta) {
-            alert("Servidor deletado com sucesso")
+            
             window.location.reload()
        })
     }
 }
 
 
+function sairPagina(){
+    Swal.fire({
+        title: "Tem certeza que deseja finalizar?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Sair"
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            window.location = "/monitro/dashboard.html"
+        }
+      });
+}
 
 function sair() {
-    var pergunta = confirm("Deseja terminar as alterações?")
-
-    if(pergunta){
-        window.location = "/monitro/dashboard.html"
-    }
+   sairPagina();
 }

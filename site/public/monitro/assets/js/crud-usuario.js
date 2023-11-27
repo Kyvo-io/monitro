@@ -1,3 +1,32 @@
+function alertVazio(){
+    Swal.fire("Campos vazios, preencha corretamente!");
+  }
+  
+  function alertSenha(){
+    Swal.fire({
+      icon: "error",
+      text: "Senhas não coincindem!"
+    });
+  }
+  
+  function alertSenhaGerente(){
+    Swal.fire({
+        icon: "error",
+        text: "Senha inválida!"
+      });
+  }
+  
+  function alertCerto(){
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Usuário atualizado com sucesso!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+  }
+
+
 var usuarios = []
 var filtrados = []
 var usuarioEdit;
@@ -64,14 +93,15 @@ async function editarValidacao() {
     input_senha_confirmar.length == 0 ||
     input_senha.value == ""  || 
     input_senha_confirmar.value == ""){
-        alert("Insira todos os campos!")
+        alertVazio();
     }else if(input_senha.value != input_senha_confirmar.value){
-        alert("Senhas não coincindem!")
+        alertSenha();
     }else if(usuario.fkCargo == 1){
         if(prompt("Insira a senha atual do Gerente:")==usuario.senha){
+            alertCerto();
             editar()
         }else{
-            alert("Senha inválida")
+            alertSenhaGerente();
         }
     }else{
         editar()
@@ -79,6 +109,7 @@ async function editarValidacao() {
 }
 
 async function editar() {
+    alertCerto();
     await fetch(`/usuarios/edit/`,{
         method: "POST", 
         headers: {
@@ -92,7 +123,6 @@ async function editar() {
            senha: input_senha.value
         })
     }).then(function() {
-        alert("Usuário atualizado com sucesso!")
         if(sessionStorage.ID_USUARIO == usuarioEdit){
             window.location.href = '/institucional/'
         }else{
@@ -101,23 +131,45 @@ async function editar() {
     })
 }
 
+
+function alertExcluir(){
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Usuário excluído com sucesso!",
+        showConfirmButton: false,
+        timer: 3000
+      });
+}
+
+
 async function excluir(idUsuario) {
     if(sessionStorage.ID_USUARIO == idUsuario){
         alert("Não é possível se excluir")
     }else{
         if(confirm("Deseja excluir esse usuário?")){
+            alertExcluir();
             await fetch(`/usuarios/delete/${idUsuario}`).then(function() {
-                alert("Usuário excluído com sucesso!")
                 window.location.reload()
             })
         }
     }
 }
 
-function sair() {
-    var pergunta = confirm("Deseja terminar as alterações?")
+function sairPagina(){
+    Swal.fire({
+        title: "Tem certeza que deseja finalizar?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Sair"
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            window.location = "/monitro/dashboard.html"
+        }
+      });
+}
 
-    if(pergunta){
-        window.location = "/monitro/dashboard.html"
-    }
+function sair() {
+   sairPagina();
 }
