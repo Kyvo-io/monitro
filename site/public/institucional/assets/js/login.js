@@ -49,7 +49,7 @@ function logar() {
                 sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
                 sessionStorage.NOME_CARGO = json.nomeCargo;
 
-                alert();
+                
     
                 fetch("/sessao/cadastrar", {
                     method: "POST",
