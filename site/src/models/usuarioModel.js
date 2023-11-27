@@ -1,6 +1,12 @@
 var database = require("../database/config")
 
 
+function buscarUsuarioPeloId(idUsuario) {
+    var instrucao = `SELECT * FROM usuario WHERE idUsuario = ${idUsuario}; ` 
+    
+    return database.executar(instrucao);
+}
+
 function logar(email, senha) {
     
     var instrucao = `SELECT empresa.nomeEmpresa, cargo.nomeCargo, usuario.* FROM usuario
@@ -48,5 +54,6 @@ module.exports = {
     logar,
     cadastrarFuncionario,
     listarUsuariosEmpresa,
-    excluirUsuario
+    excluirUsuario,
+    buscarUsuarioPeloId
 };

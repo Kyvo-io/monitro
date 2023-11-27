@@ -26,7 +26,7 @@ async function buscarCoordenadasPeloEndereco(rua) {
 }
 
 
-async function buscarEnderecoPelasCoordenadas() {
+async function buscarEnderecoPelasCoordenadas(latitude, longitude) {
     const args = {
         params:{
             key: chave,
@@ -52,9 +52,36 @@ async function buscarEnderecoPelasCoordenadas() {
             cep: cep,
             rua: rua
         }
-        return endereco;
+ 
+        console.log(endereco)
+        var enderecoCompleto =  await buscarEnderecoPeloCep(endereco.cep);
+        return enderecoCompleto
 }
+
+async function obterCoordenadaPeloIp(ip) {
+    var busca = await fetch(`
+    https://api.ipbase.com/v2/info?apikey=ipb_live_EP1QnTtW2B9mQh8ULFquKKbqaJ3sfsw8s1p3o0Of&ip=${ip}
+    `)
+    var json = await busca.json()
+    console.log(json)
+    var coord = {
+        latitude: json.data.location.latitude,
+        longitude: json.data.location.longitude,
+    }
+    return coord
+} 
+
+
+async function buscarEnderecoPeloCep(cep) {
+    var busca = await fetch(`
+    https://viacep.com.br/ws/${cep}/json/
+    `)
+    var json = await busca.json()
+
+    return json
+} 
 module.exports={
     buscarCoordenadasPeloEndereco,
-    buscarEnderecoPelasCoordenadas
+    buscarEnderecoPelasCoordenadas,
+    obterCoordenadaPeloIp
 }
