@@ -176,8 +176,10 @@ async function excluir(id) {
         alertExcluir();
        var fetchDelete = await fetch(`/servidor/delete/${id}`).then(function 
         (resposta) {
+            setTimeout(() => {
+                window.location.reload()
+            }, 3000);
             
-            window.location.reload()
        })
     }
 }

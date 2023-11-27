@@ -47,7 +47,7 @@ function pesquisarUsuario() {
             var cargo = usuarioAtual.nomeCargo.toLowerCase()
            if(nomeUsuario.indexOf(input_usuario_pesquisa.value.toLowerCase()) > -1 || 
            cargo.indexOf(input_usuario_pesquisa.value.toLowerCase()) > -1){
-            filtrados.push(todoServidores[i])
+            filtrados.push(usuarios[i])
            }
         }
         listarUsuarios(filtrados)
@@ -138,7 +138,7 @@ function alertExcluir(){
         icon: "success",
         title: "Usuário excluído com sucesso!",
         showConfirmButton: false,
-        timer: 3000
+        timer: 1500
       });
 }
 
@@ -148,9 +148,13 @@ async function excluir(idUsuario) {
         alert("Não é possível se excluir")
     }else{
         if(confirm("Deseja excluir esse usuário?")){
-            alertExcluir();
+        
             await fetch(`/usuarios/delete/${idUsuario}`).then(function() {
-                window.location.reload()
+                alertExcluir();
+                setTimeout(() => {
+                    window.location.reload()
+                }, 3000);
+               
             })
         }
     }
