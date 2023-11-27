@@ -88,35 +88,37 @@ function alterarCamposEndereco(infoEndereco) {
 
 async function buscarEndereco(cep) {
 
-    
-    var busca = await fetch (`https://viacep.com.br/ws/${cep}/json/`).catch(()=>{
-        alterarCamposEndereco({
-            bairro: "Cep inválido",
-            localidade: "Cep inválido",
-            logradouro: "Cep inválido",
-            uf: "Cep inválido" 
+    if(cep.length >= 8){
+        var busca = await fetch (`https://viacep.com.br/ws/${cep}/json/`).catch(()=>{
+            alterarCamposEndereco({
+                bairro: "Cep inválido",
+                localidade: "Cep inválido",
+                logradouro: "Cep inválido",
+                uf: "Cep inválido" 
+            })
         })
-    })
-    var json = await busca.json()
-
-
+        var json = await busca.json()
+     
     
-    if(json.uf == undefined){
+        
+        if(json.uf == undefined){
+            alterarCamposEndereco({
+                bairro: "Cep inválido",
+                localidade: "Cep inválido",
+                logradouro: "Cep inválido",
+                uf: "Cep inválido" 
+            })
+        }else{
+           
         alterarCamposEndereco({
-            bairro: "Cep inválido",
-            localidade: "Cep inválido",
-            logradouro: "Cep inválido",
-            uf: "Cep inválido" 
+            bairro: json.bairro,
+            localidade: json.localidade,
+            logradouro: json.logradouro,
+            uf: json.uf 
         })
-    }else{
-       
-    alterarCamposEndereco({
-        bairro: json.bairro,
-        localidade: json.localidade,
-        logradouro: json.logradouro,
-        uf: json.uf 
-    })
+        }
     }
+
 }
 
 async function editar() {
