@@ -2,7 +2,6 @@ var geocoder;
 var map;
 var marker;
 async function initMap() {
-    await buscarServidoresEmpresa()
       const {Map} = await google.maps.importLibrary("maps");
       map = await new Map(document.getElementById("map"), {
       mapId: 123,
@@ -12,8 +11,12 @@ async function initMap() {
       streetViewControl: false,
       disableDefaultUI: true,
     });
-    await mostrarMarcadores()
-   
+
+
+    await  buscarServidoresEmpresa().then(async function () {
+      listarServidoresEmpresa();
+      await mostrarMarcadores()  
+    })
 }
 async function mostrarMarcadores() {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker")
@@ -24,7 +27,16 @@ async function mostrarMarcadores() {
     
     var statusServidor = document.createElement("div")
     statusServidor.classList.add("status")
-    statusServidor.classList.add("perigo")
+  
+    if(servidores.nivelAlerta == "Crítico"){
+      statusServidor.classList.add("perigo")
+    }else if("Médio"){
+      statusServidor.classList.add("medio")
+    }else if("Ok"){
+      statusServidor.classList.add("ok")
+    }else{
+      statusServidor.classList.add("inativo")
+    }
 
     var linhaServidor = document.createElement("div")
     linhaServidor.classList.add("linha-servidor")
@@ -46,7 +58,7 @@ async function mostrarMarcadores() {
       position: coordenada,
       map: map,
       content: marcadorDiv,
-      title: servidores[0].nomeServidor,
+      title: servidores[i].nomeServidor,
     })
   }
 }

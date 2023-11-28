@@ -21,20 +21,10 @@ function buscarServidoresEmpresa(fkEmpresa) {
   GROUP by idServidor, fkEndereco, sistemaOperacional,
   nomeServidor, tempoAtividade, tipoServidor, fkEmpresa, logradouro, cep,
   bairro, latitude, numero, cidade, uf, longitude 
-
-    
     `;
     return database.executar(instrucao);
 }
 
-function listarServidoresEmpresa() {
-  var instrucao = `
-  SELECT * FROM historicoalerta
-	JOIN servidor ON idServidor = fkServidor WHERE  (SELECT MAX(idhistoricoAlerta) FROM historicoalerta);
-`
-    return database.executar(instrucao);
-
-}
 
 
 
@@ -145,7 +135,6 @@ function excluirServidor(idServidor) {
 
 module.exports = {
   buscarServidoresEmpresa,
-  listarServidoresEmpresa,
   cadastrarServidor,
   editarServidor,
   excluirServidor,

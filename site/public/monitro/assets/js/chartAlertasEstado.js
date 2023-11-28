@@ -1,5 +1,5 @@
 const AlertasEstado = document.getElementById('AlertasEstado');
-
+const AlertasEstadoTodoPeriodo = document.getElementById('AlertasEstadoPeriodo')
 var ufs = []
 var qtdAlertasUfs = []
 
@@ -8,9 +8,12 @@ var qtdMedios = []
 var qtdCriticos = []
 
 
+var qtdAlertasUfsTodoPeriodo = []
+var qtdBonsTodoPeriodo = []
+var qtdMediosTodoPeriodo = []
+var qtdCriticosTodoPeriodo = []
 
-obterUfs()
-obterQtdAlertasUfs()
+
 
 
 
@@ -28,7 +31,7 @@ async function obterUfs() {
     qtdCriticos.push(0)
   }
 }
-async function obterQtdAlertasUfs() {
+async function obterQtdAlertasUfsHoje() {
   var busca = await fetch(`/historico/qtdAlertasEstados/${sessionStorage.ID_EMPRESA}`)
   var json = await busca.json()
  
@@ -58,30 +61,109 @@ async function obterQtdAlertasUfs() {
   }
 }
 
+async function obterQtdAlertasUfs() {
+  var busca = await fetch(`/historico/qtdAlertasEstadosTudo/${sessionStorage.ID_EMPRESA}`)
+  var json = await busca.json()
+ 
+  qtdAlertasUfsTodoPeriodo = json
 
+  for (var i  =0; i  < qtdAlertasUfsTodoPeriodo.length ; i ++) {
+    if(qtdAlertasUfsTodoPeriodo[i].nivelAlerta == "Crítico"){
+      for(var j = 0; j<ufs.length; j++){
+        if(qtdAlertasUfsTodoPeriodo[i].uf == ufs[j]){
+          qtdCriticosTodoPeriodo[j] = qtdAlertasUfsTodoPeriodo[i].qtdAlerta
+        }
+      }
+    }else if(qtdAlertasUfsTodoPeriodo[i].nivelAlerta == "Médio"){
+      for(var j = 0; j<ufs.length; j++){
+        if(qtdAlertasUfsTodoPeriodo[i].uf == ufs[j]){
+          qtdMediosTodoPeriodo[j] = qtdAlertasUfsTodoPeriodo[i].qtdAlerta
+        }
+      }
+    }else{
+      for(var j = 0; j<ufs.length; j++){
+        if(qtdAlertasUfsTodoPeriodo[i].uf == ufs[j]){
+          qtdBonsTodoPeriodo[j] = qtdAlertasUfsTodoPeriodo[i].qtdAlerta
+        }
+      }
+    }
+    
+  }
+}
 
+var chartEstado;
+var chartEstadoTodoPeriodo;
+obterUfs()
 
-var chartEstado = new Chart(AlertasEstado, {
+obterQtdAlertasUfs().then(function() {
+  chartEstadoTodoPeriodo = new Chart(AlertasEstadoTodoPeriodo, {
+    type: 'bar',
+    data: {
+      labels: ufs,
+      datasets: [
+  
+        {
+          label: "Quantidade disparos de risco médio",
+          data: qtdMediosTodoPeriodo,
+          borderWidth: 1,
+          backgroundColor: ['orange', 'orange'],
+          stack: 'Stack 0',
+        },
+        {
+        label: "Quantidade disparos de risco crítico",
+        data: qtdCriticosTodoPeriodo,
+        borderWidth: 1,
+        backgroundColor: ['red', 'red'],
+        stack: 'Stack 0',
+      },
+      {
+        label: "Quantidade de disparos com performance ok",
+        data: qtdBonsTodoPeriodo,
+        borderWidth: 1,
+        backgroundColor: ['green', 'green'],
+        stack: 'Stack 1',
+      }
+    ]
+    },
+    options: {
+      responsive: true,
+      interaction: {
+        intersect: false,
+      },
+      scales: {
+        x: {
+          stacked: true,
+        },
+        y: {
+          stacked: true
+        }
+      }
+    }
+  });
+})
+obterQtdAlertasUfsHoje().then(function () {
+chartEstado = new Chart(AlertasEstado, {
   type: 'bar',
   data: {
     labels: ufs,
     datasets: [
+
       {
-      label: "Qtd status crítico",
+        label: "Quantidade disparos de risco médio",
+        data: qtdMedios,
+        borderWidth: 1,
+        backgroundColor: ['orange', 'orange'],
+        stack: 'Stack 0',
+      },
+      {
+      label: "Quantidade disparos de risco crítico",
       data: qtdCriticos,
       borderWidth: 1,
       backgroundColor: ['red', 'red'],
       stack: 'Stack 0',
     },
     {
-      label: "Qtd status alerta",
-      data: qtdMedios,
-      borderWidth: 1,
-      backgroundColor: ['orange', 'orange'],
-      stack: 'Stack 0',
-    },
-    {
-      label: "Qtd status bom",
+      label: "Quantidade de disparos com performance ok",
       data: qtdBons,
       borderWidth: 1,
       backgroundColor: ['green', 'green'],
@@ -104,3 +186,31 @@ var chartEstado = new Chart(AlertasEstado, {
     }
   }
 });
+})
+
+
+
+
+
+
+setInterval(async() => {
+  ufs = []
+  qtdAlertasUfs = []
+  
+  qtdBons = []
+  qtdMedios = []
+  qtdCriticos = []
+
+  qtdAlertasUfsTodoPeriodo = []
+  qtdBonsTodoPeriodo = []
+  qtdMediosTodoPeriodo = []
+  qtdCriticosTodoPeriodo = []
+
+  await obterUfs()
+  await obterQtdAlertasUfsHoje()
+  await obterQtdAlertasUfs()
+
+  chartEstado.update()
+  chartEstadoTodoPeriodo.update()
+
+}, 2000);

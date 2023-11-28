@@ -29,6 +29,17 @@ function obterQtdAlertasNoDiaPorEstado(fkEmpresa) {
         SELECT COUNT(nivelAlerta) qtdAlerta, uf, nivelAlerta FROM historicoAlerta  
         INNER JOIN servidor  on fkServidor = idServidor
         INNER JOIN endereco on fkEndereco = idEndereco
+        where fkEmpresaServidor = ${fkEmpresa} AND  DATENAME(dayofyear,dataAlerta) = DATENAME(dayofyear,CURRENT_TIMESTAMP)
+        GROUP BY uf, nivelAlerta
+        ORDER BY uf
+    `
+    return database.executar(query)
+}
+function obterQtdAlertasPorEstado(fkEmpresa) {
+    var query = `
+        SELECT COUNT(nivelAlerta) qtdAlerta, uf, nivelAlerta FROM historicoAlerta  
+        INNER JOIN servidor  on fkServidor = idServidor
+        INNER JOIN endereco on fkEndereco = idEndereco
         where fkEmpresaServidor = ${fkEmpresa}
         GROUP BY uf, nivelAlerta
         ORDER BY uf
@@ -39,6 +50,7 @@ function obterQtdAlertasNoDiaPorEstado(fkEmpresa) {
 module.exports ={
     obterAlertasEmpresa,
     obterUfsComServidoresMonitorados, 
-    obterQtdAlertasNoDiaPorEstado
+    obterQtdAlertasNoDiaPorEstado,
+    obterQtdAlertasPorEstado
 
 }

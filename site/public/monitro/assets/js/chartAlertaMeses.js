@@ -19,59 +19,63 @@ async function buscarAlertas() {
     }
   }
 }
-buscarAlertas()
 
 
 
+var chartMeses 
 
-
-var chartMeses = new Chart(alertaMeses, {
-  type: 'line',
-  data: {
-    labels: 
-    [
-    'Janeiro', 
-    'Fevereiro', 
-    'Março', 
-    'Abril', 
-    'Maio', 
-    'Junho',
-    'Julho', 
-    'Agosto', 
-    'Setembro', 
-    'Outubro', 
-    'Novembro', 
-    'Dezembro'
-    ],
-    datasets: [
-      {
-        label: "Crítico",
-        data: [],
-        borderWidth: 2,
-        backgroundColor: 'red',
-        borderColor: 'red',
-      },
-      {
-        label: "Médio",
-        data: [],
-        borderWidth: 3,
-        borderColor: 'orange',
-        backgroundColor: 'orange'
-      }
-  ]
-    
-  },
-  options: {
-    scales: {
-      y: {
-        min: 0,
-        max: 10,
+buscarAlertas().then(function () {
+  chartMeses = new Chart(alertaMeses, {
+    type: 'line',
+    data: {
+      labels: 
+      [
+      'Janeiro', 
+      'Fevereiro', 
+      'Março', 
+      'Abril', 
+      'Maio', 
+      'Junho',
+      'Julho', 
+      'Agosto', 
+      'Setembro', 
+      'Outubro', 
+      'Novembro', 
+      'Dezembro'
+      ],
+      datasets: [
+        {
+          label: "Risco crítico",
+          data: [],
+          borderWidth: 2,
+          backgroundColor: 'red',
+          borderColor: 'red',
+        },
+        {
+          label: "Risco médio",
+          data: [],
+          borderWidth: 3,
+          borderColor: 'orange',
+          backgroundColor: 'orange'
+        }
+    ]
+      
+    },
+    options: {
+      scales: {
+        y: {
+          min: 0,
+          max: 10,
+        }
       }
     }
-  }
-});
+  });  
 
+})
 
- chartMeses.data.datasets[0].data = alertasCritico
- chartMeses.data.datasets[1].data = alertasMedio
- chartMeses.update()
+setInterval(() => {
+  chartMeses.data.datasets[0].data = alertasCritico
+  chartMeses.data.datasets[1].data = alertasMedio
+  chartMeses.update()
+}, 2000);
+

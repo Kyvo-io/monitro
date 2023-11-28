@@ -12,6 +12,12 @@ function obterQtdAlertasNoDiaPorEstado(req,res) {
         res.json(consulta)
     })
 }
+function obterQtdAlertasPorEstado(req,res) {
+    var fkEmpresa = req.params.fkEmpresa
+    alertaHistoricoModel.obterQtdAlertasPorEstado(fkEmpresa).then((consulta) => {
+        res.json(consulta)
+    })
+}
 
 function obterUfsComServidoresMonitorados(req,res) {
     var fkEmpresa = req.params.fkEmpresa
@@ -23,5 +29,6 @@ function obterUfsComServidoresMonitorados(req,res) {
 module.exports = {
     obterAlertasEmpresa
 ,obterUfsComServidoresMonitorados
-, obterQtdAlertasNoDiaPorEstado
+, obterQtdAlertasNoDiaPorEstado,
+obterQtdAlertasPorEstado
 }
