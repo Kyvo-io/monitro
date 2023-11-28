@@ -1,7 +1,9 @@
 var servidorEspecificoCompleto
+var idServidorEspecifico = null
 async function abrirServidorEspecifico(i) {
-
+    
     var servidor = servidores[i]
+    idServidorEspecifico = servidor.idServidor
     pNomeServ.innerHTML = `${servidor.nomeServidor}`
     pLogradouro.innerHTML =  `${servidor.logradouro}`
     pCep.innerHTML = `${servidor.cep}`

@@ -799,8 +799,8 @@
                         <div class="MetricaComponenteParametro">
                           <p>%</p>
                         </div>
-                        <input type="number" />
-                        <input type="number" />
+                        <input id="inputCpuMin" type="number" />
+                        <input id="inputCpuMax" type="number" />
                       </div>
                       <div class="parametro">
                         <div class="tipoComponenteParametro">
@@ -809,8 +809,8 @@
                         <div class="MetricaComponenteParametro">
                           <p>GB</p>
                         </div>
-                        <input type="number" />
-                        <input type="number" />
+                        <input id="inputRamMin" type="number" />
+                        <input id="inputRamMax" type="number" />
                       </div>
                       <div class="parametro">
                         <div class="tipoComponenteParametro">
@@ -819,8 +819,8 @@
                         <div class="MetricaComponenteParametro">
                           <p>GB</p>
                         </div>
-                        <input type="number" />
-                        <input type="number" />
+                        <input id="inputArmazenamentoMin" type="number" />
+                        <input id="inputArmazenamentoMax" type="number" />
                       </div>
                       <div class="parametro">
                         <div class="tipoComponenteParametro">
@@ -829,8 +829,8 @@
                         <div class="MetricaComponenteParametro">
                           <p>MB</p>
                         </div>
-                        <input type="number" />
-                        <input type="number" />
+                        <input id="inputUploadMin" type="number" />
+                        <input id="inputUploadMax" type="number" />
                       </div>
                       <div class="parametro">
                         <div class="tipoComponenteParametro">
@@ -839,11 +839,11 @@
                         <div class="MetricaComponenteParametro">
                           <p>MB</p>
                         </div>
-                        <input type="number" />
-                        <input type="number" />
+                        <input id="inputDownloadMin" type="number" />
+                        <input id="inputDownloadMax" type="number" />
                       </div>
 
-                      <div class="botaoSalvarParametros">Salvar</div>
+                      <div onclick="cadastrarParametros()" class="botaoSalvarParametros">Salvar</div>
                     </div>
                   </div>
                 </div>
@@ -900,10 +900,10 @@
       </div>
       <a href="#geolocalizacao" class="linksSideBar">Home</a>
       <a href="#dashGeral" class="linksSideBar">Servidores</a>
-      <a href="#cadastroUsuario" class="linksSideBar">Cadastrar Usuário</a>
-      <a href="usuarios.html" class="linksSideBarCrud">Editar Usuários</a>
+      <a id="aCadastroUsuario" href="#cadastroUsuario" class="linksSideBar">Cadastrar Usuário</a>
+      <a id="aUser" href="usuarios.html" class="linksSideBarCrud">Editar Usuários</a>
       <a href="#cadastroServidor" class="linksSideBar">Cadastrar Servidor</a>
-      <a href="servidores.html" class="linksSideBarCrud">Editar Servidores</a>
+      <a id="aServ" href="servidores.html" class="linksSideBarCrud">Editar Servidores</a>
       <a href="../institucional/index.html" id="botaoSair" class="linksSideBar"
         >Sair</a
       >
@@ -1273,6 +1273,8 @@
 <script src="assets/js/chartAlertasEstado.js"></script>
 <script src="assets/js/listarServidores.js"></script>
 <script src="assets/js/servidorEspecifico.js"></script>
+<script src="assets/js/cadastrarParametros.js"></script>
+<script src="assets/js/buscarParametros.js"></script>
 <script type="application/javascript">
   function getIP(json) {
     alert("My public IP address is: ", json.ip);
@@ -1287,3 +1289,12 @@
     console.log(json);
   }
 </script>
+<script>
+
+  if (sessionStorage.ID_CARGO != 1) {
+            aUser.style.display = "None"
+            aServ.style.display = "None"
+            aCadastroUsuario.style.display = "None"
+          }
+  
+  </script>

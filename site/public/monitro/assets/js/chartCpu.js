@@ -2,7 +2,7 @@ const monitoramentoCPU = document.getElementById('monitoramentoCPU');
 
 
 var chartCpu = new Chart(monitoramentoCPU, {
-  type: 'pie',
+  type: 'line',
   data: {
     labels: ['Uso Atual', 'Restante'],
     datasets: [

@@ -100,7 +100,7 @@ function listarServidoresEmpresa(req, res) {
 async function buscarServidorEspecifico(req,res){
     var idServidor = req.params.idServidor
      var servidor = await servidorModel.buscarServidorEspecifico(idServidor)
-   await res.json(servidor)
+   await res.json(servidor) 
    
 }
 

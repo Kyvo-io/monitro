@@ -17,14 +17,31 @@ var sqlServerConfig = {
         trustServerCertificate: true
     }
 }
+
+// var sqlServerConfig = {
+//     server: "ec2-3-217-73-28.compute-1.amazonaws.com",
+//     database: "monitro",
+//     user: "monitro-admin",
+//     password: "kyvo_io",
+//     pool: {
+//         max: 10,
+//         min: 0,
+//         idleTimeoutMillis: 30000
+//     },
+//     options: {
+//         encrypt: false, // for azure
+//         trustServerCertificate: true
+//     }
+// }
    
+
 // CONEXÃO DO MYSQL WORKBENCH
-var mySqlConfig = {
-    host: "localhost",
-    database: "monitro",
-    user: "monitro-admin",
-    password: "kyvo_io",
-};
+// var mySqlConfig = {
+//     host: "localhost",
+//     database: "monitro",
+//     user: "monitro-admin",
+//     password: "kyvo_io",
+// };
 
 function executar(instrucao) {
 

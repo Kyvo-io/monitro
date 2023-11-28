@@ -86,7 +86,8 @@ async function editarServidor(
 async function buscarServidorEspecifico(idServidor){
   var servidor = {
     ultimosRegistros: {}, 
-    descricoesComponentes: {}
+    descricoesComponentes: {},
+    metricas: {}
   }
 
   var ultimosRegistros = {
@@ -94,6 +95,14 @@ async function buscarServidorEspecifico(idServidor){
     ram: [],
     disco: [],
     rede: []
+  }
+
+  var metricasAlertaServidor = {
+    usoCpu: {},
+    usoRam: {},
+    usoDisco: {},
+    upload: {},
+    download: {}
   }
 
 
@@ -124,7 +133,38 @@ async function buscarServidorEspecifico(idServidor){
 
   } 
 
+  for (var j= 1; j <= 5; j++) {
+    var parametrosServidor = await database.executar(
+    `
+    SELECT min, max FROM alerta WHERE fkServidor = ${idServidor} AND fkMetrica = ${j} ORDER BY fkMetrica;
+    `)
 
+   
+      var minimoMaximo = parametrosServidor[0]
+    switch (j) {
+      case 1:
+        metricasAlertaServidor.usoCpu = minimoMaximo;
+        break;
+
+        case 2:
+          metricasAlertaServidor.usoRam = minimoMaximo;
+        break;
+
+        case 3:
+          metricasAlertaServidor.usoDisco = minimoMaximo;
+        break;
+
+        case 4:
+          metricasAlertaServidor.upload = minimoMaximo;
+        break;
+
+        case 5:
+          metricasAlertaServidor.download = minimoMaximo;
+        break;
+    
+ 
+    }
+  }
 
   var descricoes = await database.executar(`
   SELECT tituloDescricao,descricao FROM descricaoComponente WHERE fkComponente IN (SELECT idComponente FROM componente WHERE fkServidor = 1);
@@ -132,7 +172,8 @@ async function buscarServidorEspecifico(idServidor){
 
   servidor.descricoesComponentes = descricoes
   servidor.ultimosRegistros = ultimosRegistros
-
+  servidor.metricas = metricasAlertaServidor
+  
 
   return servidor
 }
