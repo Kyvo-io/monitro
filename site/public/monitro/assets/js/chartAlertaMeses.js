@@ -4,7 +4,6 @@ const alertaMeses = document.getElementById('alertaMeses');
 var alertas = []
 var alertasMedio = [0,0,0,0,0,0,0,0,0,0,0,0]
 var alertasCritico = [0,0,0,0,0,0,0,0,0,0,0,0]
-buscarAlertas()
 
 async function buscarAlertas() {
   var busca = await fetch(`/historico/qtdAlertasMeses/${sessionStorage.ID_EMPRESA}`) 
@@ -20,12 +19,13 @@ async function buscarAlertas() {
     }
   }
 }
+buscarAlertas()
 
 
 
 
 
-new Chart(alertaMeses, {
+var chartMeses = new Chart(alertaMeses, {
   type: 'line',
   data: {
     labels: 
@@ -46,14 +46,14 @@ new Chart(alertaMeses, {
     datasets: [
       {
         label: "Crítico",
-        data: alertasCritico,
+        data: [],
         borderWidth: 2,
         backgroundColor: 'red',
         borderColor: 'red',
       },
       {
         label: "Médio",
-        data: alertasMedio,
+        data: [],
         borderWidth: 3,
         borderColor: 'orange',
         backgroundColor: 'orange'
@@ -65,8 +65,13 @@ new Chart(alertaMeses, {
     scales: {
       y: {
         min: 0,
-        max: 50,
+        max: 10,
       }
     }
   }
 });
+
+
+ chartMeses.data.datasets[0].data = alertasCritico
+ chartMeses.data.datasets[1].data = alertasMedio
+ chartMeses.update()

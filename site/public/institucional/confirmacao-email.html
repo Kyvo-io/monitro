@@ -81,10 +81,16 @@ function alertErro(){
     var sessao = json[0]
     if(sessao.autenticacaoDuasEtapas == 1){
       alertConfirma()
-      window.location.href = "/monitro/dashboard.html"
+      setTimeout(() => {
+        window.location.href = "/monitro/dashboard.html"   
+      }, 3000);
+     
     }else if(sessao.autenticacaoDuasEtapas == 0){
       alertErro()
-      window.location.href = "index.html"
+      setTimeout(() => {
+        window.location.href = "index.html"  
+      }, 3000);
+    
     }else{
       console.log("procurando ainda...");
     }
