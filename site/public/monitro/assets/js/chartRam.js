@@ -35,7 +35,7 @@ var chartRam =  new Chart(monitoramentoRAM, {
           max: 100
         },
         y: {
-          max: 32,
+          max: 16,
           beginAtZero: true
         }
       }

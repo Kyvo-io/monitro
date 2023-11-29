@@ -110,7 +110,7 @@ async function buscarServidorEspecifico(idServidor){
     var select = await database.executar(
       `
       SELECT top 25 dado, FORMAT(dataRegistro,  'HH:mm:ss') as dataRegistro FROM registroComponente WHERE fkComponente IN (SELECT idComponente FROM componente WHERE fkServidor = ${idServidor})  
-      AND fkTipoComponente_Componente = ${i} ORDER BY FORMAT(dataRegistro,  'dd-MM-yyyy HH:mm:ss');
+      AND fkTipoComponente_Componente = ${i} ORDER BY FORMAT(dataRegistro,  'dd-MM-yyyy HH:mm:ss') DESC;
       `
     )
       for(var j = 0; j < select.length; j++){

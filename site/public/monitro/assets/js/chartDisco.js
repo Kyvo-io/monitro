@@ -1,20 +1,20 @@
 const monitoramentoDisco = document.getElementById('monitoramentoDisco');
 
-new Chart(monitoramentoDisco, {
+var chartDisco=new Chart(monitoramentoDisco, {
   type: 'bar',
   data: {
     labels: [''],
     datasets: [
       {
         label: 'Uso Atual',
-        data: [80],
+        data: [0],
         backgroundColor: '#28c8ef'
       },
       {
         label: 'Capacidade Total',
         data: [100],
         backgroundColor: '#0e1826a4',
-      }
+      },
     ]
   },
   options: {
@@ -26,7 +26,7 @@ new Chart(monitoramentoDisco, {
     },
     scales: {
       x: {
-        display: false
+        display: true
       },
       y: {
         display: false,
