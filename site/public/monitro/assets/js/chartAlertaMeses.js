@@ -4,7 +4,6 @@ const alertaMeses = document.getElementById('alertaMeses');
 var alertas = []
 var alertasMedio = [0,0,0,0,0,0,0,0,0,0,0,0]
 var alertasCritico = [0,0,0,0,0,0,0,0,0,0,0,0]
-buscarAlertas()
 
 async function buscarAlertas() {
   var busca = await fetch(`/historico/qtdAlertasMeses/${sessionStorage.ID_EMPRESA}`) 
@@ -23,50 +22,64 @@ async function buscarAlertas() {
 
 
 
+var chartMeses 
 
-
-new Chart(alertaMeses, {
-  type: 'line',
-  data: {
-    labels: 
-    [
-    'Janeiro', 
-    'Fevereiro', 
-    'Março', 
-    'Abril', 
-    'Maio', 
-    'Junho',
-    'Julho', 
-    'Agosto', 
-    'Setembro', 
-    'Outubro', 
-    'Novembro', 
-    'Dezembro'
-    ],
-    datasets: [
-      {
-        label: "Crítico",
-        data: alertasCritico,
-        borderWidth: 2,
-        backgroundColor: 'red',
-        borderColor: 'red',
-      },
-      {
-        label: "Médio",
-        data: alertasMedio,
-        borderWidth: 3,
-        borderColor: 'orange',
-        backgroundColor: 'orange'
-      }
-  ]
-    
-  },
-  options: {
-    scales: {
-      y: {
-        min: 0,
-        max: 50,
+buscarAlertas().then(function () {
+  chartMeses = new Chart(alertaMeses, {
+    type: 'line',
+    data: {
+      labels: 
+      [
+      'Janeiro', 
+      'Fevereiro', 
+      'Março', 
+      'Abril', 
+      'Maio', 
+      'Junho',
+      'Julho', 
+      'Agosto', 
+      'Setembro', 
+      'Outubro', 
+      'Novembro', 
+      'Dezembro'
+      ],
+      datasets: [
+        {
+          label: "Risco crítico",
+          data: [],
+          borderWidth: 2,
+          backgroundColor: 'red',
+          borderColor: 'red',
+        },
+        {
+          label: "Risco médio",
+          data: [],
+          borderWidth: 3,
+          borderColor: 'orange',
+          backgroundColor: 'orange'
+        }
+    ]
+      
+    },
+    options: {
+      scales: {
+        y: {
+          min: 0,
+          max: 10,
+        }
       }
     }
-  }
-});
+  });  
+
+})
+
+setInterval(() => {
+   alertas = []
+ alertasMedio = [0,0,0,0,0,0,0,0,0,0,0,0]
+ alertasCritico = [0,0,0,0,0,0,0,0,0,0,0,0]
+  buscarAlertas()
+  chartMeses.data.datasets[0].data = alertasCritico
+  chartMeses.data.datasets[1].data = alertasMedio
+  chartMeses.update()
+}, 10000);
+

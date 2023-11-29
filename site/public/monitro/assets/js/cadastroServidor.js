@@ -1,4 +1,14 @@
+function alertVazio(){
+  Swal.fire("Campos vazios, preencha corretamente!");
+}
 
+
+function alertCerto(){
+  Swal.fire({
+  title: "Cadastrado com sucesso!",
+  icon: "success"
+});
+}
 
 function cadastrarServidor() {
     var logradouro = input_logradouro.value;
@@ -16,9 +26,11 @@ function cadastrarServidor() {
     
     if (nomeServidor == "" || sistemaOperacional == "" || numero == "" || logradouro == "" || cep == "" || bairro == "" || cidade == "" || uf == "") {
      
-             alert ("Por favor preencha os campos em branco")
+            alertVazio();
              return false;
     }
+
+
 
       fetch(`/servidor/cadastrarServidor`, {
         method: "POST",
@@ -43,7 +55,7 @@ function cadastrarServidor() {
           
         }),
       }).then(function (resposta) {
-        alert("Servidor cadastrado!")
+        alertCerto();
         setTimeout(() => {
           window.location.reload();
         }, 1000);

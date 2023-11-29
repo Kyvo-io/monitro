@@ -31,6 +31,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     overflow-y: auto;
+    width: 800px;
     max-height: 590px;
 }
 
@@ -38,9 +39,10 @@
 .referenciaMaquina {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 50%;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+   
     color: var(--azul-dark-mode);
     margin-top: 20px;
 }
@@ -162,8 +164,9 @@ p > svg {
 
 .niveisAlerta > p {
     margin-top: 30px;
+    font-size: 15px;
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
     width: 90%;
 }
 
@@ -187,3 +190,10 @@ p:hover .svg1 {
     color: var(--azul);
 }
 
+
+/* slack */
+.slackDashboard{
+    display: flex;
+    margin-top: 20px;
+    margin-right: -120px;
+}

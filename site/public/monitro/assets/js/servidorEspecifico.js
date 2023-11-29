@@ -1,7 +1,14 @@
 var servidorEspecificoCompleto
 var idServidorEspecifico = null
 async function abrirServidorEspecifico(i) {
+      var modal = document.getElementById('ModalEspecifica')
     
+    chartRam.data.labels = []
+    chartRam.data.datasets[0].data = []
+    chartRam.update()
+
+    trocarExibicaoModalEspecifica()
+
     var servidor = servidores[i]
     idServidorEspecifico = servidor.idServidor
     pNomeServ.innerHTML = `${servidor.nomeServidor}`
@@ -14,26 +21,40 @@ async function abrirServidorEspecifico(i) {
     pSistemaOperacional = `${servidor.sistemaOperacional}`
 
 
-    setInterval(async() => { 
+    var busca = await fetch(`/servidor/${servidor.idServidor}`)
+    var jsonBusca = await busca.json()
+
+    servidorEspecificoCompleto = jsonBusca
+
+    descricoes = servidorEspecificoCompleto.descricoesComponentes
+    registros = servidorEspecificoCompleto.ultimosRegistros
+    
+
+    chartRam.data.labels = registros.ram.horarios
+    chartRam.data.datasets[0].data = registros.ram.registros
+    chartRam.update()
+
+
+    setInterval(async() => {
         var busca = await fetch(`/servidor/${servidor.idServidor}`)
         var jsonBusca = await busca.json()
-        servidorEspecificoCompleto = jsonBusca
-        var dadosRam = servidorEspecificoCompleto.ultimosRegistros.ram
-
-        if(chartRam.data.datasets[0].data.length > 10){
-            chartRam.data.datasets[0].data.shift()
-        }
-        chartRam.data.datasets[0].data.push(dadosRam[0].dado)
-        chartRam.data.labels.push(new Date().getHours()+":"+new Date().getMinutes()+":"+new Date().getSeconds())
-
-        chartCpu.data.datasets[0].data[0] = servidorEspecificoCompleto.ultimosRegistros.cpu[0].dado
-        chartCpu.data.datasets[0].data[1] = 100 - servidorEspecificoCompleto.ultimosRegistros.cpu[0].dado
-        chartCpu.update();
-
     
-        chartRam.update()
-    }, 3000);
+        servidorEspecificoCompleto = jsonBusca
+    
+        descricoes = servidorEspecificoCompleto.descricoesComponentes
+        registros = servidorEspecificoCompleto.ultimosRegistros
 
+        if(registros.ram.horarios[registros.ram.horarios.length - 1] !=  chartRam.data.labels[ chartRam.data.labels.length - 1]){
+            chartRam.data.labels.shift() 
+            chartRam.data.datasets[0].data.shift()
+
+            chartRam.data.labels.push( registros.ram.horarios[registros.ram.horarios.length - 1])
+            chartRam.data.datasets[0].data.push(registros.ram.registros[registros.ram.registros.length -1])
+            chartRam.update()
+
+        }
+    }, 10000);
+}
 
 
     var modal = document.getElementById('ModalEspecifica')

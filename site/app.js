@@ -1,8 +1,10 @@
 process.env.AMBIENTE_PROCESSO = "producao";
 // process.env.AMBIENTE_PROCESSO = "producao";
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 1;
-process.env.KEY = "AIzaSyAIuuupdu3Z2jMBbGEKSAz7swDqysvp3zM";
+process.env.KEY = "AIzaSyBDZcETGfTfrzlUuszY5FAXHFar5gHgRs0";
 const nodemailer = require('nodemailer');
+
+var sessaoRouter = require("./src/routes/sessao")
 var indexRouter = require("./src/routes/index");
 var empresaRouter = require("./src/routes/empresas");
 var usuarioRouter = require("./src/routes/usuarios");
@@ -40,7 +42,7 @@ async function iniciarServidor() {
 
     app.use(cors());
    
-
+    app.use("/sessao", sessaoRouter)
     app.use("/", indexRouter);
     app.use("/empresas", empresaRouter);
     app.use("/usuarios", usuarioRouter);

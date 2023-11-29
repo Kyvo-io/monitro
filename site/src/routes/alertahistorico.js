@@ -8,6 +8,9 @@ router.get("/qtdAlertasMeses/:fkEmpresa", function(req, res) {
 router.get("/qtdAlertasEstados/:fkEmpresa", function(req, res) {
     alertaHistoricoController.obterQtdAlertasNoDiaPorEstado(req,res)
 })
+router.get("/qtdAlertasEstadosTudo/:fkEmpresa", function(req, res) {
+    alertaHistoricoController.obterQtdAlertasPorEstado(req,res)
+})
 router.get("/estadosMonitorados/:fkEmpresa", function(req, res) {
     alertaHistoricoController.obterUfsComServidoresMonitorados(req,res)
 })

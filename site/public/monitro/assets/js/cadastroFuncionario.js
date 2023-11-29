@@ -1,3 +1,28 @@
+function alertVazio(){
+  Swal.fire("Campos vazios, preencha corretamente!");
+}
+
+function alertSenha(){
+  Swal.fire({
+    icon: "error",
+    text: "A senha e confirmação de senha tem que ser iguais!"
+  });
+}
+
+function alertEmail(){
+  Swal.fire({
+    icon: "error",
+    text: "Email incorreto, preencha corretamente!"
+  });
+}
+
+function alertCerto(){
+  Swal.fire({
+  title: "Cadastrado com sucesso",
+  icon: "success"
+});
+}
+
 
 function cadastrarFuncionario() {
 
@@ -11,16 +36,18 @@ function cadastrarFuncionario() {
     
     if (nomeUsuario == "" || email == "" || cargo == "" || senha == "" || confirmar_senha == "") {
      
-             alert ("Por favor preencha os campos em branco")
+             alertVazio();
              return false;
     } else if (senha != confirmar_senha) {
-      alert ('A senha e confirmação de senha tem que ser iguais')
+      alertSenha();
     } else if (email.indexOf('@') == -1 ) {
-      alert('Falta @ no email')
+      alertEmail();
     } else if (email.indexOf('.') == -1) {
-      alert ('Falta . no email')
+      alertEmail();
     } else {
     
+      alertCerto();
+      
       fetch("/usuarios/cadastrarFuncionario", {
         method: "POST",
         headers: {
@@ -38,7 +65,7 @@ function cadastrarFuncionario() {
         resposta.json().then(function (json) {
           if (resposta.ok) {
             console.log(json);
-            
+
             setTimeout(() => {
               window.location.reload();
             }, 1000);

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image" href="assets/img/logoCubo.png" />
+  <title>Confirmação de Login por Email</title>
+  <style>
+    
+    body {
+      background-color: #28C8EF;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      margin-top: 100px;
+      height: 500px;
+      width: 70%;
+      background-color: white;
+      border-radius: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .loading {
+      display: none;
+    }
+    .message {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  </style>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Confirme seu Login por Email</h1>
+    <p class="message">Um email foi enviado para a sua conta. Por favor, verifique para concluir o login.</p>
+    <div class="loading">
+      <p>Aguardando confirmação...</p>     
+    </div>
+    <span class="img_loading"><img src="assets//img/loader.svg" alt="" style="width: 150px;"></span>
+  </div>
+
+  <script>
+    setTimeout(function() {
+      document.querySelector('.message').style.display = 'none';
+      document.querySelector('.loading').style.display = 'block';
+    }, 3000); 
+
+
+
+  </script>
+</body>
+</html>
+<script src="assets/js/sweetAlert2.js"></script>
+<script>
+  function alertConfirma(){
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login realizado com sucesso!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+}
+
+function alertErro(){
+    Swal.fire({
+        icon: "error",
+        text: "Erro ao realizar o login"
+      });
+}
+  async function buscarConfirmacao() {
+    var busca = await fetch (`/sessao/obter/${sessionStorage.ID_USUARIO}`)
+
+    var json = await busca.json()
+
+    var sessao = json[0]
+    if(sessao.autenticacaoDuasEtapas == 1){
+      alertConfirma()
+      setTimeout(() => {
+        window.location.href = "/monitro/dashboard.html"   
+      }, 3000);
+     
+    }else if(sessao.autenticacaoDuasEtapas == 0){
+      alertErro()
+      setTimeout(() => {
+        window.location.href = "index.html"  
+      }, 3000);
+    
+    }else{
+      console.log("procurando ainda...");
+    }
+  }
+
+  setInterval(() => {
+    buscarConfirmacao()
+  }, 5000);
+
+</script>
