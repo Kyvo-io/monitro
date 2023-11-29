@@ -213,4 +213,4 @@ setInterval(async() => {
   chartEstado.update()
   chartEstadoTodoPeriodo.update()
 
-}, 2000);
+}, 10000);

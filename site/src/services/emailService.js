@@ -6,16 +6,14 @@ var email_monitro = 'Suporte Monitro <monitro_suporte@kyvo.com>'
 
 async function enviarEmailPrimeiroAcesso(email, usuario, senha) {
 
-let transporteEmail = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
-    secure: false,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-})
-
+    let transporteEmail = nodemailer.createTransport({
+        service: 'gmail',
+        secure: true,
+        auth: {
+            user: "monitroltda@gmail.com",
+            pass: "xctc qnor zntu liwm"
+        }
+    })
 let mensagem = {
     from: email_monitro,
     to: `${usuario} <${email}>`,
@@ -160,12 +158,11 @@ return nodemailer.getTestMessageUrl(infoEmail);
 
 async function enviarEmailConfirmacaoLogin(email, usuario, idSessao, logradouro, bairro, cidade, dataEmail) {
     let transporteEmail = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false,
+        service: 'gmail',
+        secure: true,    
         auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
+            user: "monitroltda@gmail.com",
+            pass: "xctc qnor zntu liwm"
         }
     })
     

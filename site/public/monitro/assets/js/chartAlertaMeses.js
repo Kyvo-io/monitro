@@ -74,8 +74,12 @@ buscarAlertas().then(function () {
 })
 
 setInterval(() => {
+   alertas = []
+ alertasMedio = [0,0,0,0,0,0,0,0,0,0,0,0]
+ alertasCritico = [0,0,0,0,0,0,0,0,0,0,0,0]
+  buscarAlertas()
   chartMeses.data.datasets[0].data = alertasCritico
   chartMeses.data.datasets[1].data = alertasMedio
   chartMeses.update()
-}, 2000);
+}, 10000);
 

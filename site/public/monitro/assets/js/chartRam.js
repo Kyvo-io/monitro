@@ -7,7 +7,7 @@ var chartRam =  new Chart(monitoramentoRAM, {
       datasets: [
         {
           label: 'Uso Atual',
-          data: [80],
+          data: [],
           backgroundColor: '#28c8ef'
         },
       ]
@@ -35,6 +35,7 @@ var chartRam =  new Chart(monitoramentoRAM, {
           max: 100
         },
         y: {
+          max: 32,
           beginAtZero: true
         }
       }

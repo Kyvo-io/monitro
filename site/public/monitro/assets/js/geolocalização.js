@@ -17,22 +17,22 @@ async function initMap() {
       listarServidoresEmpresa();
       await mostrarMarcadores()  
     })
-}
+} 
 async function mostrarMarcadores() {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker")
   for(var i =0; i<servidores.length; i++){
     var marcadorDiv = document.createElement("div")
     marcadorDiv.classList.add("servidor-marker")
-    
+     
     
     var statusServidor = document.createElement("div")
     statusServidor.classList.add("status")
   
-    if(servidores.nivelAlerta == "Crítico"){
+    if(servidores[i].nivelAlerta == "Crítico"){
       statusServidor.classList.add("perigo")
-    }else if("Médio"){
+    }else if(servidores[i].nivelAlerta == "Médio"){
       statusServidor.classList.add("medio")
-    }else if("Ok"){
+    }else if(servidores[i].nivelAlerta == "Ok"){
       statusServidor.classList.add("ok")
     }else{
       statusServidor.classList.add("inativo")
