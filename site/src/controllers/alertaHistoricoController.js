@@ -28,7 +28,7 @@ function obterUfsComServidoresMonitorados(req,res) {
 
 module.exports = {
  obterAlertasEmpresa,
- obterQtdAlertasPorEstado
+ obterQtdAlertasPorEstado,
 obterUfsComServidoresMonitorados, 
 obterQtdAlertasNoDiaPorEstado
 }

@@ -1,5 +1,7 @@
 var servidorEspecificoCompleto
 var idServidorEspecifico = null
+var metricas = [];
+
 async function abrirServidorEspecifico(i) {
       var modal = document.getElementById('ModalEspecifica')
     
@@ -8,19 +10,18 @@ async function abrirServidorEspecifico(i) {
     chartRam.update()
 
     trocarExibicaoModalEspecifica()
-
+ 
     var servidor = servidores[i]
     idServidorEspecifico = servidor.idServidor
-    pNomeServ.innerHTML = `${servidor.nomeServidor}`
-    pLogradouro.innerHTML =  `${servidor.logradouro}`
-    pCep.innerHTML = `${servidor.cep}`
-    pBairro.innerHTML =`${servidor.bairro}`
-    pCidade.innerHTML = `${servidor.cidade}`
-    pUf.innerHTML = `${servidor.uf}`
-    pNomeServidor.innerHTML = `${servidor.nomeServidor}`
-    pSistemaOperacional = `${servidor.sistemaOperacional}`
-
-
+    pNomeServ.innerHTML = servidor.nomeServidor
+    pLogradouro.innerHTML =  servidor.logradouro
+    pCep.innerHTML = servidor.cep
+    pBairro.innerHTML =servidor.bairro
+    pCidade.innerHTML = servidor.cidade
+    pUf.innerHTML = servidor.uf
+    pNomeServidor.innerHTML = servidor.nomeServidor
+    pSistemaOperacional = servidor.sistemaOperacional
+    
     var busca = await fetch(`/servidor/${servidor.idServidor}`)
     var jsonBusca = await busca.json()
 
@@ -54,23 +55,19 @@ async function abrirServidorEspecifico(i) {
 
         }
     }, 10000);
-}
 
-
-    var modal = document.getElementById('ModalEspecifica')
-    trocarExibicaoModalEspecifica()
     buscarParametrosServidor(idServidorEspecifico)
 }
 
 
-
-var metricas = [];
+var modal = document.getElementById('ModalEspecifica')
 async function buscarParametrosServidor(idServidor) {
     var busca = await fetch(`/alertas/buscarParametrosServidor/${idServidor}`)
     var json = await busca.json();
     metricas = await json;
 
-  
+    if (metricas != '') {
+        
     document.getElementById('inputCpuMin').value = Number(metricas[0].min);
     document.getElementById('inputCpuMax').value = Number(metricas[0].max);
 
@@ -86,4 +83,24 @@ async function buscarParametrosServidor(idServidor) {
     document.getElementById('inputDownloadMin').value = Number(metricas[4].min);
     document.getElementById('inputDownloadMax').value = Number(metricas[4].max);
     
+} else{
+    document.getElementById('inputCpuMin').value = '';
+    document.getElementById('inputCpuMax').value = '';
+
+    document.getElementById('inputArmazenamentoMin').value = '';
+    document.getElementById('inputArmazenamentoMax').value = '';
+
+    document.getElementById('inputRamMin').value = '';
+    document.getElementById('inputRamMax').value = '';
+
+    document.getElementById('inputUploadMin').value = '';
+    document.getElementById('inputUploadMax').value = '';
+
+    document.getElementById('inputDownloadMin').value = '';
+    document.getElementById('inputDownloadMax').value = '';
+    
 }
+
+}
+
+trocarExibicaoModalEspecifica()
