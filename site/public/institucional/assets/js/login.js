@@ -19,9 +19,7 @@ function logar() {
         if (resposta.ok) {
             console.log(resposta);
             resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-    
+        
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_USUARIO = json.nomeUsuario;
                 sessionStorage.ID_USUARIO = json.idUsuario;

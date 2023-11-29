@@ -23,10 +23,9 @@ var database = require("../database/config")
 
     } 
 
-    async function buscarParametros(idServidorEspecifico) {
-
+    async function buscarParametrosServidor(idServidor) {
       var buscarMetricas = `
-        SELECT min,max FROM alerta WHERE fkServidor = ${idServidorEspecifico}
+        SELECT min,max FROM alerta WHERE fkServidor = ${idServidor}
       ;`
 
       return database.executar(buscarMetricas);
@@ -35,5 +34,5 @@ var database = require("../database/config")
 
 module.exports = {
     cadastrarParametros,
-    buscarParametros
+    buscarParametrosServidor
 };

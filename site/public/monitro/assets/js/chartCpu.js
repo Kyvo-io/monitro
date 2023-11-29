@@ -7,6 +7,7 @@ var chartCpu = new Chart(monitoramentoCPU, {
     labels: ['Uso Atual', 'Restante'],
     datasets: [
       {
+        label: 'Uso Atual',
         data: [100, 0],
         backgroundColor: ['#ff0909', '#0e1826a4']
       }

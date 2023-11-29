@@ -62,16 +62,15 @@ function cadastrarParametros(req, res) {
       }
 }
 
-function buscarParametros(req,res) {
-    var idServidorEspecifico = req.body.idServidorEspecificoServer;
+function buscarParametrosServidor(req, res) {
+    var idServidor = req.params.idServidorEspecifico
+    alertaModel.buscarParametrosServidor(idServidor).then(function(resposta){
+        res.json(resposta);
+    })
 
-    alertaModel.buscarParametros(idServidorEspecifico).then(function(resposta){
-    res.json(resposta);
-
-    console.log("ola");
-})}
+}
 
 module.exports = {
    cadastrarParametros,
-   buscarParametros
+   buscarParametrosServidor
 }
