@@ -1,6 +1,7 @@
 var servidorEspecificoCompleto
+var idServidorEspecifico = null
 async function abrirServidorEspecifico(i) {
-    var modal = document.getElementById('ModalEspecifica')
+      var modal = document.getElementById('ModalEspecifica')
     
     chartRam.data.labels = []
     chartRam.data.datasets[0].data = []
@@ -8,8 +9,8 @@ async function abrirServidorEspecifico(i) {
 
     trocarExibicaoModalEspecifica()
 
-
     var servidor = servidores[i]
+    idServidorEspecifico = servidor.idServidor
     pNomeServ.innerHTML = `${servidor.nomeServidor}`
     pLogradouro.innerHTML =  `${servidor.logradouro}`
     pCep.innerHTML = `${servidor.cep}`
@@ -55,5 +56,34 @@ async function abrirServidorEspecifico(i) {
     }, 10000);
 }
 
-setInterval
 
+    var modal = document.getElementById('ModalEspecifica')
+    trocarExibicaoModalEspecifica()
+    buscarParametrosServidor(idServidorEspecifico)
+}
+
+
+
+var metricas = [];
+async function buscarParametrosServidor(idServidor) {
+    var busca = await fetch(`/alertas/buscarParametrosServidor/${idServidor}`)
+    var json = await busca.json();
+    metricas = await json;
+
+  
+    document.getElementById('inputCpuMin').value = Number(metricas[0].min);
+    document.getElementById('inputCpuMax').value = Number(metricas[0].max);
+
+    document.getElementById('inputArmazenamentoMin').value = Number(metricas[1].min);
+    document.getElementById('inputArmazenamentoMax').value = Number(metricas[1].max);
+
+    document.getElementById('inputRamMin').value = Number(metricas[2].min);
+    document.getElementById('inputRamMax').value = Number(metricas[2].max);
+
+    document.getElementById('inputUploadMin').value = Number(metricas[3].min);
+    document.getElementById('inputUploadMax').value = Number(metricas[3].max);
+
+    document.getElementById('inputDownloadMin').value = Number(metricas[4].min);
+    document.getElementById('inputDownloadMax').value = Number(metricas[4].max);
+    
+}
