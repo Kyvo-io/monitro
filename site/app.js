@@ -8,6 +8,7 @@ var sessaoRouter = require("./src/routes/sessao")
 var indexRouter = require("./src/routes/index");
 var empresaRouter = require("./src/routes/empresas");
 var usuarioRouter = require("./src/routes/usuarios");
+var alertaRouter = require("./src/routes/alertas");
 var mapsService = require('./src/services/mapsService')
 var servidorRouter = require("./src/routes/servidores");
 var alertaHistorico = require("./src/routes/alertahistorico")
@@ -48,6 +49,7 @@ async function iniciarServidor() {
     app.use("/servidor", servidorRouter);
     app.use("/historico", alertaHistorico)
     app.use("/componentes", componenteRouter);
+    app.use("/alertas", alertaRouter);
   
     app.listen(PORTA, function () {
         console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

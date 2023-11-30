@@ -1,6 +1,7 @@
 var servidorEspecificoCompleto
+var idServidorEspecifico = null
 async function abrirServidorEspecifico(i) {
-    var modal = document.getElementById('ModalEspecifica')
+      var modal = document.getElementById('ModalEspecifica')
     
     chartRam.data.labels = []
     chartRam.data.datasets[0].data = []
@@ -8,8 +9,8 @@ async function abrirServidorEspecifico(i) {
 
     trocarExibicaoModalEspecifica()
 
-
     var servidor = servidores[i]
+    idServidorEspecifico = servidor.idServidor
     pNomeServ.innerHTML = `${servidor.nomeServidor}`
     pLogradouro.innerHTML =  `${servidor.logradouro}`
     pCep.innerHTML = `${servidor.cep}`
@@ -20,8 +21,8 @@ async function abrirServidorEspecifico(i) {
     pSistemaOperacional = `${servidor.sistemaOperacional}`
 
 
-   
 
+    await buscarParametrosServidor(idServidorEspecifico)       
     await obterRegistrosDescricoes(servidor.idServidor)
     setInterval(async() => {
       await obterRegistrosDescricoes(servidor.idServidor)
@@ -72,6 +73,7 @@ async function obterRegistrosDescricoes(idServidor) {
 function plotarGraficoCpu({registros, horarios}) {
     
 }
+
 function plotarGraficoRam({registros, horarios}) {
     if(chartRam.data.labels.length == 0){
         chartRam.data.labels = horarios
@@ -83,11 +85,38 @@ function plotarGraficoRam({registros, horarios}) {
             chartRam.data.labels.push( horarios[horarios.length - 1])
             chartRam.data.datasets[0].data.push(registros[registros.length-1])
             chartRam.update()
+        }
+    
+    }
+    function plotarGraficoDisco(tamanhoDisco, usoDisco) {
+        chartDisco.data.datasets[0].data[0] = usoDisco / tamanhoDisco * 100;
+        chartDisco.update()
     }
     
-}
-function plotarGraficoDisco(tamanhoDisco, usoDisco) {
-    chartDisco.data.datasets[0].data[0] = usoDisco / tamanhoDisco * 100;
-    chartDisco.update()
-}
+       
 
+    
+    
+    var metricas = [];
+    async function buscarParametrosServidor(idServidor) {
+        var busca = await fetch(`/alertas/buscarParametrosServidor/${idServidor}`)
+        var json = await busca.json();
+        metricas = await json;
+    
+      
+        document.getElementById('inputCpuMin').value = Number(metricas[0].min);
+        document.getElementById('inputCpuMax').value = Number(metricas[0].max);
+    
+        document.getElementById('inputArmazenamentoMin').value = Number(metricas[1].min);
+        document.getElementById('inputArmazenamentoMax').value = Number(metricas[1].max);
+    
+        document.getElementById('inputRamMin').value = Number(metricas[2].min);
+        document.getElementById('inputRamMax').value = Number(metricas[2].max);
+    
+        document.getElementById('inputUploadMin').value = Number(metricas[3].min);
+        document.getElementById('inputUploadMax').value = Number(metricas[3].max);
+    
+        document.getElementById('inputDownloadMin').value = Number(metricas[4].min);
+        document.getElementById('inputDownloadMax').value = Number(metricas[4].max);
+        
+    }
