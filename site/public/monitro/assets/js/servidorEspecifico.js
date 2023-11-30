@@ -3,14 +3,14 @@ var idServidorEspecifico = null
 var metricas = [];
 
 async function abrirServidorEspecifico(i) {
-      var modal = document.getElementById('ModalEspecifica')
+    var modal = document.getElementById('ModalEspecifica')
     
     chartRam.data.labels = []
     chartRam.data.datasets[0].data = []
     chartRam.update()
-
+    
     trocarExibicaoModalEspecifica()
- 
+    
     var servidor = servidores[i]
     idServidorEspecifico = servidor.idServidor
     pNomeServ.innerHTML = servidor.nomeServidor
@@ -21,27 +21,43 @@ async function abrirServidorEspecifico(i) {
     pUf.innerHTML = servidor.uf
     pNomeServidor.innerHTML = servidor.nomeServidor
     pSistemaOperacional = servidor.sistemaOperacional
+
+    document.getElementById('inputCpuMin').value = '';
+    document.getElementById('inputCpuMax').value = '';
+
+    document.getElementById('inputArmazenamentoMin').value = '';
+    document.getElementById('inputArmazenamentoMax').value = '';
+
+    document.getElementById('inputRamMin').value = '';
+    document.getElementById('inputRamMax').value = '';
+
+    document.getElementById('inputUploadMin').value = '';
+    document.getElementById('inputUploadMax').value = '';
+
+    document.getElementById('inputDownloadMin').value = '';
+    document.getElementById('inputDownloadMax').value = '';
+    
     
     var busca = await fetch(`/servidor/${servidor.idServidor}`)
     var jsonBusca = await busca.json()
-
+    
     servidorEspecificoCompleto = jsonBusca
-
+    
     descricoes = servidorEspecificoCompleto.descricoesComponentes
     registros = servidorEspecificoCompleto.ultimosRegistros
     
-
+    
     chartRam.data.labels = registros.ram.horarios
     chartRam.data.datasets[0].data = registros.ram.registros
     chartRam.update()
-
-
+    
+    
     setInterval(async() => {
         var busca = await fetch(`/servidor/${servidor.idServidor}`)
         var jsonBusca = await busca.json()
-    
+        
         servidorEspecificoCompleto = jsonBusca
-    
+        
         descricoes = servidorEspecificoCompleto.descricoesComponentes
         registros = servidorEspecificoCompleto.ultimosRegistros
 
@@ -52,21 +68,20 @@ async function abrirServidorEspecifico(i) {
             chartRam.data.labels.push( registros.ram.horarios[registros.ram.horarios.length - 1])
             chartRam.data.datasets[0].data.push(registros.ram.registros[registros.ram.registros.length -1])
             chartRam.update()
-
+            
         }
     }, 10000);
 
     buscarParametrosServidor(idServidorEspecifico)
 }
 
-
 var modal = document.getElementById('ModalEspecifica')
 async function buscarParametrosServidor(idServidor) {
+
     var busca = await fetch(`/alertas/buscarParametrosServidor/${idServidor}`)
     var json = await busca.json();
     metricas = await json;
-
-    if (metricas != '') {
+    if (metricas != '') { 
         
     document.getElementById('inputCpuMin').value = Number(metricas[0].min);
     document.getElementById('inputCpuMax').value = Number(metricas[0].max);
