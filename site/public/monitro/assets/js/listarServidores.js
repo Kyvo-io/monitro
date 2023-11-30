@@ -44,9 +44,9 @@ function listarServidoresEmpresa() {
             iconeTipoServ = listaTipoServidor[2]
           }
   
-      if (servidor.nivelAlerta == 'alto') {
+      if (servidor.nivelAlerta == 'Crítico') {
         iconeTipoAlert = listaNivelAlerta[0]
-      } else if(servidor.nivelAlerta == 'medio'){
+      } else if(servidor.nivelAlerta == 'Médio'){
         iconeTipoAlert =  listaNivelAlerta[1]
       } else {
         iconeTipoAlert = listaNivelAlerta[2]

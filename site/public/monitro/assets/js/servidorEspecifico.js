@@ -81,6 +81,7 @@ async function buscarParametrosServidor(idServidor) {
     var busca = await fetch(`/alertas/buscarParametrosServidor/${idServidor}`)
     var json = await busca.json();
     metricas = await json;
+
     if (metricas != '') { 
         
     document.getElementById('inputCpuMin').value = Number(metricas[0].min);
@@ -99,6 +100,8 @@ async function buscarParametrosServidor(idServidor) {
     document.getElementById('inputDownloadMax').value = Number(metricas[4].max);
     
 } else{
+
+
     document.getElementById('inputCpuMin').value = '';
     document.getElementById('inputCpuMax').value = '';
 
