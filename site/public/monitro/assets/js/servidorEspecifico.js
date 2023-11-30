@@ -7,6 +7,11 @@ async function abrirServidorEspecifico(i) {
     chartRam.data.datasets[0].data = []
     chartRam.update()
 
+    chartCpu.data.labels = []
+    chartCpu.data.datasets[0].data = []
+    chartCpu.update()
+
+
     trocarExibicaoModalEspecifica()
 
     var servidor = servidores[i]
@@ -22,7 +27,12 @@ async function abrirServidorEspecifico(i) {
 
 
 
-    await buscarParametrosServidor(idServidorEspecifico)       
+    try {
+        await buscarParametrosServidor(idServidorEspecifico)       
+    } catch (error) {
+        
+    }
+        
     await obterRegistrosDescricoes(servidor.idServidor)
     setInterval(async() => {
       await obterRegistrosDescricoes(servidor.idServidor)
@@ -58,11 +68,23 @@ async function obterRegistrosDescricoes(idServidor) {
     } 
     var rede = {
         descricoes: servidorEspecificoCompleto.descricoesComponentes.rede,
-         registros: registros.rede.registros.reverse(),
-         horarios: registros.rede.horarios.reverse()
+        upload:{
+            registros: registros.rede.upload.registros.reverse(),
+            horarios: registros.rede.upload.horarios.reverse()
+        },
+        download:{
+            registros: registros.rede.download.registros.reverse(),
+            horarios: registros.rede.download.horarios.reverse()
+        }
     } 
-    console.log(ram);
+
+
     plotarGraficoRam(ram)
+    plotarGraficoCpu(cpu)
+
+    pUpload.innerHTML = rede.upload.registros[rede.upload.registros.length-1]
+    pDownload.innerHTML = rede.download.registros[rede.download.registros.length-1]
+
     var tamanhoDisco = Number(disco.descricoes[2].descricao.replace(" GB", ""));
     console.log(tamanhoDisco);
     var usoDisco = disco.registros[disco.registros.length-1]
@@ -71,7 +93,17 @@ async function obterRegistrosDescricoes(idServidor) {
 }
 
 function plotarGraficoCpu({registros, horarios}) {
-    
+    if(chartCpu.data.labels.length == 0){
+        chartCpu.data.labels = horarios
+        chartCpu.data.datasets[0].data = registros 
+        chartCpu.update()
+    }else if(horarios[horarios.length - 1]  !=  chartCpu.data.labels[ chartCpu.data.labels.length - 1]){
+            chartCpu.data.labels.shift() 
+            chartCpu.data.datasets[0].data.shift()
+            chartCpu.data.labels.push( horarios[horarios.length - 1])
+            chartCpu.data.datasets[0].data.push(registros[registros.length-1])
+            chartCpu.update()
+        }
 }
 
 function plotarGraficoRam({registros, horarios}) {
@@ -87,7 +119,9 @@ function plotarGraficoRam({registros, horarios}) {
             chartRam.update()
         }
     
-    }
+}
+
+
     function plotarGraficoDisco(tamanhoDisco, usoDisco) {
         chartDisco.data.datasets[0].data[0] = usoDisco / tamanhoDisco * 100;
         chartDisco.update()
