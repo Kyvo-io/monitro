@@ -14,8 +14,14 @@ async function initMap() {
 
 
     await  buscarServidoresEmpresa().then(async function () {
-      listarServidoresEmpresa();
-      await mostrarMarcadores()  
+      await mostrarMarcadores()
+     try {
+      listarServidoresEmpresa()
+     } catch (error) {
+      
+     }
+     
+  
     })
 } 
 async function mostrarMarcadores() {
