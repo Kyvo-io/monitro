@@ -96,9 +96,7 @@ async function buscarEnderecoPelasCoordenadas(latitude, longitude) {
 }
 
 async function obterCoordenadaPeloIp(ip) {
-    var busca = await fetch(`
-    https://api.ipbase.com/v2/info?apikey=ipb_live_EP1QnTtW2B9mQh8ULFquKKbqaJ3sfsw8s1p3o0Of&ip=${ip}
-    `)
+    var busca = await fetch(`https://api.ipbase.com/v2/info?apikey=ipb_live_EP1QnTtW2B9mQh8ULFquKKbqaJ3sfsw8s1p3o0Of&ip=${ip}`)
     var json = await busca.json()
     console.log(json)
     var coord = {
@@ -110,8 +108,7 @@ async function obterCoordenadaPeloIp(ip) {
 
 
 async function buscarEnderecoPeloCep(cep) {
-    var busca = await fetch(`
-    https://viacep.com.br/ws/${cep}/json/
+    var busca = await fetch(`https://viacep.com.br/ws/${cep}/json/
     `)
     var json = await busca.json()
 

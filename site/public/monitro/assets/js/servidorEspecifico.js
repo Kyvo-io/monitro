@@ -1,19 +1,20 @@
 var servidorEspecificoCompleto
 var idServidorEspecifico = null
+var metricas = [];
+
 async function abrirServidorEspecifico(i) {
-      var modal = document.getElementById('ModalEspecifica')
+    var modal = document.getElementById('ModalEspecifica')
     
     chartRam.data.labels = []
     chartRam.data.datasets[0].data = []
     chartRam.update()
-
+  
+  
     chartCpu.data.labels = []
     chartCpu.data.datasets[0].data = []
-    chartCpu.update()
-
 
     trocarExibicaoModalEspecifica()
-
+    
     var servidor = servidores[i]
     idServidorEspecifico = servidor.idServidor
     pNomeServ.innerHTML = `${servidor.nomeServidor}`
@@ -26,6 +27,22 @@ async function abrirServidorEspecifico(i) {
     pSistemaOperacional.innerHTML = `${servidor.sistemaOperacional}`
     pNomeSO.innerHTML = `${servidor.sistemaOperacional}`
 
+    
+    document.getElementById('inputCpuMin').value = '';
+    document.getElementById('inputCpuMax').value = '';
+
+    document.getElementById('inputArmazenamentoMin').value = '';
+    document.getElementById('inputArmazenamentoMax').value = '';
+  
+
+    document.getElementById('inputRamMin').value = '';
+    document.getElementById('inputRamMax').value = '';
+
+    document.getElementById('inputUploadMin').value = '';
+    document.getElementById('inputUploadMax').value = '';
+
+    document.getElementById('inputDownloadMin').value = '';
+    document.getElementById('inputDownloadMax').value = '';
 
     try {
         await buscarParametrosServidor(idServidorEspecifico)       
@@ -42,15 +59,20 @@ async function abrirServidorEspecifico(i) {
 
 
 
+
 async function obterRegistrosDescricoes(idServidor) {
     var busca = await fetch(`/servidor/${idServidor}`)
+    
+    
+    var busca = await fetch(`/servidor/${servidor.idServidor}`)
     var jsonBusca = await busca.json()
-
+    
     servidorEspecificoCompleto = jsonBusca
-
+    
     descricoes = servidorEspecificoCompleto.descricoesComponentes
     registros = servidorEspecificoCompleto.ultimosRegistros
     
+
     var cpu = {
         descricoes: servidorEspecificoCompleto.descricoesComponentes.cpu,
         registros: registros.cpu.registros.reverse(),
@@ -196,26 +218,51 @@ function plotarGraficoRam({registros, horarios}) {
 
     
     
-    var metricas = [];
-    async function buscarParametrosServidor(idServidor) {
-        var busca = await fetch(`/alertas/buscarParametrosServidor/${idServidor}`)
-        var json = await busca.json();
-        metricas = await json;
-    
-      
-        document.getElementById('inputCpuMin').value = Number(metricas[0].min);
-        document.getElementById('inputCpuMax').value = Number(metricas[0].max);
-    
-        document.getElementById('inputArmazenamentoMin').value = Number(metricas[1].min);
-        document.getElementById('inputArmazenamentoMax').value = Number(metricas[1].max);
-    
-        document.getElementById('inputRamMin').value = Number(metricas[2].min);
-        document.getElementById('inputRamMax').value = Number(metricas[2].max);
-    
-        document.getElementById('inputUploadMin').value = Number(metricas[3].min);
-        document.getElementById('inputUploadMax').value = Number(metricas[3].max);
-    
-        document.getElementById('inputDownloadMin').value = Number(metricas[4].min);
-        document.getElementById('inputDownloadMax').value = Number(metricas[4].max);
+
+
+async function buscarParametrosServidor(idServidor) {
+
+    var busca = await fetch(`/alertas/buscarParametrosServidor/${idServidor}`)
+    var json = await busca.json();
+    metricas = await json;
+
+    if (metricas != '') { 
         
-    }
+    document.getElementById('inputCpuMin').value = Number(metricas[0].min);
+    document.getElementById('inputCpuMax').value = Number(metricas[0].max);
+
+    document.getElementById('inputArmazenamentoMin').value = Number(metricas[1].min);
+    document.getElementById('inputArmazenamentoMax').value = Number(metricas[1].max);
+
+    document.getElementById('inputRamMin').value = Number(metricas[2].min);
+    document.getElementById('inputRamMax').value = Number(metricas[2].max);
+
+    document.getElementById('inputUploadMin').value = Number(metricas[3].min);
+    document.getElementById('inputUploadMax').value = Number(metricas[3].max);
+
+    document.getElementById('inputDownloadMin').value = Number(metricas[4].min);
+    document.getElementById('inputDownloadMax').value = Number(metricas[4].max);
+    
+} else{
+
+
+    document.getElementById('inputCpuMin').value = '';
+    document.getElementById('inputCpuMax').value = '';
+
+    document.getElementById('inputArmazenamentoMin').value = '';
+    document.getElementById('inputArmazenamentoMax').value = '';
+
+    document.getElementById('inputRamMin').value = '';
+    document.getElementById('inputRamMax').value = '';
+
+    document.getElementById('inputUploadMin').value = '';
+    document.getElementById('inputUploadMax').value = '';
+
+    document.getElementById('inputDownloadMin').value = '';
+    document.getElementById('inputDownloadMax').value = '';
+    
+}
+
+}
+
+

@@ -49,6 +49,7 @@
         headers: {
           "content-type": "application/json",
           
+          
         },
         
         body: JSON.stringify({
@@ -71,13 +72,14 @@
         fkEmpresaServer: fkEmpresa,
         idServidorEspecificoServer: idServidorEspecifico
 
-         
+
+        
         }),
       }).then(function (resposta) {
         console.log(resposta);
-        // alert("Parametro cadastrado!")
+         alert("Parametro cadastrado!")
         setTimeout(() => {
-        //   window.location.reload();
+          window.location.reload();
         }, 1000);
       });
     
