@@ -60,7 +60,7 @@ async function cadastrarSessao(fkUsuario, ip, latitude, longitude) {
     
 
     var horario = hora+":"+minutos
-    var dataEmail = data.getDate()+"/"+data.getMonth()+"/"+data.getFullYear() + "   |  "+ horario
+    var dataEmail = data.getDate()+"/"+(data.getMonth()+1)+"/"+data.getFullYear() + "   |  "+ horario
     
 
 

@@ -23,8 +23,8 @@ async function abrirServidorEspecifico(i) {
     pCidade.innerHTML = `${servidor.cidade}`
     pUf.innerHTML = `${servidor.uf}`
     pNomeServidor.innerHTML = `${servidor.nomeServidor}`
-    pSistemaOperacional = `${servidor.sistemaOperacional}`
-
+    pSistemaOperacional.innerHTML = `${servidor.sistemaOperacional}`
+    pNomeSO.innerHTML = `${servidor.sistemaOperacional}`
 
 
     try {
@@ -74,11 +74,68 @@ async function obterRegistrosDescricoes(idServidor) {
         },
         download:{
             registros: registros.rede.download.registros.reverse(),
-            horarios: registros.rede.download.horarios.reverse()
+            horarios: registros.rede.download.horarios
         }
     } 
-
-
+    var tamanhoDisco = Number(disco.descricoes[2].descricao.replace(" GB", ""));
+    
+    
+    var usoDisco = disco.registros[disco.registros.length-1]
+    var horarioLogs = rede.download.horarios
+    var logs = ""
+    for(var i = 0; i<horarioLogs.length; i++){
+        logs+=`
+        <div class="containerUltimosRegistros">
+        <h3>Data: ${horarioLogs[i]}</h3>
+        <div class="ladoEsquerdoCard">
+          <div class="CpuRegistros">
+            <h3>CPU</h3>
+            <span
+              >Porcentagem de uso:
+              <p>${registros.cpu.registros[i]} %</p></span
+            >
+          </div>
+          <div class="RamRegistros">
+            <h3>RAM</h3>
+            <span
+              >Total:
+              <p>${Number(ram.descricoes[0].descricao).toFixed(2)} GB</p></span
+            >
+            <span
+              >Utilizado:
+              <p>${registros.ram.registros[i]} GB</p></span
+            >
+          </div>
+        </div>
+        <div class="ladoDireitoCard">
+          <div class="DiscoRegistros">
+            <h3>DISCO</h3>
+            <span
+              >Total:
+              <p>${tamanhoDisco.toFixed(2)} GB</p></span
+            >
+            <span
+              >Utilizado:
+              <p>${usoDisco} GB</p></span
+            >
+          </div>
+          <div class="RedeRegistros">
+            <h3>REDE</h3>
+            <span
+              >Download:
+              <p>${registros.rede.download.registros[i]} MB</p></span
+            >
+            <span
+              >Upload:
+              <p>${registros.rede.upload.registros[i]} MB</p></span
+            >
+          </div>
+        </div>
+      </div>
+        ` 
+    }
+  
+    logsScroll.innerHTML = logs
     plotarGraficoRam(ram)
     plotarGraficoCpu(cpu)
 
@@ -86,10 +143,18 @@ async function obterRegistrosDescricoes(idServidor) {
     pDownload.innerHTML = rede.download.registros[rede.download.registros.length-1]
 
     var tamanhoDisco = Number(disco.descricoes[2].descricao.replace(" GB", ""));
-    console.log(tamanhoDisco);
+    
+    
     var usoDisco = disco.registros[disco.registros.length-1]
 
     plotarGraficoDisco(tamanhoDisco, usoDisco)
+    
+    pTotalArmz.innerHTML = tamanhoDisco.toFixed(2)
+    pNomeCpu.innerHTML = cpu.descricoes[2].descricao
+    pFreq.innerHTML = cpu.descricoes[0].descricao
+    pNucFis.innerHTML = cpu.descricoes[3].descricao
+    pNucLog.innerHTML = cpu.descricoes[4].descricao
+    pTotalRam.innerHTML = Number(ram.descricoes[0].descricao).toFixed(2) 
 }
 
 function plotarGraficoCpu({registros, horarios}) {
