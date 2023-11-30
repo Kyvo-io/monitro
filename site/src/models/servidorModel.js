@@ -94,8 +94,14 @@ async function buscarServidorEspecifico(idServidor){
       horarios:[]
     },
     rede: {
+     upload:{
       registros:[],
       horarios:[]
+     },
+     download:{
+      registros:[],
+      horarios:[]
+     }
     }
   }
 
@@ -118,15 +124,16 @@ async function buscarServidorEspecifico(idServidor){
   for(var i = 1; i<=4; i++){
     var select = await database.executar(
       `
-      SELECT top 25 dado, FORMAT(dataRegistro,  'HH:mm:ss') as dataRegistro FROM registroComponente WHERE fkComponente IN (SELECT idComponente FROM componente WHERE fkServidor = ${idServidor})  
-      AND fkTipoComponente_Componente = ${i} ORDER BY FORMAT(dataRegistro,  'dd-MM-yyyy HH:mm:ss');
+      SELECT top 15 fkMetrica,dado, FORMAT(dataRegistro,  'HH:mm:ss') as dataRegistro, FORMAT(dataRegistro,  'dd-MM-yyyy HH:mm:ss') as dataCompleta FROM registroComponente WHERE fkComponente IN (SELECT idComponente FROM componente WHERE fkServidor = ${idServidor})  
+      AND fkTipoComponente_Componente = ${i} ORDER BY FORMAT(dataRegistro,  'dd-MM-yyyy HH:mm:ss') DESC;
       `
     )
       for(var j = 0; j < select.length; j++){
 
         var registro = {
           dado: select[j].dado,
-          data: select[j].dataRegistro
+          data: select[j].dataRegistro,
+          dataCompleta: select[j].dataCompleta
         }
 
         switch (i) {
@@ -139,9 +146,18 @@ async function buscarServidorEspecifico(idServidor){
             ultimosRegistros.ram.horarios.push(registro.data)
             break;
           case 3:
-            ultimosRegistros.rede.registros.push(registro.dado)
-            ultimosRegistros.rede.horarios.push(registro.data)
-           
+
+          switch (select[j].fkMetrica) {
+            case 2:
+              ultimosRegistros.rede.upload.registros.push(registro.dado)
+              ultimosRegistros.rede.upload.horarios.push(registro.data)
+              break;
+          
+            case 3:
+              ultimosRegistros.rede.download.registros.push(registro.dado)
+              ultimosRegistros.rede.download.horarios.push(registro.dataCompleta)
+              break;
+          }
               break;
           case 4:
             ultimosRegistros.disco.registros.push(registro.dado)

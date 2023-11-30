@@ -22,7 +22,7 @@ async function buscarAlertas() {
 
 
 
-var chartMeses 
+var chartMeses;
 
 buscarAlertas().then(function () {
   chartMeses = new Chart(alertaMeses, {
@@ -64,8 +64,7 @@ buscarAlertas().then(function () {
     options: {
       scales: {
         y: {
-          min: 0,
-          max: 10,
+          min: 0
         }
       }
     }
@@ -73,13 +72,13 @@ buscarAlertas().then(function () {
 
 })
 
-setInterval(() => {
+setInterval(async() => {
    alertas = []
  alertasMedio = [0,0,0,0,0,0,0,0,0,0,0,0]
  alertasCritico = [0,0,0,0,0,0,0,0,0,0,0,0]
-  buscarAlertas()
+  await buscarAlertas()
   chartMeses.data.datasets[0].data = alertasCritico
   chartMeses.data.datasets[1].data = alertasMedio
   chartMeses.update()
-}, 10000);
+}, 5000);
 
