@@ -63,8 +63,6 @@ async function abrirServidorEspecifico(i) {
 async function obterRegistrosDescricoes(idServidor) {
     var busca = await fetch(`/servidor/${idServidor}`)
     
-    
-    var busca = await fetch(`/servidor/${servidor.idServidor}`)
     var jsonBusca = await busca.json()
     
     servidorEspecificoCompleto = jsonBusca
@@ -215,10 +213,6 @@ function plotarGraficoRam({registros, horarios}) {
     }
     
        
-
-    
-    
-
 
 async function buscarParametrosServidor(idServidor) {
 
