@@ -36,7 +36,7 @@ async function abrirServidorEspecifico(i) {
     await obterRegistrosDescricoes(servidor.idServidor)
     setInterval(async() => {
       await obterRegistrosDescricoes(servidor.idServidor)
-    }, 500);
+    }, 3000);
 }
 
 

@@ -334,7 +334,7 @@ body {
             <li>
                 <p>Bairro</p>
                 <div class="campo">
-                    <p>${bairro}</p>
+                    <p>${bairro}</p> 
                 </div>
             </li>
             <li>
@@ -351,8 +351,8 @@ body {
             </li>
         </ul>
         <div class="botoes">
-            <a href="http://ec2-3-217-73-28.compute-1.amazonaws.com/sessao/negar/${idSessao}"><button class="botao negar">Negar Acesso</button></a>
-            <a href="http://ec2-3-217-73-28.compute-1.amazonaws.com/sessao/permitir/${idSessao}"><button class="botao confirmar">Confirmar Acesso</button></a>
+            <a href="https://ec2-3-217-73-28.compute-1.amazonaws.com/sessao/negar/${idSessao}"><button class="botao negar">Negar Acesso</button></a>
+            <a href="https://ec2-3-217-73-28.compute-1.amazonaws.com/sessao/permitir/${idSessao}"><button class="botao confirmar">Confirmar Acesso</button></a>
         </div>
     </div>
 </div>
