@@ -18,7 +18,9 @@ function cadastrarParametros(req, res) {
     var downloadMin = req.body.downloadMinServer;
     var downloadMax= req.body.downloadMaxServer;
 
-   
+    var temperaturaMin = req.body.temperaturaMinServer;
+    var temperaturaMax= req.body.temperaturaMaxServer;
+
     var fkEmpresa = req.body.fkEmpresaServer;
     var idServidorEspecifico = req.body.idServidorEspecificoServer;
     
@@ -43,8 +45,12 @@ function cadastrarParametros(req, res) {
         res.status(400).send("O mínimo do Download está undefined!");
     } else if (downloadMax == undefined) {
         res.status(400).send("O máximo do Download está undefined!");
+    } else if (temperaturaMin == undefined) {
+        res.status(400).send("O mínimo da Temperatura está undefined!");
+    } else if (temperaturaMax == undefined) {
+        res.status(400).send("O máximo da Temperatura está undefined!");
     }else{
-          alertaModel.cadastrarParametros(idServidorEspecifico,cpuMin,cpuMax,ramMin,ramMax,armazenamentoMin,armazenamentoMax,uploadMin,uploadMax,downloadMin,downloadMax,fkEmpresa)
+          alertaModel.cadastrarParametros(idServidorEspecifico,cpuMin,cpuMax,ramMin,ramMax,armazenamentoMin,armazenamentoMax,uploadMin,uploadMax,downloadMin,downloadMax,temperaturaMin,temperaturaMax,fkEmpresa)
               .then(
                   function (resultado) {
                       res.json(resultado);

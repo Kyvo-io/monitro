@@ -19,6 +19,7 @@ function obterQtdAlertasPorEstado(req,res) {
     })
 }
 
+
 function obterUfsComServidoresMonitorados(req,res) {
     var fkEmpresa = req.params.fkEmpresa
     alertaHistoricoModel.obterUfsComServidoresMonitorados(fkEmpresa).then((consulta) => {

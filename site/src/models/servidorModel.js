@@ -102,6 +102,10 @@ async function buscarServidorEspecifico(idServidor){
       registros:[],
       horarios:[]
      }
+    },
+    temperatura: {
+      registros:[], 
+      horarios:[]
     }
   }
 
@@ -109,7 +113,8 @@ async function buscarServidorEspecifico(idServidor){
     cpu: [],
     ram: [],
     disco: [],
-    rede: []
+    rede: [], 
+    temperatura: []
   }
 
   var metricasAlertaServidor = {
@@ -117,7 +122,8 @@ async function buscarServidorEspecifico(idServidor){
     usoRam: {},
     usoDisco: {},
     upload: {},
-    download: {}
+    download: {},
+    temperatura: {}
   }
 
 
@@ -163,6 +169,11 @@ async function buscarServidorEspecifico(idServidor){
             ultimosRegistros.disco.registros.push(registro.dado)
             ultimosRegistros.disco.horarios.push(registro.data)
               break;
+
+           case 5:
+            ultimosRegistros.temperatura.registros.push(registro.dado)
+            ultimosRegistros.temperatura.horarios.push(registro.data)
+              break;
         }
   
       }
@@ -196,6 +207,10 @@ async function buscarServidorEspecifico(idServidor){
         case 5:
           metricasAlertaServidor.download = minimoMaximo;
         break;
+
+        case 6:
+          metricasAlertaServidor.temperatura = minimoMaximo;
+        break;
     
  
     }
@@ -227,6 +242,9 @@ async function buscarServidorEspecifico(idServidor){
         break;
       case 4:
         descricoesComponentes.disco.push(descricao)
+        break;
+      case 5:
+        descricoesComponentes.temperatura.push(descricao)
         break;
     }
   }

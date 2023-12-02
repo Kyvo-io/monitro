@@ -146,7 +146,7 @@ p > svg {
     display: flex;
     flex-direction: column;
     width: 250px;
-    height: 380px;
+    height: 400px;
     background-color: var(--branco-light-mode);
     border-radius: 15px;
     justify-content: space-between;

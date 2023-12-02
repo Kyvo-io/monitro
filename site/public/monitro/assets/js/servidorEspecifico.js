@@ -44,6 +44,9 @@ async function abrirServidorEspecifico(i) {
     document.getElementById('inputDownloadMin').value = '';
     document.getElementById('inputDownloadMax').value = '';
 
+    document.getElementById('inputTemperaturaMin').value = '';
+    document.getElementById('inputTemperaturaMax').value = '';
+
     try {
         await buscarParametrosServidor(idServidorEspecifico)       
     } catch (error) {
@@ -97,6 +100,11 @@ async function obterRegistrosDescricoes(idServidor) {
             horarios: registros.rede.download.horarios
         }
     } 
+    var temperatura = {
+      descricoes: servidorEspecificoCompleto.descricoesComponentes.temperatura,
+      registros: registros.temperatura.registros.reverse(),
+      horarios: registros.temperatura.horarios.reverse()
+    }
     var tamanhoDisco = Number(disco.descricoes[2].descricao.replace(" GB", ""));
     
     
@@ -126,6 +134,13 @@ async function obterRegistrosDescricoes(idServidor) {
               <p>${registros.ram.registros[i]} GB</p></span
             >
           </div>
+          <div class="TemperaturaRegistros">
+          <h3>TEMPERATURA</h3>
+          <span
+            >Temperatura Atual:
+            <p>${registros.temperatura.registros[i]} °C</p></span
+          >
+        </div>
         </div>
         <div class="ladoDireitoCard">
           <div class="DiscoRegistros">
@@ -150,6 +165,8 @@ async function obterRegistrosDescricoes(idServidor) {
               <p>${registros.rede.upload.registros[i]} MB</p></span
             >
           </div>
+
+         
         </div>
       </div>
         ` 
@@ -236,6 +253,9 @@ async function buscarParametrosServidor(idServidor) {
 
     document.getElementById('inputDownloadMin').value = Number(metricas[4].min);
     document.getElementById('inputDownloadMax').value = Number(metricas[4].max);
+
+    document.getElementById('inputTemperaturadMin').value = Number(metricas[5].min);
+    document.getElementById('inputTemperaturadMax').value = Number(metricas[5].max);
     
 } else{
 
@@ -254,6 +274,9 @@ async function buscarParametrosServidor(idServidor) {
 
     document.getElementById('inputDownloadMin').value = '';
     document.getElementById('inputDownloadMax').value = '';
+
+    document.getElementById('inputTemperaturaMin').value = '';
+    document.getElementById('inputTemperaturaMax').value = '';
     
 }
 

@@ -15,6 +15,9 @@
     var downloadMin = inputDownloadMin.value;
     var downloadMax = inputDownloadMax.value; 
 
+    var temperaturadMin = inputTemperaturadMin.value;
+    var temperaturadMax = inputTemperaturadMax.value; 
+
     var fkEmpresa = sessionStorage.ID_EMPRESA;
     
     if (cpuMin == "" || cpuMax == "") {
@@ -41,6 +44,11 @@
         alert ("Por favor preencha totalmente os campos de parametros para o Download")
         return false;
     }
+
+    if (temperaturaMin == "" || temperaturaMax == "") {
+      alert ("Por favor preencha totalmente os campos de parametros para o Temperatura")
+      return false;
+  }
      else{
 
 
@@ -68,6 +76,9 @@
 
         downloadMinServer: downloadMin,
         downloadMaxServer: downloadMax,
+
+        temperaturaMinServer: temperaturaMin,
+        temperaturaMaxServer: temperaturaMax,
     
         fkEmpresaServer: fkEmpresa,
         idServidorEspecificoServer: idServidorEspecifico

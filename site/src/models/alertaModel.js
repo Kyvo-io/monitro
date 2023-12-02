@@ -19,6 +19,9 @@ var database = require("../database/config")
       instrucao =  `INSERT INTO alerta (min,max,fkMetrica,fkTipoComponente,fkServidor,fkEmpresa) VALUES (${uploadMin},${uploadMax},2,3,${idServidorEspecifico},${fkEmpresa});`
         database.executar(instrucao);
       instrucao =  `INSERT INTO alerta (min,max,fkMetrica,fkTipoComponente,fkServidor,fkEmpresa) VALUES (${downloadMin},${downloadMax},3,3,${idServidorEspecifico},${fkEmpresa});` 
+      database.executar(instrucao);
+      instrucao =  `INSERT INTO alerta (min,max,fkMetrica,fkTipoComponente,fkServidor,fkEmpresa) VALUES (${temperaturaMin},${temperaturaMax},3,3,${idServidorEspecifico},${fkEmpresa});` 
+
       return database.executar(instrucao);
 
     } 
