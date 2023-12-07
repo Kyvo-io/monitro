@@ -1,5 +1,6 @@
 var servidorEspecificoCompleto
 var idServidorEspecifico = null
+var interval
 var metricas = [];
 
 async function abrirServidorEspecifico(i) {
@@ -51,7 +52,9 @@ async function abrirServidorEspecifico(i) {
     }
         
     await obterRegistrosDescricoes(servidor.idServidor)
-    setInterval(async() => {
+
+
+    interval = setInterval(async() => {
       await obterRegistrosDescricoes(servidor.idServidor)
     }, 3000);
 }
@@ -260,3 +263,7 @@ async function buscarParametrosServidor(idServidor) {
 }
 
 
+function fecharModalEspecifico() {
+    clearInterval(interval);
+    trocarExibicaoModalEspecifica()
+}
